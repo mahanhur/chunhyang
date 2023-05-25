@@ -12,6 +12,6 @@ public class Admin {
     private int admin_id;
     private String admin_pwd;
     private String admin_name;
-    private int admin_level;
+    private String admin_level;
 
 }
