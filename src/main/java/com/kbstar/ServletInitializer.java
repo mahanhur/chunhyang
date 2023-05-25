@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(MainApplication.class);
+        return application.sources(chunhyang_adminApplication.class);
     }
 
 }
