@@ -11,7 +11,7 @@
 
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Cust ALL</h1>
+        <h1 class="mt-4">Admin ALL</h1>
 
     </div>
 </main>
