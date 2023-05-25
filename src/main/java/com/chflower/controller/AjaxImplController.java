@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
 @Slf4j
 @RestController
 public class AjaxImplController {
+    @Autowired
+    private BCryptPasswordEncoder encoder;
     @Autowired
     AdminService adminService;
     @RequestMapping("/checkid")
@@ -29,19 +32,7 @@ public class AjaxImplController {
         return result;
     }
 
-    @RequestMapping("/registerimpl")
-    public String registerimpl(Model model, Admin admin, HttpSession session) throws Exception {
-        try {
-//          admin.setAdmin_pwd(encoder.encode(admin.getAdmin_pwd()));
-            adminService.register(admin);
-            session.setAttribute("loginadmin", admin);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("관직자 등록 에러!발생! IT부서에 문의 바랍니다!");
-        }
-        model.addAttribute("admin",admin);
-        return "index";
-    }
+
 }
 
 

@@ -6,7 +6,7 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4">노비 리스트</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/">메인 화면으로 이동</a></li>
+            <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>
         </ol>
         <div class="card mb-4">
             <div class="card-body">

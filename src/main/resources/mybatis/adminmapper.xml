@@ -15,7 +15,7 @@
 
     <insert id="insert" parameterType="ADMIN">
         INSERT INTO ADMIN (ADMIN_ID, ADMIN_PWD, ADMIN_NAME, ADMIN_LEVEL)
-         VALUES(#{admin_id},#{admin_pwd},#{admin_name},#{admin_level})  --여기는 DTO랑 일치해야함
+         VALUES(ADMIN_SEQ.NEXTVAL,#{admin_pwd},#{admin_name},#{admin_level})  --여기는 DTO의 속성 이름이랑 일치해야함
     </insert>
 
 </mapper>

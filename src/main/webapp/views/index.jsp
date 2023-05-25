@@ -66,13 +66,13 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>ADMIN</a>
-                            <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>Cust</a>
-                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>Item</a>
+                    <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
+                            <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
+                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
                     <a class="nav-link collapsed" href="/subs"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>구독상품 관리</a>
-                            <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>Category</a>
+                            <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
                             <a class="nav-link collapsed" href="/qna"><div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>QnA</a>
-                            <a class="nav-link collapsed" href="/ws"><div class="sb-nav-link-icon"><i class="fas fa-person"></i></div>1:1 Chat</a>
+                            <a class="nav-link collapsed" href="/ws"><div class="sb-nav-link-icon"><i class="fas fa-person"></i></div>1:1 채팅</a>
 
                     <a class="nav-link" href="/chart">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>

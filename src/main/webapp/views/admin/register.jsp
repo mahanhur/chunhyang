@@ -23,7 +23,7 @@
         }
 
       })
-      $('#admin_lev').change( () => {
+      $('#admin_level').change( () => {
         let id = $("#admin_id").val();
         let pwd = $("#admin_pwd").val();
         let lev = $("#admin_lev").val();
@@ -110,7 +110,7 @@
                   </div>
 
                   <div>
-                    <select class="form-select" id="admin_lev" name="admin_lev" type="text">
+                    <select class="form-select" id="admin_level" name="admin_level">
                       <option id="opt" vlaue="">업무권한</option>
                       <option value="1">상노비</option>
                       <option value="2">중노비</option>
@@ -126,7 +126,7 @@
 
               </div>
               <div class="card-footer text-center py-3">
-                <div class="small"><a href="/login">이미 노비이신가? 로그인 하거라</a></div>
+                <div class="small"><a href="/login">이미 노비입니까? 로그인 하거라</a></div>
               </div>
             </div>
           </div>
