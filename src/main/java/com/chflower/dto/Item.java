@@ -12,21 +12,22 @@ import java.util.Date;
 @ToString
 
 public class Item {
-    private int id;
-    private String name;
-    private int price;
-    private String imgname;
-    private Date rdate;
-    private int cate_id;
+    private Integer item_id;
+    private double category_id;
+    private String item_img1;
+    private String item_name;
+    private int item_cnt;
+    private int item_price;
 
-    private MultipartFile img;
+    private String item_content;
+    private String item_img2;
+    private String item_img3;
+    private String item_img4;
+    private String item_img5;
 
-    public Item(int id, String name, int price, String imgname, Date rdate, int cate_id) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.imgname = imgname;
-        this.rdate = rdate;
-        this.cate_id = cate_id;
-    }
+    private Date item_rdate;
+    private String flower_color;
+    private double flower_type;
+    private String flower_size;
+
 }
