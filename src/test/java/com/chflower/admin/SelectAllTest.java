@@ -1,7 +1,6 @@
 package com.chflower.admin;
 
 import com.chflower.dto.Admin;
-import com.chflower.dto.Subsitem;
 import com.chflower.service.AdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @SpringBootTest
-public class selectTest {
+public class SelectAllTest {
     @Autowired
     AdminService service;
     @Test

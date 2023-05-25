@@ -8,4 +8,14 @@
         SELECT * FROM ADMIN
     </select>
 
+    <select id="select" resultType="ADMIN">
+        SELECT * FROM ADMIN
+        WHERE ADMIN_ID=#{admin_id}
+    </select>
+
+    <insert id="insert" parameterType="ADMIN">
+        INSERT INTO ADMIN (ADMIN_ID, ADMIN_PWD, ADMIN_NAME, ADMIN_LEVEL)
+         VALUES(#{admin_id},#{admin_pwd},#{admin_name},#{admin_level})  --여기는 DTO랑 일치해야함
+    </insert>
+
 </mapper>
