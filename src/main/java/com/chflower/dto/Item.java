@@ -12,7 +12,7 @@ import java.util.Date;
 @ToString
 
 public class Item {
-    private int item_id;
+    private Integer item_id;
     private double category_id;
     private String item_img1;
     private String item_name;

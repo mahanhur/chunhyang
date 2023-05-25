@@ -97,58 +97,55 @@
                         <thead>
                         <tr>
                             <th>IMG</th>
-                            <th>ID</th>
+                            <th>CATEGORY</th>
                             <th>NAME</th>
                             <th>PRICE</th>
-                            <th>DATE</th>
+                            <th>CNT</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
                             <th>IMG</th>
-                            <th>ID</th>
+                            <th>CATEGORY</th>
                             <th>NAME</th>
                             <th>PRICE</th>
-                            <th>DATE</th>
+                            <th>CNT</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        <c:forEach var="obj" items="${clist}">
+                        <c:forEach var="obj" items="${flist}">
                             <tr>
-                                <td>
-                                    <a href="#" data-toggle="modal" data-target="#target${obj.id}">
-                                        <img class="medium_img" src="/uimg/${obj.imgname}">
-                                    </a>
-                                </td>
-                                <td><a href="/item/detail?id=${obj.id}">${obj.id}</a></td>
-                                <td>${obj.name}</td>
-                                <td><fmt:formatNumber value="${obj.price}" type="currency"/></td>
-                                <td><fmt:formatDate value="${obj.rdate}" pattern="dd-MM-yyyy"/></td>
+                                <td>${obj.item_img1}</td>
+                                <td>${obj.category_id}</td>
+                                <td>${obj.item_name}</td>
+                                <td><fmt:formatNumber value="${obj.item_price}" type="currency"/></td>
+                                <td>${obj.item_cnt}</td>
                             </tr>
-
-                            <!-- Modal -->
-                            <div id="target${obj.id}" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Detail Image</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>${obj.name}</p>
-                                            <img src="/uimg/${obj.imgname}" class="detail_img">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="/item/detail?id=${obj.id}" class="btn btn-primary"
-                                               role="button">Detail</a>
-                                            <a href="#" class="btn btn-default" role="button" data-dismiss="modal">Close</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
                         </c:forEach>
+
+<%--                            <!-- Modal -->--%>
+<%--                            <div id="target${obj.id}" class="modal fade" role="dialog">--%>
+<%--                                <div class="modal-dialog">--%>
+
+<%--                                    <!-- Modal content-->--%>
+<%--                                    <div class="modal-content">--%>
+<%--                                        <div class="modal-header">--%>
+<%--                                            <h4 class="modal-title">Detail Image</h4>--%>
+<%--                                        </div>--%>
+<%--                                        <div class="modal-body">--%>
+<%--                                            <p>${obj.name}</p>--%>
+<%--                                            <img src="/uimg/${obj.imgname}" class="detail_img">--%>
+<%--                                        </div>--%>
+<%--                                        <div class="modal-footer">--%>
+<%--                                            <a href="/item/detail?id=${obj.id}" class="btn btn-primary"--%>
+<%--                                               role="button">Detail</a>--%>
+<%--                                            <a href="#" class="btn btn-default" role="button" data-dismiss="modal">Close</a>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+
+<%--                                </div>--%>
+<%--                            </div>--%>
+
                         </tbody>
                     </table>
                 </div>
