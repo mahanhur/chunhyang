@@ -1,4 +1,4 @@
-package com.kbstar.frame;
+package com.chflower.frame;
 
 import org.springframework.transaction.annotation.Transactional;
 

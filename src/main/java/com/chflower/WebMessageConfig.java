@@ -1,4 +1,4 @@
-package com.kbstar;
+package com.chflower;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

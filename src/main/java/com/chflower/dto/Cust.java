@@ -1,4 +1,4 @@
-package com.kbstar.dto;
+package com.chflower.dto;
 
 import lombok.*;
 

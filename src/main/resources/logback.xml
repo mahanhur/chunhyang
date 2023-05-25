@@ -44,7 +44,7 @@
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </logger>
-    <logger name="com.kbstar.controller.CustController" level="INFO">
+    <logger name="com.chflower.controller.CustController" level="INFO">
         <appender-ref ref="FILE2" />
     </logger>
 

@@ -1,4 +1,4 @@
-package com.kbstar;
+package com.chflower;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

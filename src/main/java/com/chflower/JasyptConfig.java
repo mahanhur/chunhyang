@@ -1,4 +1,4 @@
-package com.kbstar;
+package com.chflower;
 
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.jasypt.encryption.StringEncryptor;

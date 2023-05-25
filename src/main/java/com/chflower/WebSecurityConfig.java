@@ -1,4 +1,4 @@
-package com.kbstar;
+package com.chflower;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

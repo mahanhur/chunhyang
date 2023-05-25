@@ -1,4 +1,4 @@
-package com.kbstar;
+package com.chflower;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
