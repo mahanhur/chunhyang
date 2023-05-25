@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chflower.mapper.SubsitemMapper">
+
+    <select id="select" parameterType="int" resultType="subsitem">
+        SELECT * FROM subsitem WHERE subsitem_id=#{subsitem_id}
+    </select>
+    <select id="selectall" resultType="subsitem">
+        SELECT * FROM subsitem
+    </select>
+    <insert id="insert" parameterType="subsitem">
+        INSERT INTO subsitem VALUES (subsitem_seq.NEXTVAL,#{subsitem_name},#{subsitem_price},#{subsitem_content},#{subsitem_img})
+    </insert>
+    <update id="update" parameterType="subsitem">
+    </update>
+    <delete id="delete" parameterType="String">
+        DELETE FROM subsitem WHERE subsitem_id=#{subsitem_id}
+    </delete>
+
+</mapper>
