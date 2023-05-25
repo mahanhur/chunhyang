@@ -10,7 +10,7 @@ import lombok.ToString;
 public class Category {
     private int id;
     private String cate_name;
-    private int top_cate;
+    private int top_cate_id;
     private int topid;
     private String topname;
 }
