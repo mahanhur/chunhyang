@@ -1,6 +1,7 @@
 package com.chflower.dto;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,4 +22,6 @@ public class Subsitem {
         this.subsitem_content = subsitem_content;
         this.subsitem_img = subsitem_img;
     }
+
+    private MultipartFile subsitem_imgfile;
 }

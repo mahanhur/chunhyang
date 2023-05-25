@@ -2,6 +2,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<script>
+    let item_add = {
+        init:function (){
+            $('#item_add_btn').click(function (){
+                item_add.send();
+            });
+        },
+        send:function(){
+            $('#register_form').attr({
+                method:'post',
+                action:'/subs/addimpl',
+                enctype:'multipart/form-data'
+            });
+            $('#register_form').submit();
+        }
+    };
+    $(function (){
+        item_add.init();
+    })
+</script>
 
 <main>
     <div class="container-fluid px-4">
@@ -12,9 +35,8 @@
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-                구독상품 리스트 추가
-                <button type="button" class="btn btn-outline-primary"
-                        data-toggle="modal" data-target="#itemaddmodal">New Item ADD</button>
+                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#subsitemaddmodal">구독상품 추가</button>
+                <button type="button" class="btn btn-outline-danger">구독상품 삭제</button>
             </div>
         </div>
         <div class="card mb-4">
@@ -52,3 +74,44 @@
         </div>
     </div>
 </main>
+
+
+
+<!-- Add Modal -->
+<div id="subsitemaddmodal" class="modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">구독 상품 추가</h4>
+            </div>
+            <div class="modal-body">
+
+                <form id="register_form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="subsitem_imgfile">상품 상세이미지:</label>
+                        <img src=""><input type="file" class="form-control" id="subsitem_imgfile" name="subsitem_imgfile" placeholder="상품 이미지를 업로드해주세요" >
+                    </div><br/>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="subsitem_name">상품 이름:</label>
+                        <input type="text" class="form-control" id="subsitem_name" name="subsitem_name" placeholder="상품 이름을 입력해주세요" >
+                    </div><br/>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="subsitem_price">상품 가격:</label>
+                        <input type="number" class="form-control" id="subsitem_price" name="subsitem_price" placeholder="상품 가격을 입력해주세요" >
+                    </div><br/>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="subsitem_content">상품 설명:</label>
+                        <input type="text" class="form-control" id="subsitem_content" name="subsitem_content" placeholder="상품 세부 설명을 입력해주세요(200자 이내)" >
+                    </div><br/>
+                    <div>
+                        <button type="button" id="item_add_btn" class="btn btn-outline-primary">추가</button>
+                        <button type="button" id="modalclose_btn" class="btn btn-outline-primary" data-dismiss="modal">취소</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Modal END-->
