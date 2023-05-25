@@ -16,12 +16,12 @@ public class SubsitemService implements CHService<Integer, Subsitem> {
 
     @Override
     public void register(Subsitem subsitem) throws Exception {
-
+        mapper.insert(subsitem);
     }
 
     @Override
     public void remove(Integer subsitem_id) throws Exception {
-
+        mapper.delete(subsitem_id);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class SubsitemService implements CHService<Integer, Subsitem> {
 
     @Override
     public Subsitem get(Integer subsitem_id) throws Exception {
-        return null;
+        return mapper.select(subsitem_id);
     }
 
     @Override

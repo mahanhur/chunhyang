@@ -18,6 +18,7 @@
     <link href="/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
+
     <%--    highchart--%>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -77,7 +78,7 @@
                     <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>ADMIN</a>
                             <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>Cust</a>
                             <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>Item</a>
-                    <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>Subscribe</a>
+                    <a class="nav-link collapsed" href="/subs"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>Subscribe</a>
                             <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>Category</a>
                             <a class="nav-link collapsed" href="/qna"><div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>QnA</a>
                             <a class="nav-link collapsed" href="/ws"><div class="sb-nav-link-icon"><i class="fas fa-person"></i></div>1:1 Chat</a>
