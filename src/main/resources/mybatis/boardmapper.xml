@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chflower.mapper.BoardMapper">
+
+    <select id="selectall" resultType="BOARD">
+        SELECT * FROM NOTICE
+    </select>
+
+    <select id="getNotice" resultType="BOARD" parameterType="String">
+        SELECT *
+        FROM NOTICE
+        WHERE notiboard_id=#{notiboard_id}
+    </select>
+    <select id="getFa" resultType="BOARD" parameterType="String">
+        SELECT *
+        FROM NOTICE
+        WHERE notiboard_id=#{notiboard_id}
+    </select>
+    <select id="getEvent" resultType="BOARD" parameterType="String">
+        SELECT *
+        FROM NOTICE
+        WHERE notiboard_id=#{notiboard_id}
+    </select>
+
+</mapper>
