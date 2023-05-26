@@ -35,6 +35,8 @@
         </ol>
         <div class="card mb-4">
             <div class="card-body">
+                <p>ㅇ 구독 상품을 관리하실 수 있는 화면입니다.</p>
+                <p>ㅇ 하단 버튼을 클릭하시어 상품 정보를 추가/삭제/수정 하실 수 있습니다.</p><hr/>
                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#subsitemaddmodal">구독상품 추가</button>
                 <button type="button" class="btn btn-outline-danger">구독상품 삭제</button>
             </div>

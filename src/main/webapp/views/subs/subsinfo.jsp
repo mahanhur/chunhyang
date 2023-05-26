@@ -17,7 +17,9 @@
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#subinfodelmodal">구독 신청정보 삭제</button>
+                <p>ㅇ 구독 신청 현황을 관리하는 화면입니다.</p>
+                <p>ㅇ 구독 신청 번호를 클릭하시면 해당 신청번호에 해당하는 회차별 상세내역을 보실 수 있습니다.</p>
+                <p>ㅇ 구독 신청 정보 삭제는 <span style="font-weight: bold; color:red;">신중히</span> 처리해 주시기 바랍니다.</p>
             </div>
         </div>
         <div class="card mb-4">
@@ -55,7 +57,7 @@
                             </td>
                         </tr>
 
-                        <!-- Add Modal -->
+                        <!-- Delete Modal -->
                         <div id="subinfodelmodal" class="modal" role="dialog">
                             <div class="modal-dialog">
                                 <!-- Modal content-->
@@ -86,7 +88,6 @@
                                                 <div>${obj.subs_rdate}</div>
                                             </div><br/><hr/>
                                             <div>
-<%--                                                <button id="delBtn_${obj.subs_id}" class="btn btn-outline-danger">삭제</button>--%>
                                                 <a href="/subs/subsinfodel?subs_id=${obj.subs_id}" class="btn btn-outline-danger" role="button">삭제</a>
                                                 <button type="button" id="modalclose_btn" class="btn btn-outline-secondary" data-dismiss="modal">취소</button>
                                             </div>
@@ -95,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Add Modal END-->
+                        <!-- Delete Modal END-->
                     </c:forEach>
 
                     </tbody>

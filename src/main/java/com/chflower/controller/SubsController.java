@@ -1,6 +1,7 @@
 package com.chflower.controller;
 
 import com.chflower.dto.Subs;
+import com.chflower.dto.Subsdetail;
 import com.chflower.dto.Subsitem;
 import com.chflower.service.SubsService;
 import com.chflower.service.SubsdetailService;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 
@@ -83,6 +85,32 @@ public class SubsController {
             throw new RuntimeException(e);
         }
         return "redirect:/subs/subsinfo";
+    }
+
+
+    @RequestMapping("/subsdetail")
+    public String subsdetail(Model model){
+        List<Subsdetail> list = null;
+        try {
+            list = subsdetailService.get();
+            model.addAttribute("sdlist",list);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        model.addAttribute("center", dir+"/subsdetail");
+        return "index";
+    }
+
+
+    @RequestMapping("/subsdetailimpl")
+    public String subsdetailimpl(Model model, Subsdetail subsdetail){
+        try {
+            subsdetailService.dateupdate(subsdetail);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "redirect:/subs/subsdetail";
     }
 
 

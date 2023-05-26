@@ -11,7 +11,6 @@
         SELECT * FROM subsdetail
     </select>
     <insert id="insert" parameterType="subsdetail">
-        INSERT INTO subsdetail VALUES (subsdetail_seq.NEXTVAL,#{subs_id},#{cust_id},#{receiver},#{receiver_phone},#{rec_add1},#{rec_add2}, #{subs_memo},#{subs_duedate})
     </insert>
     <update id="custupdate" parameterType="subsdetail">
         UPDATE subsdetail

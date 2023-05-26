@@ -38,4 +38,8 @@ public class SubsdetailService implements CHService<Integer, Subsdetail> {
     public List<Subsdetail> get() throws Exception {
         return mapper.selectall();
     }
+
+    public void dateupdate(Subsdetail subdetail) {
+        mapper.dateupdate(subdetail);
+    }
 }

@@ -31,4 +31,9 @@ public class Subsdetail {
         this.subs_memo = subs_memo;
         this.subs_duedate = subs_duedate;
     }
+
+    public Subsdetail(int subsdetail_id, Date subs_duedate) {
+        this.subsdetail_id = subsdetail_id;
+        this.subs_duedate = subs_duedate;
+    }
 }
