@@ -18,7 +18,8 @@ public class insertTest {
     ItemService service;
     @Test
     void contextLoads() throws Exception {
-        Item obj = new Item(1,"10.jpg","abc",10,10000,"아름다운 에비씨","11.jpg","12.jpg","13.jpg","14.jpg",null,"blue",2,"M");
+//        Item obj = new Item(1,"null","Lavender",10,10000,"향기로운 라벤다",null,null,null,null,null,"blue",2,"M");
+        Item obj = new Item(1,"Lavender",10,10000,"향기로운 라벤다","blue",2,"M");
         service.register(obj);
 
         log.info("-----------------------------------------------------------");

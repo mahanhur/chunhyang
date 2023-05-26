@@ -94,40 +94,45 @@
         <div class="card mb-4">
             <div class="card-body">
                 <button type="button" class="btn btn-outline-primary" onclick="location.href='/item/add'">판매상품 추가</button>
-                <button type="button" class="btn btn-outline-danger">판매상품 삭제</button>
+                <span> 상품상세정보 및 정보변경은 <b>상품코드</b>를 누르시면 확인하실 수 있습니다. </span>
             </div>
         </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                DataTable : Item
+            </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                <table id="datatablesSimple">
+                    <thead>
+                    <tr>
+                        <th>상품이미지</th>
+                        <th>상품코드</th>
+                        <th>상품카테고리</th>
+                        <th>상품명</th>
+                        <th>상품가격</th>
+                        <th>상품재고</th>
+                        <th>삭제</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="obj" items="${flist}">
                         <tr>
-                            <th>상품이미지</th>
-                            <th>상품카테고리</th>
-                            <th>상품명</th>
-                            <th>상품가격</th>
-                            <th>상품재고</th>
+                            <td><img src="${obj.item_img1}">${obj.item_img1}</td>
+                            <td><a href="/item/detail?item_id=${obj.item_id}">${obj.item_id}</a></td>
+                            <td>${obj.category_id}</td>
+                            <td>${obj.item_name}</td>
+                            <td><fmt:formatNumber value="${obj.item_price}" type="currency"/></td>
+                            <td>${obj.item_cnt}</td>
+                            <td><a href="/item/delitem?item_id=${obj.item_id}" class="btn btn-danger" role="button">삭제</a></td>
                         </tr>
-                        </thead>
-                        <tfoot>
-                        <tr>
-                            <th>상품이미지</th>
-                            <th>상품카테고리</th>
-                            <th>상품명</th>
-                            <th>상품가격</th>
-                            <th>상품재고</th>
-                        </tr>
-                        </tfoot>
-                        <tbody>
-                        <c:forEach var="obj" items="${flist}">
-                            <tr>
-                                <td><img src="${obj.item_img1}">${obj.item_img1}</td>
-                                <td>${obj.category_id}</td>
-                                <td>${obj.item_name}</td>
-                                <td><fmt:formatNumber value="${obj.item_price}" type="currency"/></td>
-                                <td>${obj.item_cnt}</td>
-                            </tr>
-                        </c:forEach>
+                    </c:forEach>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
 
 <%--                            <!-- Modal -->--%>
 <%--                            <div id="target${obj.id}" class="modal fade" role="dialog">--%>

@@ -47,4 +47,15 @@ public class Item {
         this.flower_type = flower_type;
         this.flower_size = flower_size;
     }
+
+    public Item(double category_id, String item_name, int item_cnt, int item_price, String item_content, String flower_color, double flower_type, String flower_size) {
+        this.category_id = category_id;
+        this.item_name = item_name;
+        this.item_cnt = item_cnt;
+        this.item_price = item_price;
+        this.item_content = item_content;
+        this.flower_color = flower_color;
+        this.flower_type = flower_type;
+        this.flower_size = flower_size;
+    }
 }

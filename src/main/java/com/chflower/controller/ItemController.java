@@ -1,5 +1,6 @@
 package com.chflower.controller;
 
+import com.chflower.dto.Cust;
 import com.chflower.dto.Item;
 import com.chflower.dto.Subsitem;
 import com.chflower.service.ItemService;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Slf4j
@@ -49,12 +51,27 @@ public class ItemController {
 
     @RequestMapping("/addimpl")
     public String addimpl(Model model, Item item) throws Exception {
-        MultipartFile mf = item.getImg();
-        String imgname = mf.getOriginalFilename();
-        item.setItem_img1(imgname);
+//        MultipartFile mf = item.getImg();
+//        String imgname = mf.getOriginalFilename();
+//        item.setItem_img1(imgname);
         itemService.register(item);
-        FileUploadUtil.saveFile(mf, uploadimgdir);
-        return "redirect:/item/add";
+//        FileUploadUtil.saveFile(mf, uploadimgdir);
+        return "redirect:/item";
     }
+    @RequestMapping("/delitem")
+    public String delitem(Model model, Integer item_id) throws Exception {
+        log.info("=========================================="+ item_id);
+        itemService.remove(item_id);
 
+        return "redirect:/item";
+    }
+    @RequestMapping("/detail")
+    public String detail(Model model, Integer item_id, Item item) throws Exception {
+
+        item = itemService.get(item_id);
+
+        model.addAttribute("detail", item);
+        model.addAttribute("center", dir+"detail");
+        return "index";
+    }
 }
