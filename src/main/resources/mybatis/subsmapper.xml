@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chflower.mapper.SubsMapper">
+
+    <select id="select" parameterType="int" resultType="subs">
+        SELECT * FROM subsinfo WHERE subs_id=#{subs_id}
+    </select>
+    <select id="selectall" resultType="subs">
+        SELECT * FROM subsinfo
+    </select>
+    <insert id="insert" parameterType="subs">
+    </insert>
+    <update id="update" parameterType="subs">
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE FROM subsinfo WHERE subs_id=#{subs_id}
+    </delete>
+
+</mapper>
