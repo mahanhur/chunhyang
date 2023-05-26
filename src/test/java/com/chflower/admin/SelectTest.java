@@ -16,9 +16,8 @@ class SelectTest {
     @Test
 void contextLoads() {
         Admin a = null;
-    /*Cust cust = null;*/
     try {
-        a = service.get(10000);
+        a = service.get(10042);
         log.info("----------------------------------------------------");
         log.info(a.toString());
         log.info("----------------------------------------------------");

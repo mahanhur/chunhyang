@@ -4,7 +4,7 @@
 <div class="col-sm-8 text-left">
     <div class="container">
         <h3>노비 등록 완료</h3>
-        <h3>${radmin.name} 님 환영합니다.</h3><br/>
+        <h3>${radmin.admin_name} 님 환영합니다.</h3><br/>
         <h4>길고 긴 노비생활이 시작 되었습니다.</h4>
     </div>
 </div>

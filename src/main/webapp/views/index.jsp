@@ -35,7 +35,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/">춘향 관직자</a>
+    <a class="navbar-brand ps-3" href="/">춘향 관직자 홈페이지</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -44,21 +44,32 @@
     </form>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <c:choose>
-                    <c:when test="${loginadm == null}">
-                        <li><a class="dropdown-item" href="/login">Login</a></li>
-                        <li><a class="dropdown-item" href="/register">Register</a></li>
+                    <c:when test="${loginadmin == null}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="/admin/login">로그인</a></li>
+                                <li><a class="dropdown-item" href="/admin/register">노비등록</a></li>
+                            </ul>
+                        </li>
                     </c:when>
                     <c:otherwise>
-                        <li><a class="dropdown-item" href="/detail">about ${loginadm.id}</a></li>
-                        <li><a class="dropdown-item" href="/logoutimpl" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a></li>
+                        <h6><div style="color: white">${loginadmin.admin_name}</div></h6>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown2">
+                        <li><a class="dropdown-item" href="/admin/admindetail?admin_id=${loginadmin.admin_id}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                내 정보수정</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li><a class="dropdown-item" href="/admin/logoutimpl" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>로그아웃</a></li>
+                            </ul>
+                        </li>
                     </c:otherwise>
                 </c:choose>
-            </ul>
-        </li>
     </ul>
 </nav>
 <div id="layoutSidenav">
@@ -69,11 +80,11 @@
                     <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
                             <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
                             <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
-                    <a class="nav-link collapsed" href="/subs"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>구독상품 관리</a>
+                            <a class="nav-link collapsed" href="/subs"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>구독상품 관리</a>
                             <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
+                            <a class="nav-link collapsed" href="#"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>게시판</a>
                             <a class="nav-link collapsed" href="/qna"><div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>QnA</a>
                             <a class="nav-link collapsed" href="/ws"><div class="sb-nav-link-icon"><i class="fas fa-person"></i></div>1:1 채팅</a>
-
                     <a class="nav-link" href="/chart">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Charts
@@ -85,10 +96,10 @@
                 </div>
             </div>
             <c:choose>
-                <c:when test="${loginadm != null}">
+                <c:when test="${loginadmin != null}">
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                ${loginadm.id}
+                ${loginadmin.admin_id}
             </div>
                 </c:when>
                 <c:otherwise>
@@ -137,7 +148,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/logoutimpl">Logout</a>
+                <a class="btn btn-primary" href="/admin/logoutimpl">Logout</a>
             </div>
         </div>
     </div>

@@ -54,7 +54,7 @@
     // 입력값 form 전송
     send : ()=>{
       $("#register_form").attr({
-        'action':'/registerimpl',
+        'action':'/admin/registerimpl',
         'method':'post'
       });
       $("#register_form").submit();
@@ -75,14 +75,14 @@
             <div class="card shadow-lg border-0 rounded-lg mt-5">
               <div class="card-header"><h3 class="text-center font-weight-light my-4">노비 등록</h3></div>
               <div class="card-body">
-
+                <div id="container">
                 <form id="register_form">
 
                   <div class="row mb-3">
                     <div class="col-md-6">
                       <div class="form-floating mb-3 mb-md-0">
-                    <input class="form-control" id="admin_id" type="number" name="admin_id" placeholder="노비품번을 만들어주세요"/>
-                    <label for="admin_id">품번</label>
+                    <input class="form-control" id="admin_id" type="number" name="admin_id" placeholder="노비번호를 만들어주세요"/>
+                    <label for="admin_id">노비번호</label>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -123,7 +123,7 @@
                     </div>
                   </div>
                 </form>
-
+                </div>
               </div>
               <div class="card-footer text-center py-3">
                 <div class="small"><a href="/login">이미 노비입니까? 로그인 하거라</a></div>
