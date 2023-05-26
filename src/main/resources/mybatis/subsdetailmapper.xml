@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chflower.mapper.SubsdetailMapper">
+
+    <select id="select" parameterType="int" resultType="subsdetail">
+        SELECT * FROM subsdetail WHERE subs_id=#{subs_id}
+    </select>
+    <select id="selectall" resultType="subsdetail">
+        SELECT * FROM subsdetail
+    </select>
+    <insert id="insert" parameterType="subsdetail">
+    </insert>
+    <update id="custupdate" parameterType="subsdetail">
+        UPDATE subsdetail
+        SET receiver=#{receiver},receiver_phone=#{receiver_phone},rec_add1=#{rec_add1},rec_add2=#{rec_add2}, subs_memo=#{subs_memo}
+        WHERE subsdetail_id = #{subsdetail_id}
+    </update>
+    <update id="dateupdate" parameterType="subsdetail">
+        UPDATE subsdetail
+        SET subs_duedate=#{subs_duedate}
+        WHERE subsdetail_id = #{subsdetail_id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE FROM subsdetail WHERE subs_id=#{subs_id}
+    </delete>
+
+</mapper>
