@@ -34,19 +34,23 @@ public class AdminController {
 
     @RequestMapping("/register")
     public String register(Model model) {
-        model.addAttribute("center", "register");
+        model.addAttribute("center", dir+"register");
         return "index";
     };
-
     @RequestMapping("/registerimpl")
     public String registerimpl(Model model, Admin admin, HttpSession session) throws Exception {
+        log.info(admin.getAdmin_name());
         try {
             admin.setAdmin_pwd(encoder.encode(admin.getAdmin_pwd()));
             adminService.register(admin);
+            log.info(admin.getAdmin_name());
             session.setAttribute("loginadmin", admin);
         } catch (Exception e) {
-            throw new Exception("관직자 등록 에러!발생! IT부서에 문의 바랍니다!");
+            e.printStackTrace();
+            throw new Exception("노비 등록 에러!발생! IT부서에 문의 바랍니다!");
         }
+        model.addAttribute("radmin",admin);
+        model.addAttribute("center", "registerok");
         return "index";
-    };
+    }
 }

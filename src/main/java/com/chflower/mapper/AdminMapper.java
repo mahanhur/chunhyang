@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface AdminMapper extends CHMapper<String, Admin> {
+public interface AdminMapper extends CHMapper<Integer, Admin> {
 
 }

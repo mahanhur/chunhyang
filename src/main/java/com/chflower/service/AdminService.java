@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AdminService implements CHService<String, Admin> {
+public class AdminService implements CHService<Integer, Admin> {
 
     @Autowired
     AdminMapper mapper;
@@ -17,21 +17,21 @@ public class AdminService implements CHService<String, Admin> {
 
     @Override
     public void register(Admin admin) throws Exception {
-
+        mapper.insert(admin);
     }
 
     @Override
-    public void remove(String s) throws Exception {
-
+    public void remove(Integer s) throws Exception {
+        mapper.delete(s);
     }
 
     @Override
     public void modify(Admin admin) throws Exception {
-
+        mapper.update(admin);
     }
 
     @Override
-    public Admin get(String s) throws Exception {
+    public Admin get(Integer s) throws Exception {
         return mapper.select(s);
     }
 
