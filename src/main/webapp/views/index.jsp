@@ -80,7 +80,7 @@
                     <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
                             <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
                             <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
-                            <a class="nav-link collapsed" href="/subs"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>구독상품 관리</a>
+                            <a class="nav-link collapsed" href="/subs/subsitem"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>구독상품 관리</a>
                             <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
                             <a class="nav-link collapsed" href="#"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>게시판</a>
                             <a class="nav-link collapsed" href="/qna"><div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>QnA</a>
