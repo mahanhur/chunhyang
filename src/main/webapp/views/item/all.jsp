@@ -69,8 +69,8 @@
                     <tbody>
                     <c:forEach var="obj" items="${flist}">
                         <tr>
-                            <td><img src="${obj.item_img1}">${obj.item_img1}</td>
-                            <td><a href="/item/detail?item_id=${obj.item_id}">${obj.item_id}</a></td>
+                            <td><img src="${obj.item_img}">${obj.item_img}</td>
+                            <td><a href="/item/detail?item_id=${obj.item_id}">${obj.item_main_id}</a></td>
                             <td>${obj.category_id}</td>
                             <td>${obj.item_name}</td>
                             <td><fmt:formatNumber value="${obj.item_price}" pattern="###,###원"/></td>
