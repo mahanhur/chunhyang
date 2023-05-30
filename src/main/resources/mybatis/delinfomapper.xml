@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chflower.mapper.DelinfoMapper">
+
+    <select id="select" parameterType="int" resultType="delinfo">
+    </select>
+    <select id="selectall" resultType="delinfo">
+        select del_id, subsdetail_id, order_id, invoice_id, del_startdate, del_findate,
+               case when del_state = 1 then '배송대기'
+                    when del_state = 2 then '배송중'
+                    when del_state = 3 then '배송완료'
+                    else '기타' end as del_state,
+               case when del_com = 1 then 'CJ대한통운'
+                    when del_com = 2 then '한진택배'
+                    when del_com = 3 then '우체국택배'
+                    when del_com = 4 then '기타'
+                    else '' end as del_com
+        from delinfo
+    </select>
+    <insert id="insert" parameterType="delinfo">
+    </insert>
+    <update id="update" parameterType="delinfo">
+        update delinfo set invoice_id=#{invoice_id},
+                           del_startdate= case when #{del_startdate} = '' then null
+                                          else #{del_startdate} end,
+                           del_findate= case when #{del_findate} = '' then null
+                                         else #{del_findate} end,
+                           del_state = case when #{del_state} = '배송대기' then 1
+                                            when #{del_state} = '배송중' then 2
+                                            when #{del_state} = '배송완료' then 3
+                                            else null end,
+                           del_com = case when #{del_com} = 'CJ대한통운' then 1
+                                          when #{del_com} = '한진택배' then 2
+                                          when #{del_com} = '우체국택배' then 3
+                                          when #{del_com} = '기타' then 4
+                                          else null end
+        where del_id = #{del_id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE FROM delinfo WHERE del_id=#{del_id}
+    </delete>
+
+</mapper>

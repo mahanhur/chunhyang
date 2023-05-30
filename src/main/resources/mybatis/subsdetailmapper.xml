@@ -7,6 +7,9 @@
     <select id="select" parameterType="int" resultType="subsdetail">
         SELECT * FROM subsdetail WHERE subs_id=#{subs_id}
     </select>
+    <select id="get2" parameterType="int" resultType="subsdetail">
+        SELECT * FROM subsdetail WHERE subs_id=#{subs_id}
+    </select>
     <select id="selectall" resultType="subsdetail">
         SELECT * FROM subsdetail
     </select>
