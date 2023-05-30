@@ -5,7 +5,6 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<c:forEach var="obj" items="${sdlist}" varStatus="status">
 <script>
     let subsdetailId;
     let subsDueDate;
@@ -45,7 +44,6 @@
     });
 
 </script>
-</c:forEach>
 
 <main>
     <div class="container-fluid px-4">
@@ -77,7 +75,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <form id="duedate_form">
                         <c:forEach var="obj" items="${sdlist}" varStatus="status">
                             <tr>
                                 <td><a href="#subsdetail_id_${obj.subsdetail_id}" data-toggle="modal">${obj.subsdetail_id}</a></td>
@@ -132,7 +129,6 @@
 
 
                     </c:forEach>
-                        </form>
                     </tbody>
                 </table>
             </div>
