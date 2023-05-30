@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 
 public interface ItemMapper extends CHMapper<Integer, Item> {
 
+    public int selectLargestid();
 }

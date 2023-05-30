@@ -60,6 +60,12 @@
         item_add.init();
     });
 </script>
+<style>
+    .medium_img {
+        width: 80px;
+        height: 80px;
+    }
+</style>
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -72,7 +78,7 @@
         </div>
         <div class="card-body">
             <div id="container">
-                <form id="add_form" class="form-horizontal well">
+                <form id="add_form" class="form-group well" style="width: 500px;">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="item_name">상품명:</label>
                         <div class="col-sm-10">
@@ -81,7 +87,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="category_id">카테고리:</label>
-                        <select class="form-select" id="category_id" name="category_id" value="${detail.category_id}">
+                        <select class="form-select" width="900px" id="category_id" name="category_id" value="${detail.category_id}">
                             <option value="1">꽃</option>
                             <option value="2">화분</option>
                             <option value="3">비품</option>
@@ -139,45 +145,47 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="img2">대표사진:</label>
+                        <label class="control-label col-sm-2" for="img">대표사진:</label>
                         <div class="col-sm-10">
-                            <img src="${detail.item_img}">
-                            <input type="file" name="img2" class="form-control" id="img" >
+                            <img class = "medium_img" src="/uimg/${detail.item_img}"/>
+                            <input type="file" name="img" class="form-control" id="img" >
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="img1">상품사진1:</label>
-                        <div class="col-sm-10">
-                            <img src="${img.item_subimg}">
-                            <input type="file" name="img1" class="form-control" id="img1">
+                    <c:forEach var="obj" items="${ilist}">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="img1">상품사진:</label>
+                            <div class="col-sm-10">
+                                <img class = "medium_img" src="/uimg/${obj.item_subimg}">
+                                <input type="file" name="img1" class="form-control" id="img1">
+                            </div>
                         </div>
-                    </div>
+                    </c:forEach>
 
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="img2">상품사진2:</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="img2" class="form-control" id="img2" >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="img3">상품사진3:</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="img3" class="form-control" id="img3" >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="img4">상품사진4:</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="img4" class="form-control" id="img4" >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="img5">상품사진5:</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="img5" class="form-control" id="img5" >
-                        </div>
-                    </div>
+<%--                    <div class="form-group">--%>
+<%--                        <label class="control-label col-sm-2" for="img2">상품사진2:</label>--%>
+<%--                        <div class="col-sm-10">--%>
+<%--                            <input type="file" name="img2" class="form-control" id="img2" >--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="form-group">--%>
+<%--                        <label class="control-label col-sm-2" for="img3">상품사진3:</label>--%>
+<%--                        <div class="col-sm-10">--%>
+<%--                            <input type="file" name="img3" class="form-control" id="img3" >--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="form-group">--%>
+<%--                        <label class="control-label col-sm-2" for="img4">상품사진4:</label>--%>
+<%--                        <div class="col-sm-10">--%>
+<%--                            <input type="file" name="img4" class="form-control" id="img4" >--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="form-group">--%>
+<%--                        <label class="control-label col-sm-2" for="img5">상품사진5:</label>--%>
+<%--                        <div class="col-sm-10">--%>
+<%--                            <input type="file" name="img5" class="form-control" id="img5" >--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button id="add_btn" type="button" class="btn btn-info">상품 정보 변경</button>
