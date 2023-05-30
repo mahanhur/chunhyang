@@ -6,37 +6,44 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <script>
+    let subsdetailId;
+    let subsDueDate;
     let subsdetail = {
         init: () => {
-            $("#duedate_btn").click(() => {
-                $('#duedate_form').attr({
-                    method: 'post',
-                    action: '/subs/subsdetailimpl'
-                });
-                $('#duedate_form').submit();
-            });
+            $('.duedate_btn').click(function () {
+
+                let row = $(this).closest('tr');
+                subsdetailId = row.find('.subsdetail_id').val();
+                subsDueDate = row.find('.subs_duedate').val();
+
+                if(confirm("수정하실 배송일자가 " + subsDueDate +" 맞습니까?")) {
+                    $.ajax({
+                        url:'subsdetailimpl',
+                        method:'post',
+                        data: {
+                            subsdetail_id:subsdetailId,
+                            subsduedate:subsDueDate
+                        },
+                        success: function() {
+                            window.location.href = '/subs/subsdetail'
+                        },
+                        error : function() {
+
+                        }
+                    })
+                };
+            })
         }
     }
 
     $(function () {
         subsdetail.init();
-    });
-
-    // datepicker 초기화
-    $(document).ready(function() {
-        $('input[name="subs_duedate"]').each(function() {
-            var datepickerId = $(this).attr('id');
-            $('#' + datepickerId).datepicker();
-        });
-
-        // 수정 버튼 클릭 시 datepicker 표시
-        $('button.btn-outline-primary').click(function () {
-            var datepickerId = $(this).closest('tr').find('input[name="subs_duedate"]').attr('id');
-            $('#' + datepickerId).datepicker('show');
+        $('.datePicker').datepicker( ()=> {
+            format: 'yyyy-MM-dd'
         });
     });
+
 </script>
-
 
 <main>
     <div class="container-fluid px-4">
@@ -68,16 +75,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="obj" items="${sdlist}">
-                        <tr>
-                            <td><a href="#subsdetail_id_${obj.subsdetail_id}" data-toggle="modal">${obj.subsdetail_id}</a></td>
-                            <td>${obj.subs_id}</td>
-                            <td>${obj.cust_id}</td>
-                            <td>
-                                <fmt:formatDate  value="${obj.subs_duedate}" pattern="yyyy-MM-dd" />
-                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#sddatemodal_${obj.subsdetail_id}">수정</button>
-                            </td>
-                        </tr>
+                        <c:forEach var="obj" items="${sdlist}" varStatus="status">
+                            <tr>
+                                <td><a href="#subsdetail_id_${obj.subsdetail_id}" data-toggle="modal">${obj.subsdetail_id}</a></td>
+                                <td>${obj.subs_id}</td>
+                                <td>${obj.cust_id}</td>
+                                <td>
+                                    <input type="hidden" class="subsdetail_id" value="${obj.subsdetail_id}" name="subsdetail_id">
+                                    <input type="text" class="datePicker subs_duedate" name="subs_duedate" value="<fmt:formatDate  value="${obj.subs_duedate}" pattern="yyyy-MM-dd" />"/>
+                                    <button type="button" class="btn btn-outline-primary duedate_btn">수정</button>
+                                </td>
+                            </tr>
+
 
                         <!-- details Modal -->
                         <div id="subsdetail_id_${obj.subsdetail_id}" class="modal" role="dialog">
@@ -118,38 +127,11 @@
                         </div>
                         <!-- details Modal END-->
 
-                        <!-- duedate modify Modal -->
-                        <div id="sddatemodal_${obj.subsdetail_id}" class="modal" role="dialog">
-                            <div class="modal-dialog">
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">배송 예정일 수정</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="card mb-4">
-                                            <div class="card-body" style="color:red;font-weight: bolder">[주의] 반드시 정확히 확인 후 처리하십시오.</div>
-                                        </div>
-                                        <form id="duedate_form">
-                                            <div class="form-group">
-                                                <input type="hidden" name="subsdetail_id" value="${obj.subsdetail_id}">
-                                                <label class="control-label col-sm-4">배송 예정일 설정:</label>
-                                                <input type="text" id="datePicker" class="form-control" name="subs_duedate" value="<fmt:formatDate  value="${obj.subs_duedate}" pattern="yyyy-MM-dd" />"/>
-                                            </div>
-                                            <button type="button" class="btn btn-outline-primary" id="duedate_btn">수정</button>
-                                            <button type="button" id="modalclose_btn" class="btn btn-outline-secondary" data-dismiss="modal">취소</button>
-                                        </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- duedate modify Modal END-->
-                    </c:forEach>
 
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </main>
-
-
