@@ -1,6 +1,7 @@
 package com.chflower.controller;
 
 import com.chflower.dto.Board;
+import com.chflower.mapper.BoardMapper;
 import com.chflower.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,28 @@ public class BoardController {
         model.addAttribute("center",dir+"notice");
         return "index";
     }
+    @RequestMapping("/noticedetail")
+    public String noticedetail(Model model, int noti_id) throws Exception {
+        Board notice = null;
+        notice = boardService.getNoticeOne(noti_id);
+//        log.info("data={}", list.get(0).getNoti_contents());
+        model.addAttribute("gnotice",notice);
+        model.addAttribute("center",dir+"noticedetail");
+        return "index";
+    }
+    @RequestMapping("/updatenoticeimpl")
+    public String noticedetail(Model model, Board notice) throws Exception {
+        log.info("data={}", notice.getNoti_contents());
+        boardService.updateNotice(notice);
+        return "redirect:/board/noticedetail?noti_id="+notice.getNoti_id();
+    }
+    @RequestMapping("/deletenoticeimpl")
+    public String delete(Model model,int noti_id) throws Exception {
+        boardService.remove(noti_id);
+        model.addAttribute("center",dir+"detail");
+        return "redirect:/board/notice";
+    }
+
     @RequestMapping("/fa")
     public String fa(Model model) throws Exception {
         List<Board> list = null;

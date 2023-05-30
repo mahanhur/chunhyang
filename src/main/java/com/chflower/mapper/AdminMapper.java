@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface AdminMapper extends CHMapper<Integer, Admin> {
 
-    Admin makeid();
+    Integer makeid();
 }

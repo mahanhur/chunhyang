@@ -1,92 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<style>
+    .noticeimg{
+        width:300px;
+        height:150px;
+    }
+</style>
 
 <script>
-    let admindetail_form = {
-        init:function () {
-            $('#update_btn').click(function () {
-                admindetail_form.send();
+    let notice_detail = {
+        init:function (){
+            $('#updatenotice_btn').click(function (){
+                notice_detail.send(); //아이템_애드 라는 객체에 센드가 호출
+            });
+            $('#deletenotice_btn').click(function (){
+                var c = confirm("정말 삭제하겠습니까?");
+                if(c == true){
+                    location.href="/board/deletenoticeimpl?noti_id=${gnotice.noti_id}";
+
+                }
             });
         },
-        send:function () {
-            var pwd = $('#admin_pwd').val();
-            var name = $('#admin_name').val();
-            var lev = $('#admin_level').val();
-
-            if( pwd == '' ){
-                $('#admin_pwd').focus();
-                alert("비밀번호를 입력하세요");
-                return;
-            }
-            if( name == '' ){
-                $('#admin_name').focus();
-                alert("이름을 입력하세요");
-                return;
-            }
-            $('#admin_form').attr({
-                'action':'/admin/updateimpl',
-                'method':'post'
+        send:function(){
+            $('#notice_form').attr({
+                method:'post',
+                action:'/board/updatenoticeimpl',
+                enctype:'multipart/form-data'
             });
-            $('#admin_form').submit();
+            $('#notice_form').submit();
         }
     };
+
     $(function (){
-        admindetail_form.init();
-    });
+        notice_detail.init();
+    })
 </script>
 
 <main>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                    <div class="card-header"><h3 class="text-center font-weight-light my-4">내 정보 수정</h3></div>
-                    <div class="card-body">
-                        <div id="container">
-                            <form id="admin_form">
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="admin_id" type="number" name="admin_id" value="${admin.admin_id}" readonly/>
-                                            <label for="admin_id">노비번호: 수정 하실수 없습니다</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="admin_name" type="text" name="admin_name" value="${admin.admin_name}" />
-                                            <label for="admin_name">노비명</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating mb-3 mb-md-0">
-                                            <input class="form-control" id="admin_pwd" type="password" name="admin_pwd" />
-                                            <label for="admin_pwd">비밀번호</label>
-                                        </div>
-                                    </div>
-                                <div class="col-md-6">
-                                    <select class="form-select" id="admin_level" name="admin_level">
-                                        <option id="opt" vlaue="${admin.admin_level}">${admin.admin_level}</option>
-                                        <option value="1">상노비</option>
-                                        <option value="2">중노비</option>
-                                        <option value="3">하노비</option>
-                                    </select>
-                                </div>
-                                <div class="mt-4 mb-0">
-                                    <div class="d-grid">
-                                        <button type="button" class="btn btn-primary btn-block" id="update_btn">정보 수정</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+    <div class="container-fluid col-lg-8 px-4">
+        </br>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">공지사항 수정/삭제</h3>
+                </div>
+                <div class="card-body col-lg-6">
+                    <div>작성자: ${gnotice.admin_id}</div>
+                    <div>최초게시일: <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${gnotice.noti_wdate}" /></div>
+                    <div>최종수정일: <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${gnotice.noti_udate}" /></div>
+                </div>
+                <form id="notice_form">
+                <div class="card-body">
+                    <input type="hidden" name="noti_id" value="${gnotice.noti_id}">
+                    <div class="form-group">
+                        <label for="noti_title">제목</label>
+                        <input class="form-control" id="noti_title" name="noti_title" placeholder="제목을 입력해주세요" value="${gnotice.noti_title}">
                     </div>
-                    <div class="card-footer text-center py-3">
-                        <div class="small"><a href="#">Link</a></div>
+                    <div class="form-group">
+                        <label for="noti_contents">내용</label>
+                        <textarea class="form-control" id="noti_contents" name="noti_contents" rows="5"
+                                  placeholder="내용을 입력해주세요" style="resize: none;">${gnotice.noti_contents}</textarea>
+                    </div>
+                    </br>
+                    <div>
+                    <img class="noticeimg" src="/uimg/${gnotice.noti_image1}">
+                    <img class="noticeimg" src="/uimg/${gnotice.noti_image2}">
                     </div>
                 </div>
+                    <div class="card-footer">
+                        <div class="float-right">
+                            <button type="submit" class="btn btn-success modBtn" id="updatenotice_btn"><i class="fa fa-save"></i> 수정</button>
+                            <button type="submit" class="btn btn-danger modBtn" id="deletenotice_btn"><i class="fa fa-trash"></i> 삭제</button>
+                        </div>
+                    </div>
+                </form>
+
             </div>
-        </div>
     </div>
 </main>

@@ -28,32 +28,44 @@
     });
 </script>
 
-<div class="container-fluid">
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">로그인</h3></div>
+                    <div class="card-body">
+                        <div id="container">
+                <form id="login_form" >
 
-    <h1 class="h3 mb-2 text-gray-800">로그인</h1>
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">로그인</h6>
-        </div>
-        <%-- 실제 만들어지는 영역 --%>
-        <div class="card-body">
-            <div id="container">
-                <form id="login_form" class="form-horizontal well">
-                    <input type="hidden" name="requestURI" value="${requestURI}">
-                    <div class="form-group">
-                        <label for="admin_id">아이디</label>
-                        <input type="text" class="form-control" id="admin_id" name="admin_id"/>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="form-floating mb-3 mb-md-0">
+                                <input class="form-control" id="admin_id" type="text" name="admin_id" placeholder="사번을 입력하세요" />
+                                <label for="admin_id">사원번호</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="admin_pwd">비밀번호</label>
-                        <input type="password" class="form-control" id="admin_pwd" name="admin_pwd"/>
+
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="form-floating mb-3 mb-md-0">
+                                <input class="form-control" id="admin_pwd" type="password" name="admin_pwd" placeholder="비밀번호를 입력하세요" />
+                                <label for="admin_pwd">비밀번호</label>
+                            </div>
+                        </div>
                     </div>
-                    <button type="button" class="btn btn-info" id="login_btn">로그인</button>
+
+                    <div class="mt-1 mb-1">
+                        <div class="d-grid">
+                            <button type="button" class="btn btn-primary btn-block" id="login_btn">로그인</button>
+                        </div>
+                    </div>
                 </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-        <%--   card-body 끝 --%>
     </div>
-</div>
+</main>

@@ -7,7 +7,8 @@
     init: ()=>{
       $('#register_btn').attr('disabled',true);
       $("#register_btn").click( () => {
-        register.check();
+            register.send();
+          // register.check();
       });
 
       //비밀번호 일치여부 확인
@@ -35,22 +36,22 @@
         };
       });
     },
-    check: ()=> {
-      // 기존에 있는 id인지 확인
-      let id = $("#admin_id").val();
-      $.ajax({
-        url: '/checkid',
-        data: {'id': id},
-        success: function (result) {
-          if (result == 0) {
-            register.send();
-          } else {
-            alert('이미 존재하는 ID입니다. 다시 입력하세요');
-            $("#admin_id").val('');
-          }
-        }
-      });
-    },
+    // check: ()=> {
+    //   // 기존에 있는 id인지 확인
+    //   let id = $("#admin_id").val();
+    //   $.ajax({
+    //     url: '/checkid',
+    //     data: {'id': id},
+    //     success: function (result) {
+    //       if (result == 0) {
+    //         register.send();
+    //       } else {
+    //         alert('이미 존재하는 ID입니다. 다시 입력하세요');
+    //         $("#admin_id").val('');
+    //       }
+    //     }
+    //   });
+    // },
     // 입력값 form 전송
     send : ()=>{
       $("#register_form").attr({
@@ -79,12 +80,13 @@
                 <form id="register_form">
 
                   <div class="row mb-3">
-                    <div class="col-md-6">
-                      <div class="form-floating mb-3 mb-md-0">
-                    <input class="form-control" id="admin_id" type="number" name="admin_id" placeholder="노비번호를 만들어주세요"/>
-                    <label for="admin_id">노비번호</label>
-                      </div>
-                    </div>
+<%--                    시쿼스값으로 admin_id를 생성하므로 id 입력값은 불필요--%>
+<%--                    <div class="col-md-6">--%>
+<%--                      <div class="form-floating mb-3 mb-md-0">--%>
+<%--                    <input class="form-control" id="admin_id" type="number" name="admin_id" placeholder="노비번호를 만들어주세요"/>--%>
+<%--                    <label for="admin_id">노비번호</label>--%>
+<%--                      </div>--%>
+<%--                    </div>--%>
                     <div class="col-md-6">
                       <div class="form-floating mb-3 mb-md-0">
                         <input class="form-control" id="admin_name" type="text" name="admin_name" placeholder="노비이름을 입력하세요" />
@@ -126,7 +128,7 @@
                 </div>
               </div>
               <div class="card-footer text-center py-3">
-                <div class="small"><a href="/login">이미 노비입니까? 로그인 하거라</a></div>
+                <div class="small"><a href="/admin/login">이미 노비입니까? 로그인 하거라</a></div>
               </div>
             </div>
           </div>

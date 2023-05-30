@@ -7,12 +7,27 @@
     <select id="selectall" resultType="BOARD">
         SELECT * FROM NOTICE
     </select>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM NOTICE WHERE noti_id=#{noti_id}
+    </delete>
 
     <select id="getNotice" resultType="BOARD" parameterType="String">
         SELECT *
         FROM NOTICE
         WHERE notiboard_id=#{notiboard_id}
+        ORDER BY noti_udate, noti_wdate, noti_id
     </select>
+    <select id="getNoticeOne" resultType="BOARD" parameterType="Integer">
+        SELECT *
+        FROM NOTICE
+        WHERE noti_id=#{noti_id}
+        AND notiboard_id in('1')
+    </select>
+
+    <update id="updateNotice" parameterType="BOARD">
+        UPDATE notice SET noti_contents=#{noti_contents},noti_udate=SYSDATE WHERE noti_id=#{noti_id}
+    </update>
+
     <select id="getFa" resultType="BOARD" parameterType="String">
         SELECT *
         FROM NOTICE

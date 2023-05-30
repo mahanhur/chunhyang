@@ -19,13 +19,16 @@ public class BoardService implements CHService<Integer, Board> {
         mapper.insert(board);
     }
     @Override
-    public void remove(Integer integer) throws Exception {
-
+    public void remove(Integer i) throws Exception {
+        mapper.delete(i);
     }
 
     @Override
     public void modify(Board board) throws Exception {
-
+        mapper.update(board);
+    }
+    public void updateNotice(Board board) throws Exception {
+        mapper.updateNotice(board);
     }
 
     @Override
@@ -40,6 +43,9 @@ public class BoardService implements CHService<Integer, Board> {
 
     public List<Board> getNotice(String s) throws Exception {
         return mapper.getNotice(s);
+    }
+    public Board getNoticeOne(Integer i) throws Exception {
+        return mapper.getNoticeOne(i);
     }
 
     public List<Board> getFa(String s) throws Exception {

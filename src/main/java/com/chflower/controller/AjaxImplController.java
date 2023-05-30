@@ -25,7 +25,7 @@ public class AjaxImplController {
         Admin admin = null;
         int getid = Integer.parseInt(id);
         admin = adminService.get(getid);
-//        log.info(admin.getAdmin_name());
+        log.info(admin.getAdmin_name());
         if(admin != null) {
             result=1;
         }

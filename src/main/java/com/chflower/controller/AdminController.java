@@ -43,8 +43,8 @@ public class AdminController {
         try {
             admin.setAdmin_pwd(encoder.encode(admin.getAdmin_pwd() ));
 //          여기에 시퀀스로 생성된 id값을 셋 어드민 아이디  < 겟메이크어드민아이디(새로생성)넣으면 될듯
-//            Integer new_id = adminservice.makeid();
-//            admin.setAdmin_id(admin.getNew_id());
+            Integer new_id = adminservice.makeid();
+            admin.setAdmin_id(new_id);
             adminservice.register(admin);
             session.setAttribute("loginadmin", admin);
             log.info(admin.toString());

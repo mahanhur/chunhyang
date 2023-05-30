@@ -1,7 +1,7 @@
-package com.chflower.admin;
+package com.chflower.board;
 
-import com.chflower.dto.Admin;
-import com.chflower.service.AdminService;
+import com.chflower.dto.Board;
+import com.chflower.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @Slf4j
 @SpringBootTest
-class MakeIDTest {
+class noticeSelectTest {
 
     @Autowired
-    AdminService service;
+    BoardService boardService;
     @Test
 void contextLoads() {
-        Integer a = null;
+        Board notice = null;
     try {
-        a = service.makeid();
+        notice = boardService.getNoticeOne(1);
         log.info("----------------------------------------------------");
-//        log.info(intValue());
+        log.info(notice.toString());
         log.info("----------------------------------------------------");
     } catch (Exception e) {
         log.info("조회 에러......");

@@ -34,7 +34,7 @@ public class AdminService implements CHService<Integer, Admin> {
     public Admin get(Integer s) throws Exception {
         return mapper.select(s);
     }
-    public Admin makeid() throws Exception {
+    public Integer makeid() throws Exception {
         return mapper.makeid();
     }
 
