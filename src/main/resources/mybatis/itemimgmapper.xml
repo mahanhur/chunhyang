@@ -12,8 +12,9 @@
     <select id="select" parameterType="Integer" resultType="itemimg">
         SELECT *
         FROM item_img
-        WHERE item_main_id = #{item_main_id}
+        WHERE item_id = #{item_id}
     </select>
+
     <!--    id는 ItemMapper의 함수의 이름들이다-->
     <select id="selectall" resultType="itemimg">
         SELECT *
@@ -30,8 +31,8 @@
 
     <insert id="insert" parameterType="itemimg">
         INSERT INTO ITEM_IMG
-        (ITEM_MAIN_ID, ITEM_SUBIMG)
-        VALUES (1000, #{item_subimg})
+        (ITEM_ID, ITEM_SUBIMG)
+        VALUES (#{item_id}, #{item_subimg})
     </insert>
 
 
@@ -45,7 +46,7 @@
     <delete id="delete" parameterType="Integer">
         DELETE
         FROM item_img
-        WHERE item_main_id = #{item_main_id}
+        WHERE item_id = #{item_id}
     </delete>
 
 </mapper>

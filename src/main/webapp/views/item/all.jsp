@@ -27,9 +27,9 @@
         height: 80px;
     }
 
-    .detail_img {
-        width: 400px;
-        height: 300px;
+    .main_img {
+        width: 160px;
+        height: 160px;
     }
 </style>
 
@@ -69,8 +69,8 @@
                     <tbody>
                     <c:forEach var="obj" items="${flist}">
                         <tr>
-                            <td><img src="${obj.item_img}">${obj.item_img}</td>
-                            <td><a href="/item/detail?item_id=${obj.item_id}">${obj.item_main_id}</a></td>
+                            <td><img class = "main_img" src="/uimg/${obj.item_img}"/></td>
+                            <td><a href="/item/detail?item_id=${obj.item_id}">${obj.item_id}</a></td>
                             <td>${obj.category_id}</td>
                             <td>${obj.item_name}</td>
                             <td><fmt:formatNumber value="${obj.item_price}" pattern="###,###원"/></td>

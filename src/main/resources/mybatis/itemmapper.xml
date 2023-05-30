@@ -4,6 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chflower.mapper.ItemMapper">
 
+    <select id="selectLargestid" resultType="int">
+        SELECT MAX(ITEM_ID) AS LagestId
+        FROM item
+    </select>
+
     <select id="getpage" resultType="item">
         SELECT *
         FROM item
@@ -29,9 +34,12 @@
 
     <insert id="insert" parameterType="item">
         INSERT INTO ITEM
-        (ITEM_ID, CATEGORY_ID, ITEM_NAME, ITEM_CNT, ITEM_PRICE, ITEM_CONTENT, ITEM_RDATE, FLOWER_COLOR, FLOWER_TYPE, FLOWER_SIZE)
-        VALUES (item_seq.NEXTVAL, #{category_id}, #{item_name}, #{item_cnt}, #{item_price}, #{item_content}, SYSDATE, #{flower_color}, #{flower_type}, #{flower_size})
+        (ITEM_ID, CATEGORY_ID, ITEM_IMG, ITEM_NAME, ITEM_CNT, ITEM_PRICE, ITEM_CONTENT, ITEM_RDATE, FLOWER_COLOR, FLOWER_TYPE, FLOWER_SIZE, MAIN_IMG)
+        VALUES (#{item_id}, #{category_id}, #{item_img}, #{item_name}, #{item_cnt}, #{item_price}, #{item_content}, SYSDATE, #{flower_color}, #{flower_type}, #{flower_size}, '1')
     </insert>
+
+
+
 <!--    <update id="update" parameterType="item">-->
 <!--        UPDATE item-->
 <!--        SET name=#{name},-->

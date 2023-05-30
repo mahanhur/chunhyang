@@ -3,8 +3,6 @@ package com.chflower.service;
 import com.chflower.dto.Item;
 import com.chflower.frame.CHService;
 import com.chflower.mapper.ItemMapper;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,4 +47,11 @@ public class ItemService implements CHService<Integer, Item> {
     public List<Item> get() throws Exception {
         return mapper.selectall();
     }
+
+    public int selectLargestid() throws Exception {
+        return mapper.selectLargestid();
+    }
+
+
+
 }
