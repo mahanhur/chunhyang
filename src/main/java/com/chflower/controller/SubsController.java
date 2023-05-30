@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -104,7 +105,8 @@ public class SubsController {
 
 
     @RequestMapping("/subsdetailimpl")
-    public String subsdetailimpl(Model model, Subsdetail subsdetail){
+    public String subsdetailimpl(Model model, int subsdetail_id, Date subsduedate ){
+        Subsdetail subsdetail = new Subsdetail(subsdetail_id, subsduedate);
         try {
             subsdetailService.dateupdate(subsdetail);
         } catch (Exception e) {

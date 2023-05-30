@@ -81,9 +81,11 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="category_id">카테고리:</label>
-                        <div class="col-sm-10">
-                            <input type="number" name="category_id" class="form-control" id="category_id" value="${detail.category_id}">
-                        </div>
+                        <select class="form-select" id="category_id" name="category_id" value="${detail.category_id}">
+                            <option value="1">꽃</option>
+                            <option value="2">화분</option>
+                            <option value="3">비품</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="item_price">상품가격:</label>
@@ -111,46 +113,69 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="flower_type">종류:</label>
-                        <div class="col-sm-10">
-                            <input type="number" name="flower_type" class="form-control" id="flower_type" value="${detail.flower_type}">
-                        </div>
+                        <select class="form-select" id="flower_type" name="flower_type" value="${detail.flower_type}">
+                            <option value="1">꽃다발</option>
+                            <option value="2">장미</option>
+                            <option value="3">튤립</option>
+                            <option value="4">작약</option>
+                            <option value="5">프리지아</option>
+                            <option value="6">라넌큘러스</option>
+                            <option value="7">거베라</option>
+                            <option value="8">리시안셔스</option>
+                            <option value="9">아카시아</option>
+                            <option value="10">수국</option>
+                            <option value="11">국화</option>
+                            <option value="12">백합</option>
+                            <option value="13">카라</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="flower_size">사이즈:</label>
+                        <select class="form-select" id="flower_size" name="flower_size" value="${detail.flower_size}">
+                            <option value="L">Large</option>
+                            <option value="M">Medium</option>
+                            <option value="S">Small</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="img2">대표사진:</label>
                         <div class="col-sm-10">
-                            <input type="text" name="flower_size" class="form-control" id="flower_size" value="${detail.flower_size}">
+                            <img src="${detail.item_img}">
+                            <input type="file" name="img2" class="form-control" id="img" >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="img1">상품사진1:</label>
                         <div class="col-sm-10">
-                            <input type="file" name="img1" class="form-control" id="img1" value="${detail.item_img1}">
+                            <img src="${img.item_subimg}">
+                            <input type="file" name="img1" class="form-control" id="img1">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="img2">상품사진2:</label>
                         <div class="col-sm-10">
-                            <input type="file" name="img2" class="form-control" id="img2" value="${detail.item_img2}">
+                            <input type="file" name="img2" class="form-control" id="img2" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="img3">상품사진3:</label>
                         <div class="col-sm-10">
-                            <input type="file" name="img3" class="form-control" id="img3" value="${detail.item_img3}">
+                            <input type="file" name="img3" class="form-control" id="img3" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="img4">상품사진4:</label>
                         <div class="col-sm-10">
-                            <input type="file" name="img4" class="form-control" id="img4" value="${detail.item_img4}">
+                            <input type="file" name="img4" class="form-control" id="img4" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="img5">상품사진5:</label>
                         <div class="col-sm-10">
-                            <input type="file" name="img5" class="form-control" id="img5" value="${detail.item_img5}">
+                            <input type="file" name="img5" class="form-control" id="img5" >
                         </div>
                     </div>
                     <div class="form-group">
