@@ -90,11 +90,17 @@ public class SubsController {
 
 
     @RequestMapping("/subsdetail")
-    public String subsdetail(Model model){
+    public String subsdetail(Model model, Integer subs_id){
         List<Subsdetail> list = null;
+        Subsdetail subsdetail;
         try {
-            list = subsdetailService.get();
-            model.addAttribute("sdlist",list);
+            if(subs_id != null ) {
+                list = subsdetailService.get2(subs_id);
+                model.addAttribute("sdlist",list);
+            } else {
+                list = subsdetailService.get();
+                model.addAttribute("sdlist",list);
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

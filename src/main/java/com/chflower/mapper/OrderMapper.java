@@ -1,6 +1,6 @@
 package com.chflower.mapper;
 
-import com.chflower.dto.Item;
+import com.chflower.dto.Order;
 import com.chflower.frame.CHMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 
 
-public interface ItemMapper extends CHMapper<Integer, Item> {
-
-    public int selectLargestid();
+public interface OrderMapper extends CHMapper<Integer, Order> {
 }

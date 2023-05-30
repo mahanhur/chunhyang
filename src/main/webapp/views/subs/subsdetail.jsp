@@ -68,10 +68,11 @@
                 <table id="datatablesSimple">
                     <thead>
                     <tr>
-                        <th>구독상품 배송 상세번호</th>
+                        <th>구독상품 상세번호</th>
                         <th>구독번호</th>
                         <th>고객 아이디</th>
                         <th>배송예정일</th>
+                        <th>배송상태</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -85,6 +86,7 @@
                                     <input type="text" class="datePicker subs_duedate" name="subs_duedate" value="<fmt:formatDate  value="${obj.subs_duedate}" pattern="yyyy-MM-dd" />"/>
                                     <button type="button" class="btn btn-outline-primary duedate_btn">수정</button>
                                 </td>
+                                <td>쨘</td>
                             </tr>
 
 

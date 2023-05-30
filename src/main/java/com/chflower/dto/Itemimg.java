@@ -10,14 +10,14 @@ import java.util.List;
 @Getter
 @ToString
 public class Itemimg {
-    private Integer item_main_id;
+    private int item_id;
     private String item_subimg;
 
     private MultipartFile img;
     private List<MultipartFile> imgList;
 
-    public Itemimg(Integer item_main_id, String item_subimg) {
-        this.item_main_id = item_main_id;
+    public Itemimg(int item_id, String item_subimg) {
+        this.item_id = item_id;
         this.item_subimg = item_subimg;
     }
 }

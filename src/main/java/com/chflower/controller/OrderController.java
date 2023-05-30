@@ -2,88 +2,46 @@ package com.chflower.controller;
 
 import com.chflower.dto.Item;
 import com.chflower.dto.Itemimg;
+import com.chflower.dto.Order;
 import com.chflower.service.ItemService;
 import com.chflower.service.ItemimgService;
-import com.chflower.util.FileUploadUtil;
+import com.chflower.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/item")
-public class ItemController {
+@RequestMapping("/order")
+public class OrderController {
     @Autowired
     ItemService itemService;
     @Autowired
     ItemimgService itemimgService;
+    @Autowired
+    OrderService orderService;
 
     @Value("${uploadimgdir}") /*이미지 저장경로*/
             String uploadimgdir;
-    String dir = "item/";
+    String dir = "order/";
 
-    Integer seq = null;
-    public int generateSeq() throws Exception {
-        seq = itemService.selectLargestid() + 1;
-        return seq;
-    }
 
-    //127.0.0.1/item
+    //127.0.0.1/order
     @RequestMapping("/all")
     public String all(Model model) throws Exception {
-        List<Item> list = null;
-        list = itemService.get();
+        List<Order> list = null;
+        list = orderService.get();
 
-        model.addAttribute("flist", list);
+        model.addAttribute("olist", list);
         model.addAttribute("left", dir + "left");
         model.addAttribute("center", dir + "all");
         return "index";
-    }
-
-    @RequestMapping("/add")
-    public String add(Model model) {
-        model.addAttribute("left", dir + "left");
-        model.addAttribute("center", dir + "add");
-        return "index";
-    }
-
-    @RequestMapping("/addimpl")
-    public String addimpl(Model model, Item item, Itemimg itemimg) throws Exception {
-
-        //대표사진
-        MultipartFile mf = item.getImg();
-        String imgname = mf.getOriginalFilename();
-        item.setItem_img(imgname);
-        if(seq == null){
-            seq = 200;
-            item.setItem_id(seq);
-        }else{
-            item.setItem_id(generateSeq());
-        }
-        log.info("xxxxxxxxx"+ item.getItem_id());
-        itemService.register(item);
-        FileUploadUtil.saveFile(mf, uploadimgdir);
-
-        //기타사진
-        log.info("mutipartList = {}", itemimg.getImgList());
-        String subimgname = null;
-        itemimg.setItem_id(item.getItem_id());
-        for (MultipartFile file : itemimg.getImgList()) {
-            log.info("file name = {}", file.getOriginalFilename());
-            subimgname = file.getOriginalFilename();
-            itemimg.setItem_subimg(subimgname);
-            log.info("zzzzzzzzz"+ itemimg.getItem_id());
-            itemimgService.register(itemimg);
-            FileUploadUtil.saveFile(file, uploadimgdir);
-        }
-            return "redirect:/item";
     }
 
 
