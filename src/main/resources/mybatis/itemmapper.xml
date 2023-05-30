@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chflower.mapper.ItemMapper">
 
-    <select id="selectLargestid" resultType="int">
+    <select id="selectLargestid" resultType="Integer">
         SELECT MAX(ITEM_ID) AS LagestId
         FROM item
     </select>
