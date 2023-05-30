@@ -13,7 +13,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("loginadm") == null) {
+        if (session == null || session.getAttribute("loginadmin") == null) {
             log.info("미인증 사용자 요청");
             //로그인으로 redirect
             response.sendRedirect("/login?redirectURL=" + requestURI);  //requestURI에 이전에 클릭했던 정보를담아

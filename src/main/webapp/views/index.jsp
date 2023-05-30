@@ -27,9 +27,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <%--calender--%>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <%--websocket--%>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
@@ -38,7 +35,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/">춘향 관직자</a>
+    <a class="navbar-brand ps-3" href="/">춘향 관직자 홈페이지</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -47,21 +44,32 @@
     </form>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <c:choose>
-                    <c:when test="${loginadm == null}">
-                        <li><a class="dropdown-item" href="/login">Login</a></li>
-                        <li><a class="dropdown-item" href="/register">Register</a></li>
+                    <c:when test="${loginadmin == null}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="/admin/login">로그인</a></li>
+                                <li><a class="dropdown-item" href="/admin/register">노비등록</a></li>
+                            </ul>
+                        </li>
                     </c:when>
                     <c:otherwise>
-                        <li><a class="dropdown-item" href="/detail">about ${loginadm.id}</a></li>
-                        <li><a class="dropdown-item" href="/logoutimpl" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a></li>
+                        <h6><div style="color: white">${loginadmin.admin_name}</div></h6>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown2">
+                        <li><a class="dropdown-item" href="/admin/admindetail?admin_id=${loginadmin.admin_id}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                내 정보수정</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li><a class="dropdown-item" href="/admin/logoutimpl" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>로그아웃</a></li>
+                            </ul>
+                        </li>
                     </c:otherwise>
                 </c:choose>
-            </ul>
-        </li>
     </ul>
 </nav>
 <div id="layoutSidenav">
@@ -69,16 +77,38 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>ADMIN</a>
-                            <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>Cust</a>
-                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>Item</a>
+                    <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
+                            <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
+                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
                             <a class="nav-link collapsed" href="/subs/subsitem"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>구독상품 관리</a>
-                            <a class="nav-link collapsed" href="/subs/subsinfo"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>구독 신청정보 관리</a>
-                            <a class="nav-link collapsed" href="/subs/subsdetail"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>구독상품 배송 관리</a>
-                            <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>Category</a>
-                            <a class="nav-link collapsed" href="/qna"><div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>QnA</a>
-                            <a class="nav-link collapsed" href="/ws"><div class="sb-nav-link-icon"><i class="fas fa-person"></i></div>1:1 Chat</a>
-
+                            <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
+                            <%--게시판 시작--%>
+                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
+                                게시판
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapseAuth1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="/board/notice">공지사항</a>
+                                    <a class="nav-link" href="/board/fa">F&Q</a>
+                                    <a class="nav-link" href="/board/event">이벤트</a>
+                                </nav>
+                            </div>
+                            <%--게시판 끝--%>
+                            <%--고객응대 시작--%>
+                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth2" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
+                                고객문의사항
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapseAuth2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="#">QnA</a>
+                                    <a class="nav-link" href="#">1:1 채팅&Q</a>
+                                </nav>
+                            </div>
+                            <%--고객응대 끝--%>
                     <a class="nav-link" href="/chart">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Charts
@@ -90,10 +120,10 @@
                 </div>
             </div>
             <c:choose>
-                <c:when test="${loginadm != null}">
+                <c:when test="${loginadmin != null}">
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                ${loginadm.id}
+                ${loginadmin.admin_id}
             </div>
                 </c:when>
                 <c:otherwise>
@@ -142,7 +172,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/logoutimpl">Logout</a>
+                <a class="btn btn-primary" href="/admin/logoutimpl">Logout</a>
             </div>
         </div>
     </div>

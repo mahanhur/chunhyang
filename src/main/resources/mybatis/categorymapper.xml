@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chflower.mapper.CategoryMapper">
+
+    <select id="selectall" resultType="Category">
+        SELECT a.category_id,a.category_name,a.topcategory_id,b.category_name as top_name
+        FROM ITEM_CATEGORY a LEFT OUTER JOIN ITEM_CATEGORY b
+        ON a.topcategory_id= b.category_id
+        order by topcategory_id, category_id
+    </select>
+
+    <insert id="insert" parameterType="Category">
+        INSERT INTO CATEGORY VALUES (#{id},#{cate_name},#{top_cate})
+    </insert>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM CATEGORY WHERE ID=#{id}
+    </delete>
+
+</mapper>

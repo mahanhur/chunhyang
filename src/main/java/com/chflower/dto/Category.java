@@ -8,9 +8,12 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Category {
-    private int id;
-    private String cate_name;
-    private int top_cate_id;
-    private int topid;
-    private String topname;
+    /*DB칼럼명*/
+    private int category_id;
+    private String category_name;
+    private int topcategory_id;
+
+    /*JOIN을 위해서 만든 DTO 속성*/
+    private int top_id;
+    private String top_name;
 }
