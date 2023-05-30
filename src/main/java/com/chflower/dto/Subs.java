@@ -2,7 +2,8 @@ package com.chflower.dto;
 
 import lombok.*;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
