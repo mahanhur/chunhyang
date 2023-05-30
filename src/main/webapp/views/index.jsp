@@ -82,6 +82,7 @@
                             <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
                             <a class="nav-link collapsed" href="/subs/subsitem"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>구독상품 관리</a>
                             <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
+
                             <%--게시판 시작--%>
                             <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
                                 <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
@@ -105,17 +106,26 @@
                             <div class="collapse" id="pagesCollapseAuth2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">QnA</a>
-                                    <a class="nav-link" href="#">1:1 채팅&Q</a>
+                                    <a class="nav-link" href="#">1:1 채팅</a>
                                 </nav>
                             </div>
                             <%--고객응대 끝--%>
+                            <%--주문배송관리 시작--%>
+                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
+                                주문 및 배송관리
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapseAuth1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="/board/notice">주문관리</a>
+                                    <a class="nav-link" href="/board/fa">배송관리</a>
+                                </nav>
+                            </div>
+                            <%--주문배송관리 끝--%>
                     <a class="nav-link" href="/chart">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Charts
-                    </a>
-                    <a class="nav-link" href="/sales">
-                        <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
-                        Order List
+                        차트
                     </a>
                 </div>
             </div>

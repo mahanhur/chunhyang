@@ -12,14 +12,14 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("")
+@RequestMapping("/board")
 public class BoardController {
 
     @Autowired
     BoardService boardService;
     String dir = "board/";
 
-    @RequestMapping("/board/notice")
+    @RequestMapping("/notice")
     public String notice(Model model) throws Exception {
         List<Board> list = null;
         list = boardService.getNotice("1");
@@ -28,7 +28,7 @@ public class BoardController {
         model.addAttribute("center",dir+"notice");
         return "index";
     }
-    @RequestMapping("/board/fa")
+    @RequestMapping("/fa")
     public String fa(Model model) throws Exception {
         List<Board> list = null;
         list = boardService.getFa("2");
@@ -36,7 +36,7 @@ public class BoardController {
         model.addAttribute("center",dir+"fa");
         return "index";
     }
-    @RequestMapping("/board/event")
+    @RequestMapping("/event")
     public String event(Model model) throws Exception {
         List<Board> list = null;
         list = boardService.getEvent("3");
