@@ -84,7 +84,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
-                            <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
+                            <a class="nav-link collapsed" href="/cust/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
                             <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
                             <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
                             <a class="nav-link collapsed" href="/delivery"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>배송정보관리</a>
