@@ -23,8 +23,12 @@
     </insert>
     <update id="update" parameterType="delinfo">
         update delinfo set invoice_id=#{invoice_id},
+                           <if test="del_startdate != null">
                            del_startdate=#{del_startdate},
+                           </if>
+                           <if test="del_findate != null">
                            del_findate=#{del_findate},
+                           </if>
                            del_state = case when #{del_state} = '배송대기' then 1
                                             when #{del_state} = '배송중' then 2
                                             when #{del_state} = '배송완료' then 3

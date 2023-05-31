@@ -87,6 +87,7 @@
                             <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
                             <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
                             <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
+                            <a class="nav-link collapsed" href="/delivery"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>배송정보관리</a>
                             <%--구독 시작--%>
                             <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
                                 <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
@@ -97,7 +98,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="/subs/subsitem">구독상품 관리</a>
                                     <a class="nav-link" href="/subs/subsinfo">구독 신청정보 관리</a>
-                                    <a class="nav-link" href="/subs/subsdetail">구독상품 배송 관리</a>
+                                    <a class="nav-link" href="/subs/subsdetail">구독상품 상세관리</a>
                                 </nav>
                             </div>
                             <%--구독 끝--%>
