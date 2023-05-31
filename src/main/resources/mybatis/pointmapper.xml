@@ -7,12 +7,12 @@
     <select id="select" parameterType="String" resultType="point">
         SELECT * FROM point WHERE cust_id=#{cust_id}
     </select>
-    <select id="selectall" resultType="subsitem">
+    <select id="selectall" resultType="point">
         SELECT * FROM point
     </select>
-    <insert id="insert" parameterType="subsitem">
-    </insert>|
-    <update id="update" parameterType="subsitem">
+    <insert id="insert" parameterType="point">
+    </insert>
+    <update id="update" parameterType="point">
     </update>
     <delete id="delete" parameterType="String">
     </delete>

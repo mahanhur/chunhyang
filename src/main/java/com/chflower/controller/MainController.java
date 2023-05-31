@@ -77,11 +77,11 @@ public class MainController {
         List<Point> list ;
         try {
             list = pointService.get();
+            model.addAttribute("plist", list);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        model.addAttribute("plist", list);
-        model.addAttribute("center", "delivery");
+        model.addAttribute("center", "point");
         return "index";
     }
 }

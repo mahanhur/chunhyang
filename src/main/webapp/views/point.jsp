@@ -18,13 +18,15 @@
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-                <p>ㅇ 고객별 포인트 이력을 조회하고 관리하실 수 있는 화면입니다.</p>
+                <p>ㅇ 고객별 포인트 이력을 조회하고 관리하실 수 있는 화면입니다.</p><hr/>
+                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#">포인트 수정</button>
+                <button type="button" class="btn btn-outline-danger">포인트 삭제</button>
             </div>
         </div>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                DataTable : Subscribe product delivery list
+                DataTable : point history list
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">
