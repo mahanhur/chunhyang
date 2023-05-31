@@ -19,8 +19,25 @@
                 del_state = row.find('.del_state').val();
                 del_com = row.find('.del_com').val();
                 invoice_id = row.find('.invoice_id').val();
-                del_startdate = row.find('.del_startdate').val();
-                del_findate = row.find('.del_findate').val();
+                del_startdate = row.find('.del_startdate').val() || null;
+                del_findate = row.find('.del_findate').val() || null;
+
+                alert(del_findate);
+
+                if(del_startdate == '') {
+                    del_startdate = 'null';
+                }
+                if(del_findate == '') {
+                    del_findate = 'null';
+                }
+                if(del_startdate != null && del_startdate.substr(4,1) == '-') {
+                    let sparts = del_startdate.split('-'); // '-'를 기준으로 문자열을 나눔
+                    del_startdate = sparts[1] + '/' + sparts[2] + '/' + sparts[0]; // datepicker형식으로 재조합
+                }
+                if(del_findate != null && del_findate.substr(4,1) == '-') {
+                    let fparts = del_findate.split('-'); // '-'를 기준으로 문자열을 나눔
+                    del_findate = fparts[1] + '/' + fparts[2] + '/' + fparts[0]; // datepicker 형식으로 재조합
+                }
 
                     $.ajax({
                         url:'delupdateimpl',
