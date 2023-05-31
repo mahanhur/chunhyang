@@ -2,16 +2,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<main>
+<script>
+    let allcheck = {
+        init: function () {
+            $("#allcheck").click(function () {
+                $(".del").prop("checked", true);
+            });
+        }
+    }
+    $(function (){
+        allcheck.init();
+    })
+</script>
+
     <div class="container-fluid px-4">
-        <h1 class="mt-4">이벤트</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>
-        </ol>
+        <h3 class="mt-4 alert alert-success"><strong>Board</strong>: Event</h3>
         <div class="card mb-4">
             <div class="card-body">
-                <button type="button" class="btn btn-outline-primary"
-                        onclick="location.href='#'">이벤트 등록</button>
+                <p>ㅇ 이벤트 상품 및 안내 사항들은 직원분들께서는 숙지해 바랍니다</p>
+                <p>ㅇ 선택삭제 기능은 작동 안합니다</p>
+                <hr/>
+                <button type="button" class="btn btn-outline-primary" onclick="location.href='/board/addevent'">이벤트 등록</button>
+                <button type="button" class="btn btn-outline-success" id="allcheck">일괄 선택</button>
+                <button type="button" class="btn btn-outline-danger">선택 삭제</button>
             </div>
         </div>
         <div class="card mb-4">
@@ -24,18 +37,21 @@
                     <thead>
                         <tr>
                             <th>글 번 호</th>
-                            <th>공지 제목</th>
+                            <th>이벤트 제목</th>
                             <th>작성자 사번</th>
                             <th>등록 일자</th>
+                            <th>수정 일자</th>
                         </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="obj" items="${eventlist}">
                         <tr>
-                            <td>${obj.noti_id}</td>
+                            <td><input type="checkbox" class="del">
+                                <a href ="/board/eventdetail?noti_id=${obj.noti_id}">${obj.noti_id}</a></td>
                             <td>${obj.noti_title}</td>
                             <td>${obj.admin_id}</td>
-                            <td>${obj.noti_wdate}</td>
+                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.noti_wdate}" /></td>
+                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.noti_udate}" /></td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -43,4 +59,3 @@
             </div>
         </div>
     </div>
-</main>

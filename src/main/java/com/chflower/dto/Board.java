@@ -1,6 +1,7 @@
 package com.chflower.dto;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -20,4 +21,7 @@ public class Board {
     private Date noti_udate;
     private String noti_image1;
     private String noti_image2;
+
+    private MultipartFile img1;
+    private MultipartFile img2;
 }
