@@ -29,4 +29,16 @@ public class Delinfo {
         this.del_startdate = del_startdate;
         this.del_findate = del_findate;
     }
+
+    private int totalcount;
+    private int count1;
+    private int count2;
+    private int count3;
+
+    public Delinfo(int totalcount, int count1, int count2, int count3) {
+        this.totalcount = totalcount;
+        this.count1 = count1;
+        this.count2 = count2;
+        this.count3 = count3;
+    }
 }

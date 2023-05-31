@@ -31,12 +31,19 @@ public class DelinfoService implements CHService<Integer, Delinfo> {
 
     @Override
     public Delinfo get(Integer del_id) throws Exception {
-        return mapper.select(del_id);
+        return null;
     }
 
     @Override
     public List<Delinfo> get() throws Exception {
         return mapper.selectall();
+    }
+
+    public List<Delinfo> center(String del_state) {
+        return mapper.center(del_state);
+    }
+    public Delinfo count() {
+        return mapper.count();
     }
 
 }

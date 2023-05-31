@@ -1,6 +1,7 @@
 package com.chflower.controller;
 
 import com.chflower.dto.Delinfo;
+import com.chflower.dto.Subs;
 import com.chflower.service.DelinfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +21,28 @@ public class MainController {
     @Autowired
     DelinfoService delinfoService;
     @RequestMapping("/")
-    public String main(){
+    public String main(Model model){
+        Delinfo count;
+        count = delinfoService.count();
+        model.addAttribute("count", count);
         return "index";
     }
 
 
     @RequestMapping("/delivery")
-    public String delivery(Model model){
+    public String delivery(Model model, String del_state){
         List<Delinfo> list ;
         try {
-            list = delinfoService.get();
+            if(del_state != null) {
+                list = delinfoService.center(del_state);
+                model.addAttribute("dlist", list);
+            } else {
+                list = delinfoService.get();
+                model.addAttribute("dlist", list);
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        model.addAttribute("dlist", list);
         model.addAttribute("center", "delivery");
         return "index";
     }
