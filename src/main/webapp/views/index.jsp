@@ -101,7 +101,6 @@
                             <%--                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>--%>
                             <%--상품관리 끝--%>
                             <a class="nav-link collapsed" href="/point"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>포인트 관리</a>
-                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
                             <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
                             <a class="nav-link collapsed" href="/delivery"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>배송정보관리</a>
                             <%--구독 시작--%>
@@ -141,17 +140,13 @@
                             <div class="collapse" id="pagesCollapseAuth3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">QnA</a>
-                                    <a class="nav-link" href="#">1:1 채팅&Q</a>
+                                    <a class="nav-link" href="#">1:1 채팅</a>
                                 </nav>
                             </div>
                             <%--고객응대 끝--%>
                     <a class="nav-link" href="/chart">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Charts
-                    </a>
-                    <a class="nav-link" href="/sales">
-                        <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
-                        Order List
                     </a>
                 </div>
             </div>
