@@ -1,8 +1,10 @@
 package com.chflower.controller;
 
 import com.chflower.dto.Delinfo;
+import com.chflower.dto.Point;
 import com.chflower.dto.Subs;
 import com.chflower.service.DelinfoService;
+import com.chflower.service.PointService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ public class MainController {
 
     @Autowired
     DelinfoService delinfoService;
+    @Autowired
+    PointService pointService;
     @RequestMapping("/")
     public String main(Model model){
         Delinfo count;
@@ -67,4 +71,17 @@ public class MainController {
         return "redirect:/delivery";
     }
 
+
+    @RequestMapping("/point")
+    public String point(Model model){
+        List<Point> list ;
+        try {
+            list = pointService.get();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        model.addAttribute("plist", list);
+        model.addAttribute("center", "delivery");
+        return "index";
+    }
 }
