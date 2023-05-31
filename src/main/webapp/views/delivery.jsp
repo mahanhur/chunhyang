@@ -19,17 +19,9 @@
                 del_state = row.find('.del_state').val();
                 del_com = row.find('.del_com').val();
                 invoice_id = row.find('.invoice_id').val();
-                del_startdate = row.find('.del_startdate').val() || null;
-                del_findate = row.find('.del_findate').val() || null;
+                del_startdate = row.find('.del_startdate').val();
+                del_findate = row.find('.del_findate').val();
 
-                alert(del_findate);
-
-                if(del_startdate == '') {
-                    del_startdate = 'null';
-                }
-                if(del_findate == '') {
-                    del_findate = 'null';
-                }
                 if(del_startdate != null && del_startdate.substr(4,1) == '-') {
                     let sparts = del_startdate.split('-'); // '-'를 기준으로 문자열을 나눔
                     del_startdate = sparts[1] + '/' + sparts[2] + '/' + sparts[0]; // datepicker형식으로 재조합
@@ -157,10 +149,21 @@
                                             <div class="form-group">
                                                 <input type="hidden" class="del_id" value="${obj.del_id}" name="del_id">
                                                 <label class="control-label col-sm-4">배송 상태</label>
-                                                <input type="text" class="form-control del_state" name="del_state" value="${obj.del_state}" >
+                                                <select class="form-select del_state" name="del_state">
+                                                    <option id="opt1" vlaue="">배송상태를 선택하세요</option>
+                                                    <option value="배송대기" ${obj.del_state == '배송대기' ? 'selected' : ''}>배송대기</option>
+                                                    <option value="배송중" ${obj.del_state == '배송중' ? 'selected' : ''}>배송중</option>
+                                                    <option value="배송완료" ${obj.del_state == '배송완료' ? 'selected' : ''}>배송완료</option>
+                                                </select>
                                                 <br/>
                                                 <label class="control-label col-sm-4">담당 배송사</label>
-                                                <input type="text" class="form-control del_com" name="del_com" value="${obj.del_com}" >
+                                                <select class="form-select del_com" name="del_com">
+                                                    <option id="opt2" vlaue="">배송사를 선택하세요</option>
+                                                    <option value="CJ대한통운" ${obj.del_com == 'CJ대한통운' ? 'selected' : ''}>CJ대한통운</option>
+                                                    <option value="한진택배" ${obj.del_com == '한진택배' ? 'selected' : ''}>한진택배</option>
+                                                    <option value="우체국택배" ${obj.del_com == '우체국택배' ? 'selected' : ''}>우체국택배</option>
+                                                    <option value="기타" ${obj.del_com == '기타' ? 'selected' : ''}>기타</option>
+                                                </select>
                                                 <br/>
                                                 <label class="control-label col-sm-4">운송장 번호</label>
                                                 <input type="text" class="form-control invoice_id" name="invoice_id" value="${obj.invoice_id}" >

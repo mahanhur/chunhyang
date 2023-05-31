@@ -24,7 +24,7 @@
       <div class="card bg text-black mb-4">
         <div class="card-body"><i class="fas fa-shop"></i> 전체</div>
         <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="#"><span id="all">291</span></a>
+          <a class="small text-black stretched-link" href="/delivery"><span id="all">${count.totalcount}</span></a>
           <div class="small text-black"><i class="fas fa-angle-right"></i></div>
         </div>
       </div>
@@ -33,7 +33,7 @@
       <div class="card bg text-black mb-4">
         <div class="card-body"><i class="fas fa-person"></i> 배송대기</div>
         <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="#"><span id="readytoshipping">41</span></a>
+          <a class="small text-black stretched-link" href="/delivery?del_state=배송대기"><span id="readytoshipping">${count.count1}</span></a>
           <div class="small text-black"><i class="fas fa-angle-right"></i></div>
         </div>
       </div>
@@ -42,7 +42,7 @@
       <div class="card bg text-black mb-4">
         <div class="card-body"><i class="fas fa-truck-fast"></i> 배송중</div>
         <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="#"><span id="onshipping">101</span></a>
+          <a class="small text-black stretched-link" href="/delivery?del_state=배송중"><span id="onshipping">${count.count2}</span></a>
           <div class="small text-black"><i class="fas fa-angle-right"></i></div>
         </div>
       </div>
@@ -51,7 +51,7 @@
       <div class="card bg text-black mb-4">
         <div class="card-body"><i class="fas fa-box"></i> 배송완료</div>
         <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="#"><span id="completetoshipping">149</span></a>
+          <a class="small text-black stretched-link" href="/delivery?del_state=배송완료"><span id="completetoshipping">${count.count3}</span></a>
           <div class="small text-black"><i class="fas fa-angle-right"></i></div>
         </div>
       </div>
@@ -69,7 +69,7 @@
       <div class="card bg text-black mb-4">
         <div class="card-body"><i class="fas fa-guitar"></i> 기타</div>
         <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="#"><span id="etc">13</span></a>
+          <a class="small text-black stretched-link" href="/delivery?del_state=기타"><span id="etc">13</span></a>
           <div class="small text-black"><i class="fas fa-angle-right"></i></div>
         </div>
       </div>
