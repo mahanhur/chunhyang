@@ -14,4 +14,5 @@ public class Admin {
     private String admin_name;
     private String admin_level;
 
+    private Integer new_id;
 }

@@ -1,13 +1,13 @@
 package com.chflower.mapper;
 
-import com.chflower.dto.Admin;
+import com.chflower.dto.Order;
 import com.chflower.frame.CHMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface AdminMapper extends CHMapper<Integer, Admin> {
 
-    Integer makeid();
+
+public interface OrderMapper extends CHMapper<Integer, Order> {
 }

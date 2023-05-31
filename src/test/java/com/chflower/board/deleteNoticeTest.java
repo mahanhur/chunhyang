@@ -1,27 +1,22 @@
-package com.chflower.admin;
+package com.chflower.board;
 
-import com.chflower.dto.Admin;
-
-import com.chflower.service.AdminService;
-
+import com.chflower.dto.Board;
+import com.chflower.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
 @Slf4j
 @SpringBootTest
-public class insertTest {
+public class deleteNoticeTest {
     @Autowired
-    AdminService service;
+    BoardService boardService;
     @Test
     void contextLoads() throws Exception {
-        Admin obj = new Admin(987654,"111111","유성쥔","3",123456789);
-        service.register(obj);
+        boardService.remove(4);
         log.info("-----------------------------------------------------------");
-        log.info(obj.toString());
+
         log.info("-----------------------------------------------------------");
 
     }

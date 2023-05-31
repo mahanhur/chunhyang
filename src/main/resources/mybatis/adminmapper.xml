@@ -13,6 +13,10 @@
         WHERE ADMIN_ID=#{admin_id}
     </select>
 
+    <select id="makeid" resultType="Integer">
+        SELECT (MAX(ADMIN_ID)+1) as new_id FROM ADMIN
+    </select>
+
     <insert id="insert" parameterType="ADMIN">
         INSERT INTO ADMIN (ADMIN_ID, ADMIN_PWD, ADMIN_NAME, ADMIN_LEVEL)
          VALUES(ADMIN_SEQ.NEXTVAL,#{admin_pwd},#{admin_name},#{admin_level})  --여기는 DTO의 속성 이름이랑 정확히 일치해야함
