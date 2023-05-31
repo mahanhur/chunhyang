@@ -59,6 +59,7 @@
         SELECT *
         FROM NOTICE
         WHERE notiboard_id=#{notiboard_id}
+        ORDER BY noti_id desc
     </select>
     <select id="getEventOne" resultType="BOARD" parameterType="Integer">
         SELECT *
