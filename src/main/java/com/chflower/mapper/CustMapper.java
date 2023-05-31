@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface CustMapper extends CHMapper<String, Cust> {
+    public void withdraw(String cust_id) throws Exception;
 }
 
