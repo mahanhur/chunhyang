@@ -85,8 +85,22 @@
                 <div class="nav">
                     <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
                             <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
-                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
-                            <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
+                            <%--상품관리 시작--%>
+                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#itemsCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
+                                상품관리
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="itemsCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link collapsed" href="/item/all"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
+                                    <a class="nav-link collapsed" href="/order/all"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>주문 관리</a>
+                                    <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>찜?장바구니? 관리</a>
+                                </nav>
+                            </div>
+                            <%--상품관리 끝--%>
+
+                    <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
                             <%--구독 시작--%>
                             <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
                                 <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
