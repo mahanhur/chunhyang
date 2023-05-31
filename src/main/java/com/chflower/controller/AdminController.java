@@ -42,10 +42,13 @@ public class AdminController {
     public String registerimpl(Model model, Admin admin, HttpSession session) throws Exception {
         try {
             admin.setAdmin_pwd(encoder.encode(admin.getAdmin_pwd() ));
-//          여기에 시퀀스로 생성된 id값을 셋 어드민 아이디  < 겟메이크어드민아이디(새로생성)넣으면 될듯
+//          여기에 시퀀스로 생성된 id값을 셋 어드민 아이디  < 겟메이크어드민아이디(새로생성)로 메소드 만들어서 넣음
             Integer new_id = adminservice.makeid();
             admin.setAdmin_id(new_id);
             adminservice.register(admin);
+
+            session.setMaxInactiveInterval(100000000);
+
             session.setAttribute("loginadmin", admin);
             log.info(admin.toString());
         } catch (Exception e) {
@@ -70,9 +73,11 @@ public class AdminController {
         Admin admin = null;
         try {
             admin = adminservice.get(admin_id);
+            int loginadmin_id = admin.getAdmin_id();
             if( admin != null && encoder.matches(admin_pwd, admin.getAdmin_pwd()) ){
                 nextPage = dir+"loginok";
                 session.setMaxInactiveInterval(100000000);
+                session.setAttribute("loginadmin_id", loginadmin_id);
                 session.setAttribute("loginadmin", admin);
             }else{
                 model.addAttribute("center", nextPage);

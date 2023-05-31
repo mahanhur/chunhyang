@@ -2,18 +2,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<main>
+<script>
+    let allcheck = {
+        init: function () {
+            $("#allcheck").click(function () {
+                $(".del").prop("checked", true);
+            });
+        }
+    }
+    $(function (){
+        allcheck.init();
+    })
+</script>
+
     <div class="container-fluid px-4">
-        <h1 class="mt-4">공지 사항</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>
-        </ol>
+        <h3 class="mt-4 alert alert-success"><strong>Board</strong>: Notice</h3>
         <div class="card mb-4">
             <div class="card-body">
-                <p>ㅇ 공지사항 게시판입니다.</p>
-                <p>ㅇ 필독게시판은 반드시 읽어주시기 바랍니다.</p><hr/>
-                <button type="button" class="btn btn-outline-primary">공지 등록</button>
-                <button type="button" class="btn btn-outline-danger">공지 삭제</button>
+                <p>ㅇ 필독사항은 반드시 읽어주시기 바랍니다</p>
+                <p>ㅇ 선택삭제 기능은 작동 안합니다</p>
+                <hr/>
+                <button type="button" class="btn btn-outline-primary" onclick="location.href='/board/addnotice'">공지 등록</button>
+                <button type="button" class="btn btn-outline-success" id="allcheck">일괄 선택</button>
+                <button type="button" class="btn btn-outline-danger">선택 삭제</button>
             </div>
         </div>
 
@@ -36,7 +47,8 @@
                     <tbody>
                     <c:forEach var="obj" items="${noticelist}">
                         <tr>
-                            <td><a href ="/board/noticedetail?noti_id=${obj.noti_id}">${obj.noti_id}</a></td>
+                            <td><input type="checkbox" class="del">
+                                <a href ="/board/noticedetail?noti_id=${obj.noti_id}">${obj.noti_id}</a></td>
                             <td>${obj.noti_title}</td>
                             <td>${obj.admin_id}</td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.noti_wdate}" /></td>
@@ -48,4 +60,3 @@
             </div>
         </div>
     </div>
-</main>
