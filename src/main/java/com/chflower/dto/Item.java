@@ -22,14 +22,14 @@ public class Item {
 
     private Date item_rdate;
     private String flower_color;
-    private double flower_type;
+    private String flower_type;
     private String flower_size;
     private String main_img;
 
     private MultipartFile img;
     private List<MultipartFile> imgList;
 
-    public Item(double category_id, String item_img, String item_name, int item_cnt, int item_price, String item_content, Date item_rdate, String flower_color, double flower_type, String flower_size, String main_img) {
+    public Item(double category_id, String item_img, String item_name, int item_cnt, int item_price, String item_content, Date item_rdate, String flower_color, String flower_type, String flower_size, String main_img) {
         this.category_id = category_id;
         this.item_img = item_img;
         this.item_name = item_name;
