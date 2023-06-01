@@ -29,11 +29,7 @@ public class ItemController {
             String uploadimgdir;
     String dir = "item/";
 
-    Integer seq = null;
-    public int generateSeq() throws Exception {
-        seq = itemService.selectLargestid() + 1;
-        return seq;
-    }
+
 
     //127.0.0.1/item
     @RequestMapping("/all")
@@ -56,18 +52,21 @@ public class ItemController {
 
     @RequestMapping("/addimpl")
     public String addimpl(Model model, Item item, Itemimg itemimg) throws Exception {
+        Integer largestId = itemService.selectLargestid();
+        if (largestId == null) {
+            item.setItem_id(200);
+        } else {
+            Integer seq = largestId + 1;
+            item.setItem_id(seq);
+        }
+
+        log.info("xxxxxxxxx"+ item.getItem_id());
 
         //대표사진
         MultipartFile mf = item.getImg();
         String imgname = mf.getOriginalFilename();
         item.setItem_img(imgname);
-        if(seq == null){
-            seq = 200;
-            item.setItem_id(seq);
-        }else{
-            item.setItem_id(generateSeq());
-        }
-        log.info("xxxxxxxxx"+ item.getItem_id());
+
         itemService.register(item);
         FileUploadUtil.saveFile(mf, uploadimgdir);
 
@@ -75,15 +74,17 @@ public class ItemController {
         log.info("mutipartList = {}", itemimg.getImgList());
         String subimgname = null;
         itemimg.setItem_id(item.getItem_id());
-        for (MultipartFile file : itemimg.getImgList()) {
-            log.info("file name = {}", file.getOriginalFilename());
-            subimgname = file.getOriginalFilename();
-            itemimg.setItem_subimg(subimgname);
-            log.info("zzzzzzzzz"+ itemimg.getItem_id());
-            itemimgService.register(itemimg);
-            FileUploadUtil.saveFile(file, uploadimgdir);
+        if (itemimg.getImgList() != null) {
+            for (MultipartFile file : itemimg.getImgList()) {
+                log.info("file name = {}", file.getOriginalFilename());
+                subimgname = file.getOriginalFilename();
+                itemimg.setItem_subimg(subimgname);
+                log.info("zzzzzzzzz"+ itemimg.getItem_id());
+                itemimgService.register(itemimg);
+                FileUploadUtil.saveFile(file, uploadimgdir);
+            }
         }
-            return "redirect:/item";
+            return "redirect:/item/all";
     }
 
 
@@ -94,7 +95,7 @@ public class ItemController {
         itemService.remove(item_id);
         itemimgService.remove(item_id);
 
-        return "redirect:/item";
+        return "redirect:/item/all";
     }
     @RequestMapping("/detail")
     public String detail(Model model, int item_id, Item item, Itemimg itemimg) throws Exception {

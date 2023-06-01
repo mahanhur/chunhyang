@@ -48,7 +48,7 @@ public class ItemService implements CHService<Integer, Item> {
         return mapper.selectall();
     }
 
-    public int selectLargestid() throws Exception {
+    public Integer selectLargestid() throws Exception {
         return mapper.selectLargestid();
     }
 

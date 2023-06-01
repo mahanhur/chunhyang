@@ -4,16 +4,16 @@
 
 <script>
 
-  let register_form = {
+  let register = {
     init:function(){
-      $('#register_btn').addClass('disabled', true);
+      $('#register_btn').addClass('disabled');
       $('#register_btn').click(function(){
-        register_form.send();
+        register.send();
       });
-      $('#cust_name').keyup(function (){
+      $('#cust_pwd').keyup(function (){
         var cust_id = $('#cust_id').val();
         var cust_name = $('#cust_name').val();
-        var cust_pwd = $('#cust_pwd').val();`1`
+        var cust_pwd = $('#cust_pwd').val();
 
         if(cust_id != '' && cust_name != '' && cust_pwd != ''){
           $('#register_btn').removeClass('disabled');
@@ -55,6 +55,7 @@
       });
 
 
+
       // Phone, Age 입력 필드에 숫자만 입력되도록 제한
       $('#phone, #age').on('input', function(){
         var value = $(this).val();
@@ -85,12 +86,12 @@
         'action':'/cust/registerimpl',
         'method':'post'
       });
-      $('#register_form').submit();
+      $('#register_form').submit();2`1`
     }
   };
 
   $(function(){
-    register_form.init();
+    register.init();
   });
 </script>
 
@@ -154,7 +155,7 @@
                     <div class="col-md-6">
                       <div class="form-floating mb-3 mb-md-0">
                         <input class="form-control" id="email" type="email" name="email" placeholder="이메일을 입력하세요" />
-                        <label for="age">이메일</label>
+                        <label for="email">이메일</label>
                       </div>
                     </div>
                   </div>
