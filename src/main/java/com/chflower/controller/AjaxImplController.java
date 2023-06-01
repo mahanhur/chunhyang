@@ -1,7 +1,9 @@
 package com.chflower.controller;
 
 import com.chflower.dto.Admin;
+import com.chflower.dto.Cust;
 import com.chflower.service.AdminService;
+import com.chflower.service.CustService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -19,6 +21,8 @@ public class AjaxImplController {
     private BCryptPasswordEncoder encoder;
     @Autowired
     AdminService adminService;
+    @Autowired
+    CustService custservice;
     @RequestMapping("/checkid")
     public Object checkid(String id) throws Exception{
         int result = 0;
@@ -28,6 +32,16 @@ public class AjaxImplController {
         log.info(admin.getAdmin_name());
         if(admin != null) {
             result=1;
+        }
+        return result;
+    }
+    @RequestMapping("/custcheckid")
+    public Object custcheckid(String cust_id) throws Exception {
+        int result = 0;
+        Cust cust = null;
+        cust = custservice.get(cust_id);
+        if(cust != null){
+            result = 1;
         }
         return result;
     }

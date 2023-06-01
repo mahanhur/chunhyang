@@ -4,18 +4,34 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chflower.mapper.BoardMapper">
 
+    <!--    공통사용 SQL 시작   -->
+    <select id="select" resultType="BOARD" parameterType="Integer">
+        SELECT *
+        FROM NOTICE
+        WHERE noti_id=#{noti_id}
+          AND notiboard_id #{notiboard_id}
+    </select>
     <select id="selectall" resultType="BOARD">
         SELECT * FROM NOTICE
     </select>
     <delete id="delete" parameterType="Integer">
         DELETE FROM NOTICE WHERE noti_id=#{noti_id}
     </delete>
-
+    <insert id="insert" parameterType="BOARD">
+        INSERT INTO NOTICE (noti_id, admin_id, notiboard_id, noti_title, noti_contents, noti_wdate, noti_udate, noti_image1, noti_image2)
+        VALUES(notice_SEQ.NEXTVAL,#{admin_id},#{notiboard_id},#{noti_title},#{noti_contents},SYSDATE,null,#{noti_image1},#{noti_image2})
+    </insert>
+    <update id="updateNotice" parameterType="BOARD">
+        UPDATE notice SET admin_id=#{admin_id},noti_title=#{noti_title},noti_contents=#{noti_contents},
+                          noti_image1=#{noti_image1},noti_image2=#{noti_image2},noti_udate=SYSDATE WHERE noti_id=#{noti_id}
+    </update>
+    <!--    공통사용 SQL 끝   -->
+    <!--    NOTICE 시작   -->
     <select id="getNotice" resultType="BOARD" parameterType="String">
         SELECT *
         FROM NOTICE
         WHERE notiboard_id=#{notiboard_id}
-        ORDER BY noti_udate, noti_wdate, noti_id
+        ORDER BY noti_id desc
     </select>
     <select id="getNoticeOne" resultType="BOARD" parameterType="Integer">
         SELECT *
@@ -23,20 +39,33 @@
         WHERE noti_id=#{noti_id}
         AND notiboard_id in('1')
     </select>
-
-    <update id="updateNotice" parameterType="BOARD">
-        UPDATE notice SET noti_contents=#{noti_contents},noti_udate=SYSDATE WHERE noti_id=#{noti_id}
-    </update>
-
+    <!--    NOTICE 끝   -->
+    <!--    FAQ 시작   -->
     <select id="getFa" resultType="BOARD" parameterType="String">
         SELECT *
         FROM NOTICE
         WHERE notiboard_id=#{notiboard_id}
+        ORDER BY noti_id desc
     </select>
+    <select id="getFaOne" resultType="BOARD" parameterType="Integer">
+        SELECT *
+        FROM NOTICE
+        WHERE noti_id=#{noti_id}
+          AND notiboard_id in('2')
+    </select>
+    <!--    FAQ 끝   -->
+    <!--    이벤트 시작   -->
     <select id="getEvent" resultType="BOARD" parameterType="String">
         SELECT *
         FROM NOTICE
         WHERE notiboard_id=#{notiboard_id}
+        ORDER BY noti_id desc
     </select>
-
+    <select id="getEventOne" resultType="BOARD" parameterType="Integer">
+        SELECT *
+        FROM NOTICE
+        WHERE noti_id=#{noti_id}
+          AND notiboard_id in('3')
+    </select>
+    <!--    이벤트 끝   -->
 </mapper>

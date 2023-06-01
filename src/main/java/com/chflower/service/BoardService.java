@@ -25,7 +25,7 @@ public class BoardService implements CHService<Integer, Board> {
 
     @Override
     public void modify(Board board) throws Exception {
-        mapper.update(board);
+
     }
     public void updateNotice(Board board) throws Exception {
         mapper.updateNotice(board);
@@ -51,7 +51,13 @@ public class BoardService implements CHService<Integer, Board> {
     public List<Board> getFa(String s) throws Exception {
         return mapper.getFa(s);
     }
+    public Board getFaOne(Integer i) throws Exception {
+        return mapper.getFaOne(i);
+    }
     public List<Board> getEvent(String s) throws Exception {
         return mapper.getEvent(s);
+    }
+    public Board getEventOne(Integer i) throws Exception {
+        return mapper.getEventOne(i);
     }
 }
