@@ -141,7 +141,7 @@
                             </a>
                             <div class="collapse" id="pagesCollapseAuth2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">QnA</a>
+                                    <a class="nav-link" href="/qna/qna">QnA</a>
                                     <a class="nav-link" href="#">1:1 채팅&Q</a>
                                 </nav>
                             </div>
