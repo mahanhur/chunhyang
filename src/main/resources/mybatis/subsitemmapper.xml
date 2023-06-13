@@ -11,7 +11,7 @@
         SELECT * FROM subsitem
     </select>
     <insert id="insert" parameterType="subsitem">
-        INSERT INTO subsitem VALUES (subsitem_seq.NEXTVAL,#{subsitem_name},#{subsitem_price},#{subsitem_content},#{subsitem_img})
+        INSERT INTO subsitem VALUES (subsitem_seq.NEXTVAL,#{subsitem_name},#{subsitem_price},#{subsitem_content},#{subsitem_img},#{subsitem_cnt})
     </insert>
     <update id="update" parameterType="subsitem">
     </update>
