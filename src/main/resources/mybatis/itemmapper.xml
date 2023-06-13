@@ -19,6 +19,8 @@
         FROM item
         WHERE item_id = #{item_id}
     </select>
+
+
     <!--    id는 ItemMapper의 함수의 이름들이다-->
     <select id="selectall" resultType="item">
         SELECT *

@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<link rel="shortcut icon" href="/img/logo/logo.png" type="image/x-icon" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +36,8 @@
     <%--websocket--%>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
+
 
 </head>
 <body class="sb-nav-fixed">
@@ -84,10 +86,24 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
-                            <a class="nav-link collapsed" href="/cust/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
-                            <a class="nav-link collapsed" href="/point"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>포인트 관리</a>
-                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
-                            <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
+                            <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
+                    <%--상품관리 시작--%>
+                    <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#itemsCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                        <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
+                        상품관리
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="itemsCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link collapsed" href="/item/all"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
+                            <a class="nav-link collapsed" href="/order/all"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>주문 관리</a>
+                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>찜?장바구니? 관리</a>
+                        </nav>
+                    </div>
+                    <%--                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>--%>
+                    <%--상품관리 끝--%>
+
+                    <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
                             <a class="nav-link collapsed" href="/delivery"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>배송정보관리</a>
                             <%--구독 시작--%>
                             <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
@@ -104,12 +120,12 @@
                             </div>
                             <%--구독 끝--%>
                             <%--게시판 시작--%>
-                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth2" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
                                 <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
                                 게시판
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="pagesCollapseAuth2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                            <div class="collapse" id="pagesCollapseAuth1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="/board/notice">공지사항</a>
                                     <a class="nav-link" href="/board/fa">F&Q</a>
@@ -118,14 +134,14 @@
                             </div>
                             <%--게시판 끝--%>
                             <%--고객응대 시작--%>
-                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth3" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth2" aria-expanded="false" aria-controls="pagesCollapseAuth">
                                 <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
                                 고객문의사항
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="pagesCollapseAuth3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                            <div class="collapse" id="pagesCollapseAuth2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">QnA</a>
+                                    <a class="nav-link" href="/qna/qna">QnA</a>
                                     <a class="nav-link" href="#">1:1 채팅&Q</a>
                                 </nav>
                             </div>

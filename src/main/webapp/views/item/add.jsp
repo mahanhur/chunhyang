@@ -49,9 +49,10 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="category_id">카테고리:</label>
                         <select class="form-select" id="category_id" name="category_id">
-                            <option value="1">꽃</option>
-                            <option value="2">화분</option>
-                            <option value="3">비품</option>
+                            <option value="100">꽃다발</option>
+                            <option value="200">꽃</option>
+                            <option value="300">화병</option>
+                            <option value="400">비품</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -74,26 +75,42 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="flower_color">색상:</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="flower_color" class="form-control" id="flower_color" placeholder="Enter color">
-                        </div>
+
+                            <select class="form-select" id="flower_color" name="flower_color">
+                                <option value="red">red</option>
+                                <option value="orange">orange</option>
+                                <option value="yellow">yellow</option>
+                                <option value="green">green</option>
+                                <option value="blue">blue</option>
+                                <option value="navy">navy</option>
+                                <option value="purple">purple</option>
+                                <option value="pink">pink</option>
+                                <option value="white">white</option>
+                                <option value="etc">etc</option>
+                            </select>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="flower_type">종류:</label>
                         <select class="form-select" id="flower_type" name="flower_type">
-                            <option value="1">꽃다발</option>
-                            <option value="2">장미</option>
-                            <option value="3">튤립</option>
-                            <option value="4">작약</option>
-                            <option value="5">프리지아</option>
-                            <option value="6">라넌큘러스</option>
-                            <option value="7">거베라</option>
-                            <option value="8">리시안셔스</option>
-                            <option value="9">아카시아</option>
-                            <option value="10">수국</option>
-                            <option value="11">국화</option>
-                            <option value="12">백합</option>
-                            <option value="13">카라</option>
+                            <option value="감사">감사_꽃다발</option>
+                            <option value="축하">축하_꽃다발</option>
+                            <option value="사랑">사랑_꽃다발</option>
+                            <option value="장미">장미</option>
+                            <option value="작약">작약</option>
+                            <option value="카라">카라</option>
+                            <option value="프리지아">프리지아</option>
+                            <option value="거베라">거베라</option>
+                            <option value="수국">수국</option>
+                            <option value="해바라기">해바라기</option>
+                            <option value="백합">백합</option>
+                            <option value="라벤더">라벤더</option>
+                            <option value="리시안셔스">리시안셔스</option>
+                            <option value="유칼립투스">유칼립투스</option>
+                            <option value="아스틸베베">아스틸베베</option>
+                            <option value="청공작초">청공작초</option>
+                            <option value="투베로사">투베로사</option>
+                            <option value="스톡크">스톡크</option>
+                            <option value="기타">기타</option>
                         </select>
                     </div>
                     <div class="form-group">

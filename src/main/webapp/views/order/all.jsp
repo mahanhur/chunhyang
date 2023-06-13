@@ -48,56 +48,60 @@
                             <td><a href="/order/detail?order_id=${obj.order_id}">${obj.order_id}</a></td>
                             <td>${obj.cust_id}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#subinfodelmodal">주문상세</button>
+                                <a href="/order/detail?order_id=${obj.order_id}" type="button"  class="btn btn-outline-dark">주문상세</a>
                             </td>
                             <td><fmt:formatNumber value="${obj.order_amount}" pattern="###,###원"/></td>
                             <td><fmt:formatNumber value="${obj.user_point}" pattern="###,###원"/></td>
                             <td><fmt:formatNumber value="${obj.pay_amount}" pattern="###,###원"/></td>
-                            <td>${obj.order_name}<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#custinfomodal">정보상세</button></td>
+                            <td>${obj.order_name}<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#custinfomodal${obj.cust_id}">정보상세</button></td>
                             <td><fmt:formatDate  value="${obj.order_date}" pattern="yyyy-MM-dd" /></td>
 
                         </tr>
 
-<%--                        <!-- Delete Modal -->--%>
-<%--                        <div id="subinfodelmodal" class="modal" role="dialog">--%>
-<%--                            <div class="modal-dialog">--%>
-<%--                                <!-- Modal content-->--%>
-<%--                                <div class="modal-content">--%>
-<%--                                    <div class="modal-header">--%>
-<%--                                        <h4 class="modal-title">구독 신청정보 삭제</h4>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="modal-body">--%>
-<%--                                        <div class="card mb-4">--%>
-<%--                                            <div class="card-body" style="color:red;font-weight: bolder">[주의] 반드시 정확히 확인 후 처리하십시오.</div>--%>
-<%--                                        </div>--%>
-<%--                                        <form id="del_form">--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label class="control-label col-sm-4">구독 신청 번호:</label>--%>
-<%--                                                <div>${obj.subs_id}</div>--%>
-<%--                                                <input type="hidden" name="${obj.subs_id}" value="${obj.subs_id}">--%>
-<%--                                            </div><br/>--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label class="control-label col-sm-4">신청자 아이디:</label>--%>
-<%--                                                <div>${obj.cust_id}</div>--%>
-<%--                                            </div><br/>--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label class="control-label col-sm-4">구독 상품:</label>--%>
-<%--                                                <div>${obj.subsitem_id}</div>--%>
-<%--                                            </div><br/>--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label class="control-label col-sm-4">신청 일자:</label>--%>
-<%--                                                <div>${obj.subs_rdate}</div>--%>
-<%--                                            </div><br/><hr/>--%>
-<%--                                            <div>--%>
-<%--                                                <a href="/subs/subsinfodel?subs_id=${obj.subs_id}" class="btn btn-outline-danger" role="button">삭제</a>--%>
-<%--                                                <button type="button" id="modalclose_btn" class="btn btn-outline-secondary" data-dismiss="modal">취소</button>--%>
-<%--                                            </div>--%>
-<%--                                        </form>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <!-- Delete Modal END-->--%>
+                        <!-- Custinfo Modal -->
+                        <div id="custinfomodal${obj.cust_id}" class="modal" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">주문고객 상세정보</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card mb-4">
+                                            <div class="card-body" style="color:blue;font-weight: bolder">[안내] 주문고객 정보변경은 고객메뉴를 이용하시기 바랍니다.</div>
+                                        </div>
+                                        <form id="custinfo_form">
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">주문자 아이디:</label>
+                                                <div>${obj.cust_id}</div>
+                                            </div><br/>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">주문자 이름:</label>
+                                                <div>${obj.order_name}</div>
+                                            </div><br/>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">주문자 전화번호:</label>
+                                                <div>${obj.order_phone}</div>
+                                            </div><br/>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">주문자 주소:</label>
+                                                <div>${obj.od_addr1}</div><br/>
+                                                <div>${obj.od_addr2}</div>
+                                            </div><br/>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">주문자 메모:</label>
+                                                <div>${obj.ship_memo}</div><br/>
+                                            </div><br/>
+                                            <hr/>
+                                            <div>
+                                                <button type="button" id="modalclose_btn" class="btn btn-outline-secondary" data-dismiss="modal">닫기</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Custinfo Modal END-->
                     </c:forEach>
 
                     </tbody>

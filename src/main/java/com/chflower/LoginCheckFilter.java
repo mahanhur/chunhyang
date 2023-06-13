@@ -12,7 +12,7 @@ import java.util.Enumeration;
 
 @Slf4j
 public class LoginCheckFilter implements Filter {
-    private static final String[] whitelist = {"/","/checkid", "/register","/registerimpl", "/login","/loginimpl", "/logout","/css/*","/js/*","/webjars/*"};
+    private static final String[] whitelist = {"/","/checkid","/custcheckid", "/register","/registerimpl", "/login","/loginimpl", "/logout","/css/*","/js/*","/webjars/*"};
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

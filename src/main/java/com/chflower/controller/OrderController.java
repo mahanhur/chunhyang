@@ -1,11 +1,9 @@
 package com.chflower.controller;
 
-import com.chflower.dto.Item;
-import com.chflower.dto.Itemimg;
 import com.chflower.dto.Order;
-import com.chflower.service.ItemService;
-import com.chflower.service.ItemimgService;
-import com.chflower.service.OrderService;
+import com.chflower.dto.Orderdetail;
+import com.chflower.dto.Payment;
+import com.chflower.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +24,10 @@ public class OrderController {
     ItemimgService itemimgService;
     @Autowired
     OrderService orderService;
+    @Autowired
+    OrderdetailService orderdetailService;
+    @Autowired
+    PaymentService paymentService;
 
     @Value("${uploadimgdir}") /*이미지 저장경로*/
             String uploadimgdir;
@@ -55,24 +57,31 @@ public class OrderController {
         return "redirect:/item";
     }
     @RequestMapping("/detail")
-    public String detail(Model model, int item_id, Item item, Itemimg itemimg) throws Exception {
+    public String detail(Model model, int order_id, Order order, Orderdetail orderdetail,
+                         Payment payment) throws Exception {
+        order = orderService.get(order_id);
+        payment = paymentService.get(order_id);
+//        item = itemService.get(item_id);
 
-        item = itemService.get(item_id);
-        List<Itemimg> list= new ArrayList<>();
-        list = itemimgService.get();
-        log.info("---------------------"+list);
 
-        List<Itemimg> ilist = new ArrayList<>();
-        for (Itemimg obj : list) {
-            if (obj.getItem_id() == item_id) {
-                ilist.add(obj);
-            }
-        }
-            log.info("=================="+ilist);
+        List<Orderdetail> list = new ArrayList<>();
+        list = orderdetailService.selectOrderdetail(order_id);
+//
+//        List<Orderdetail> olist = new ArrayList<>();
+//
+//        for (Orderdetail obj : list) {
+//            if (obj.getOrder_id() == orderdetail.getOrder_id()) {
+//                olist.add(obj);
+//            }
+//        }
+        log.info("++++++++++++++++++"+list);
+//        log.info("=================="+olist);
 
-        model.addAttribute("detail", item);
-        model.addAttribute("img", itemimg);
-        model.addAttribute("ilist", ilist);
+
+        model.addAttribute("olist", list);
+        model.addAttribute("order", order);
+        model.addAttribute("payment", payment);
+//        model.addAttribute("item", item);
         model.addAttribute("center", dir+"detail");
         return "index";
     }
