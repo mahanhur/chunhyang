@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface AdminMapper extends CHMapper<Integer, Admin> {
 
     Integer makeid();
+    public Admin facelogin(String admin_loginkey);
 }

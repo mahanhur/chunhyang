@@ -41,26 +41,7 @@
 
     ----------------------------------------------------------------------------------------
 
-<%--    <script>--%>
-<%--        let index = {--%>
-<%--            init:function() {--%>
-<%--                $('#messagebtn').click( function() {--%>
-<%--                    $.ajax({--%>
-<%--                        url:'/message',--%>
-<%--                        action:'post',--%>
-<%--                        success: function(data) {--%>
-<%--                            --%>
-<%--                        }--%>
-<%--                    });--%>
-<%--                    --%>
-<%--                })--%>
-<%--            }--%>
-<%--        };--%>
-<%--        --%>
-<%--        $(function () {--%>
-<%--            index.init();--%>
-<%--        })--%>
-<%--    </script>--%>
+
 
 
 
@@ -253,25 +234,26 @@
                 <div class="card mb-4">
                     <div class="card-body" style="color:red;font-weight: bolder">메시지함입니당</div>
                 </div>
-
+                <div id="tableset">
                 <table id="datatablesSimple">
-                    <thead>
-                    <tr>
-                        <th>보낸이</th>
-                        <th>내용</th>
-                        <th>보낸시간</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="obj" items="${mrlist}" varStatus="status">
-                        <tr>
-                            <td>${obj.m_sender}</td>
-                            <td>${obj.m_content}</td>
-                            <td><fmt:formatDate  value="${obj.m_rdate}" pattern="yyyy-MM-dd HH:MM" /></td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
+<%--                    <thead>--%>
+<%--                    <tr>--%>
+<%--                        <th>보낸이</th>--%>
+<%--                        <th>내용</th>--%>
+<%--                        <th>보낸시간</th>--%>
+<%--                    </tr>--%>
+<%--                    </thead>--%>
+<%--                    <tbody>--%>
+<%--                    <c:forEach var="obj" items="${mrlist}" varStatus="status">--%>
+<%--                        <tr>--%>
+<%--                            <td>${obj.m_sender}</td>--%>
+<%--                            <td>${obj.m_content}</td>--%>
+<%--                            <td><fmt:formatDate  value="${obj.m_rdate}" pattern="yyyy-MM-dd HH:MM" /></td>--%>
+<%--                        </tr>--%>
+<%--                    </c:forEach>--%>
+<%--                    </tbody>--%>
                 </table>
+                </div>
                 <a href="#sendmodal" role="button" data-bs-toggle="modal" class="btn btn-outline-primary">보내기</a>
 
             </div>
@@ -279,6 +261,61 @@
     </div>
 </div>
 <!-- message Modal END-->
+
+
+<script>
+    let index = {
+        init:function() {
+            $('#messagebtn').click( function() {
+                $.ajax({
+                    url:'/message',
+                    dataType: 'json',
+                    type:'get',
+                    success: function(data) {
+                        alert("success");
+                        alert(data);
+                        //     let html = "<table id='datatablesSimple'>";
+                        //     html += "<thead>";
+                        //     html += "<tr>";
+                        //     html += "<th>보낸이</th>";
+                        //     html += "<th>내용</th>";
+                        //     html += "<th>보낸시간</th>";
+                        //     html += "</tr>";
+                        //     html += "</thead>";
+                        //     html += "<tbody>";
+                        // let parsedData = JSON.parse(data);
+                        // for (let i = 0; i < parsedData.length; i++) {
+                        //     let message = data[i];
+                        //     html += "<tr>";
+                        //     html += "<td>";
+                        //     html += message.m_sender;
+                        //     html += "</td>";
+                        //     html += "<td>";
+                        //     html += message.m_content;
+                        //     html += "</td>";
+                        //     html += "<td>";
+                        //     html += message.m_rdate;
+                        //     html += "</td>";
+                        //     html += "</tr>";
+                        // }
+                        // html += "</tbody>";
+                        // html += "</table>";
+                        // $('#tableset').html(html);
+                    },
+                    error: function() {
+                        alert("success");
+                        console.log('--------------------------------message ajax 오류입니다');
+                    }
+                });
+
+            })
+        }
+    };
+
+    $(function () {
+        index.init();
+    })
+</script>
 
 <!-- message send Modal -->
 <div id="sendmodal" class="modal" role="dialog">

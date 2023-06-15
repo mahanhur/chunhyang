@@ -61,6 +61,11 @@
                             <button type="button" class="btn btn-primary btn-block" id="login_btn">로그인</button>
                         </div>
                     </div>
+                    <div class="mt-1 mb-1">
+                        <div class="d-grid">
+                            <a href="/facelogin" type="button" class="btn btn-success btn-block" id="face_btn">얼굴로 로그인</a>
+                        </div>
+                    </div>
                 </form>
                         </div>
                     </div>

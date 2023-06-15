@@ -42,4 +42,8 @@ public class AdminService implements CHService<Integer, Admin> {
     public List<Admin> get() throws Exception {
         return mapper.selectall();
     }
+
+    public Admin facelogin(String admin_loginkey) {
+        return mapper.facelogin(admin_loginkey);
+    }
 }

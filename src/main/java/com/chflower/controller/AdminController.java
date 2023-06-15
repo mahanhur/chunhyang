@@ -2,8 +2,12 @@ package com.chflower.controller;
 
 import com.chflower.dto.Admin;
 import com.chflower.service.AdminService;
+import com.chflower.util.CFRCelebrityUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +25,11 @@ public class AdminController {
     private BCryptPasswordEncoder encoder;
     @Autowired
     AdminService adminservice;
+    @Autowired
+    CFRCelebrityUtil celebrityUtil;
     String dir = "admin/";
+    @Value("${uploadimgdir}")
+    String imgpath;
 
     @RequestMapping("/admin")
     public String all(Model model) throws Exception {
@@ -65,6 +73,14 @@ public class AdminController {
         model.addAttribute("center",  dir+"login");
         return "index";
     }
+
+    @RequestMapping("/facelogin")
+    public String facelogin(Model model,String redirectURL){
+        model.addAttribute("center",  dir+"facelogin");
+        return "index";
+    }
+
+
 
     @RequestMapping("/admin/loginimpl")
     public String loginimpl(Model model, Integer admin_id, String admin_pwd,String requestURI,

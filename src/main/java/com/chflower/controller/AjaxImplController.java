@@ -3,17 +3,26 @@ package com.chflower.controller;
 import com.chflower.dto.Admin;
 import com.chflower.dto.Cal;
 import com.chflower.dto.Cust;
+import com.chflower.dto.Message;
 import com.chflower.service.AdminService;
 import com.chflower.service.CustService;
+import com.chflower.service.MessageService;
+import com.chflower.util.CFRCelebrityUtil;
 import com.chflower.util.DateUtil;
+import com.chflower.util.FileUploadUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -28,6 +37,13 @@ public class AjaxImplController {
     AdminService adminService;
     @Autowired
     CustService custservice;
+    @Autowired
+    MessageService messageService;
+    @Autowired
+    CFRCelebrityUtil celebrityUtil;
+
+    @Value("${uploadimgdir}")
+    String imgdir;
     @RequestMapping("/checkid")
     public Object checkid(String id) throws Exception{
         int result = 0;
@@ -100,6 +116,56 @@ public class AjaxImplController {
             ja.add("01:00");
         }
         return ja;
+    }
+
+    @RequestMapping("/message")
+    @ResponseBody
+    public Object message(Model model, HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("loginadmin");
+
+        if (admin != null) {
+            String m_receiver = admin.getAdmin_name();
+            List<Message> mrlist = messageService.selectreceiver(m_receiver);
+
+            JSONArray jsonArray = new JSONArray();
+            for (Message message : mrlist) {
+                JSONObject jsonMessage = new JSONObject();
+                jsonMessage.put("m_sender", message.getM_sender());
+                jsonMessage.put("m_content", message.getM_content());
+                jsonMessage.put("m_rdate", message.getM_rdate());
+                jsonArray.add(jsonMessage);
+            }
+
+            return jsonArray.toString();
+        }
+
+        return null;
+    }
+
+    @RequestMapping("/saveimg")
+    public String saveimg(MultipartFile file){
+        String filename = file.getOriginalFilename();
+        FileUploadUtil.saveFile(file, imgdir);
+        return filename;
+    }
+
+
+    @RequestMapping("/faceloginimpl")
+    public String faceloginimpl(Model model, HttpSession session, String imgname) throws Exception {
+        //NCP에 요청한다
+        JSONObject result = (JSONObject) celebrityUtil.getResult(imgdir,imgname);
+
+        //결과를 깐다
+        JSONArray faces = (JSONArray) result.get("faces");
+        JSONObject obj = (JSONObject) faces.get(0);
+        JSONObject celebrity = (JSONObject) obj.get("celebrity");
+        String admin_loginkey = (String) celebrity.get("value");
+
+        Admin admin = adminService.facelogin(admin_loginkey);
+        session.setAttribute("loginadmin", admin);
+
+        //결과를 보낸다
+        return "redirect:/";
     }
 
 }

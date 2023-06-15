@@ -103,16 +103,6 @@ public class MainController {
         model.addAttribute("center",  "callcenter");
         return "index";
     }
-//    @RequestMapping("/message")
-//    public String message(Model model, HttpSession session){
-//        Admin admin = (Admin) session.getAttribute("loginadmin");
-//        String m_receiver = admin.getAdmin_name();
-//
-//        List<Message> mrlist = messageService.selectreceiver(m_receiver);
-//        model.addAttribute("mrlist", mrlist);
-//
-//        return "index";
-//    }
 
     @RequestMapping("/messagesend")
     public String messagesend(Model model, HttpSession session, String m_receiver, String m_content){
