@@ -53,7 +53,6 @@
                     $('#imgname').val('ma.jpg');
                     let imgname = 'ma.jpg'
                     // let imgname = data
-                    alert(imgname);
                     $.ajax({
                         type:'post',
                         url:'/faceloginimpl',
