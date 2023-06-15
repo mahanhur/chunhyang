@@ -54,6 +54,7 @@
                             <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.noti_udate}" /></td>
                         </tr>
                     </c:forEach>
+
                     </tbody>
                 </table>
             </div>

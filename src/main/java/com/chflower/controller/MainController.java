@@ -7,6 +7,7 @@ import com.chflower.service.DelinfoService;
 import com.chflower.service.PointService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,8 @@ public class MainController {
     DelinfoService delinfoService;
     @Autowired
     PointService pointService;
+    @Value("${adminserver}")
+    String adminserver;
     @RequestMapping("/")
     public String main(Model model){
         Delinfo count;
@@ -82,6 +85,13 @@ public class MainController {
             throw new RuntimeException(e);
         }
         model.addAttribute("center", "point");
+        return "index";
+    }
+
+    @RequestMapping("/callcenter")
+    public String callcenter(Model model){
+        model.addAttribute("adminserver",adminserver);
+        model.addAttribute("center",  "callcenter");
         return "index";
     }
 }
