@@ -6,6 +6,7 @@ import com.chflower.service.MessageService;
 import com.chflower.service.PointService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,8 @@ public class MainController {
     PointService pointService;
     @Autowired
     MessageService messageService;
+    @Value("${adminserver}")
+    String adminserver;
     @RequestMapping("/")
     public String main(Model model,HttpSession session){
         Delinfo count;
@@ -33,8 +36,6 @@ public class MainController {
         model.addAttribute("count", count);
 
         Admin admin = (Admin) session.getAttribute("loginadmin");
-        log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        log.info(String.valueOf(admin));
         if(admin != null) {
             String m_receiver = admin.getAdmin_name();
             List<Message> mrlist = messageService.selectreceiver(m_receiver);
@@ -93,6 +94,13 @@ public class MainController {
             throw new RuntimeException(e);
         }
         model.addAttribute("center", "point");
+        return "index";
+    }
+
+    @RequestMapping("/callcenter")
+    public String callcenter(Model model){
+        model.addAttribute("adminserver",adminserver);
+        model.addAttribute("center",  "callcenter");
         return "index";
     }
 //    @RequestMapping("/message")
