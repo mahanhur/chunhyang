@@ -1,14 +1,15 @@
 package com.chflower.mapper;
 
-import com.chflower.dto.Admin;
+import com.chflower.dto.Message;
 import com.chflower.frame.CHMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
-public interface AdminMapper extends CHMapper<Integer, Admin> {
+public interface MessageMapper extends CHMapper<Integer, Message> {
 
-    Integer makeid();
-    public Admin facelogin(String admin_loginkey);
+    public List<Message> selectreceiver(String m_receiver);
 }

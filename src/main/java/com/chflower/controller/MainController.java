@@ -1,9 +1,8 @@
 package com.chflower.controller;
 
-import com.chflower.dto.Delinfo;
-import com.chflower.dto.Point;
-import com.chflower.dto.Subs;
+import com.chflower.dto.*;
 import com.chflower.service.DelinfoService;
+import com.chflower.service.MessageService;
 import com.chflower.service.PointService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,13 +25,22 @@ public class MainController {
     DelinfoService delinfoService;
     @Autowired
     PointService pointService;
+    @Autowired
+    MessageService messageService;
     @Value("${adminserver}")
     String adminserver;
     @RequestMapping("/")
-    public String main(Model model){
+    public String main(Model model,HttpSession session){
         Delinfo count;
         count = delinfoService.count();
         model.addAttribute("count", count);
+
+        Admin admin = (Admin) session.getAttribute("loginadmin");
+        if(admin != null) {
+            String m_receiver = admin.getAdmin_name();
+            List<Message> mrlist = messageService.selectreceiver(m_receiver);
+            model.addAttribute("mrlist", mrlist);
+        }
         return "index";
     }
 
@@ -93,5 +102,21 @@ public class MainController {
         model.addAttribute("adminserver",adminserver);
         model.addAttribute("center",  "callcenter");
         return "index";
+    }
+
+    @RequestMapping("/messagesend")
+    public String messagesend(Model model, HttpSession session, String m_receiver, String m_content){
+        Admin admin = (Admin) session.getAttribute("loginadmin");
+        String m_sender = admin.getAdmin_name();
+
+        Message message = new Message(m_sender, m_receiver, m_content);
+
+        try {
+            messageService.register(message);
+        } catch (Exception e) {
+            throw new RuntimeException("메시지send 오류입니다");
+        }
+
+        return "redirect:/";
     }
 }

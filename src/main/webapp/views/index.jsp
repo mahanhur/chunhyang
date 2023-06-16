@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -37,6 +39,10 @@
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 
+    ----------------------------------------------------------------------------------------
+
+
+
 
 
 </head>
@@ -65,6 +71,8 @@
                     </c:when>
                     <c:otherwise>
                         <h6><div style="color: white">${loginadmin.admin_name}</div></h6>
+                        <a class="nav-link" id="messagebtn" href="#messagemodal" role="button" data-bs-toggle="modal">
+                            <i class="fas fa-message fa-fw"></i></a>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-user fa-fw"></i></a>
@@ -213,3 +221,127 @@
 
 </body>
 </html>
+
+<!-- message receive Modal -->
+<div id="messagemodal" class="modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">메시지함</h4>
+            </div>
+            <div class="modal-body">
+                <div class="card mb-4">
+                    <div class="card-body" style="color:red;font-weight: bolder">메시지함입니당</div>
+                </div>
+                <div id="tableset">
+                <table id="datatablesSimple">
+<%--                    <thead>--%>
+<%--                    <tr>--%>
+<%--                        <th>보낸이</th>--%>
+<%--                        <th>내용</th>--%>
+<%--                        <th>보낸시간</th>--%>
+<%--                    </tr>--%>
+<%--                    </thead>--%>
+<%--                    <tbody>--%>
+<%--                    <c:forEach var="obj" items="${mrlist}" varStatus="status">--%>
+<%--                        <tr>--%>
+<%--                            <td>${obj.m_sender}</td>--%>
+<%--                            <td>${obj.m_content}</td>--%>
+<%--                            <td><fmt:formatDate  value="${obj.m_rdate}" pattern="yyyy-MM-dd HH:MM" /></td>--%>
+<%--                        </tr>--%>
+<%--                    </c:forEach>--%>
+<%--                    </tbody>--%>
+                </table>
+                </div>
+                <a href="#sendmodal" role="button" data-bs-toggle="modal" class="btn btn-outline-primary">보내기</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- message Modal END-->
+
+
+<script>
+    let index = {
+        init:function() {
+            $('#messagebtn').click( function() {
+                $.ajax({
+                    url:'/message',
+                    dataType: 'json',
+                    type:'get',
+                    success: function(data) {
+                        alert("success");
+                        alert(data);
+                        //     let html = "<table id='datatablesSimple'>";
+                        //     html += "<thead>";
+                        //     html += "<tr>";
+                        //     html += "<th>보낸이</th>";
+                        //     html += "<th>내용</th>";
+                        //     html += "<th>보낸시간</th>";
+                        //     html += "</tr>";
+                        //     html += "</thead>";
+                        //     html += "<tbody>";
+                        // let parsedData = JSON.parse(data);
+                        // for (let i = 0; i < parsedData.length; i++) {
+                        //     let message = data[i];
+                        //     html += "<tr>";
+                        //     html += "<td>";
+                        //     html += message.m_sender;
+                        //     html += "</td>";
+                        //     html += "<td>";
+                        //     html += message.m_content;
+                        //     html += "</td>";
+                        //     html += "<td>";
+                        //     html += message.m_rdate;
+                        //     html += "</td>";
+                        //     html += "</tr>";
+                        // }
+                        // html += "</tbody>";
+                        // html += "</table>";
+                        // $('#tableset').html(html);
+                    },
+                    error: function() {
+                        alert("success");
+                        console.log('--------------------------------message ajax 오류입니다');
+                    }
+                });
+
+            })
+        }
+    };
+
+    $(function () {
+        index.init();
+    })
+</script>
+
+<!-- message send Modal -->
+<div id="sendmodal" class="modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">메시지함</h4>
+            </div>
+            <div class="modal-body">
+                <div class="card mb-4">
+                    <div class="card-body" style="color:red;font-weight: bolder">메시지함입니당</div>
+                </div>
+                <form id="message_form" action="/messagesend" method="post">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">수령인 :</label>
+                        <input name="m_receiver"/>
+                    </div><br/>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">내용 :</label>
+                        <input name="m_content"/>
+                    </div><br/>
+                    <button class="btn btn-outline-primary" type="submit">보내기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- send Modal END-->

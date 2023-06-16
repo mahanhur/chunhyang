@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chflower.mapper.MessageMapper">
+
+    <select id="selectall" resultType="message">
+        SELECT * FROM message
+    </select>
+
+    <select id="select" parameterType="int" resultType="message">
+        SELECT * FROM message WHERE m_id=#{m_id}
+    </select>
+
+    <select id="selectsender" parameterType="string" resultType="message">
+        SELECT * FROM message WHERE m_sender=#{m_sender}
+    </select>
+
+    <select id="selectreceiver" parameterType="string" resultType="message">
+        SELECT * FROM message WHERE m_receiver=#{m_receiver}
+    </select>
+
+    <insert id="insert" parameterType="message">
+        INSERT INTO message VALUES(message_seq.nextval, #{m_sender}, #{m_receiver}, #{m_content}, sysdate, 0, null)
+    </insert>
+
+    <update id="update" parameterType="message">
+    </update>
+
+    <update id="checkupdate" parameterType="int">
+        UPDATE message SET m_check = 1, m_checktime = sysdate WHERE m_id = #{m_id}
+    </update>
+
+</mapper>
