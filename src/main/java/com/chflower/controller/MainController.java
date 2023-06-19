@@ -104,6 +104,13 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/chart")
+    public String chart(Model model){
+        model.addAttribute("adminserver",adminserver);
+        model.addAttribute("center",  "chart");
+        return "index";
+    }
+
     @RequestMapping("/messagesend")
     public String messagesend(Model model, HttpSession session, String m_receiver, String m_content){
         Admin admin = (Admin) session.getAttribute("loginadmin");
