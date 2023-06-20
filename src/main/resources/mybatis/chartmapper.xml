@@ -17,7 +17,7 @@
         FROM subsinfo
         GROUP BY subsitem_id
         ORDER BY COUNT(subs_id) DESC
-        ) WHERE ROWNUM <= 10
+        ) WHERE ROWNUM <![CDATA[<=]]> 10
     </select>
 
     <select id="subsamounttop10" resultType="chart">
@@ -42,7 +42,7 @@
         from orderdetail
         group by item_id
         order by sum(order_cnt) desc
-        ) where rownum <= 10
+        ) where rownum <![CDATA[<=]]> 10
     </select>
 
     <select id="itemamounttop10" resultType="chart">
