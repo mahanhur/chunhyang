@@ -6,6 +6,30 @@
 
 <script>
 
+  $(document).ready(function () {
+    $.ajax({
+      url: '/getdata',
+      success: function (count) {
+        $('#all').html(count.totalcount);
+        $('#readytoshipping').html(count.count1);
+        $('#onshipping').html(count.count2);
+        $('#completetoshipping').html(count.count3);
+      }
+    });
+    setInterval(function () {
+      $.ajax({
+        url: '/getdata',
+        success: function (count) {
+          $('#all').html(count.totalcount);
+          $('#readytoshipping').html(count.count1);
+          $('#onshipping').html(count.count2);
+          $('#completetoshipping').html(count.count3);
+        }
+      })
+    }, 3000)
+  });
+
+
   var calFunc ={
 
     calcDate: function(arg,calendar){
@@ -208,7 +232,7 @@
       <div class="card bg text-black mb-4">
         <div class="card-body"><i class="fas fa-shop"></i> 전체</div>
         <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="/delivery"><span id="all">${count.totalcount}</span></a>
+          <a class="small text-black stretched-link" href="/delivery"><span id="all"></span></a>
           <div class="small text-black"><i class="fas fa-angle-right"></i></div>
         </div>
       </div>
@@ -217,7 +241,7 @@
       <div class="card bg text-black mb-4">
         <div class="card-body"><i class="fas fa-person"></i> 배송대기</div>
         <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="/delivery?del_state=배송대기"><span id="readytoshipping">${count.count1}</span></a>
+          <a class="small text-black stretched-link" href="/delivery?del_state=배송대기"><span id="readytoshipping"></span></a>
           <div class="small text-black"><i class="fas fa-angle-right"></i></div>
         </div>
       </div>
@@ -226,7 +250,7 @@
       <div class="card bg text-black mb-4">
         <div class="card-body"><i class="fas fa-truck-fast"></i> 배송중</div>
         <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="/delivery?del_state=배송중"><span id="onshipping">${count.count2}</span></a>
+          <a class="small text-black stretched-link" href="/delivery?del_state=배송중"><span id="onshipping"></span></a>
           <div class="small text-black"><i class="fas fa-angle-right"></i></div>
         </div>
       </div>
@@ -235,7 +259,7 @@
       <div class="card bg text-black mb-4">
         <div class="card-body"><i class="fas fa-box"></i> 배송완료</div>
         <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="/delivery?del_state=배송완료"><span id="completetoshipping">${count.count3}</span></a>
+          <a class="small text-black stretched-link" href="/delivery?del_state=배송완료"><span id="completetoshipping"></span></a>
           <div class="small text-black"><i class="fas fa-angle-right"></i></div>
         </div>
       </div>

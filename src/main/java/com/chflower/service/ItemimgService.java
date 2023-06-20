@@ -40,5 +40,7 @@ public class ItemimgService implements CHService<Integer, Itemimg> {
     public List<Itemimg> get() throws Exception {
         return mapper.selectall();
     }
-
+    public List<Itemimg> getimg(int item_id) throws Exception {
+        return mapper.selectimg(item_id);
+    }
 }
