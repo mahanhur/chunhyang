@@ -48,18 +48,49 @@
     <%--websocket--%>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-
+    <%-- font --%>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     ----------------------------------------------------------------------------------------
-
-
-
-
+    <style>
+        * {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        .nav-link{
+            padding: 0px;
+        }
+        .page_header_item{
+            background: #F9F7F6;
+            border-left: 0.5em solid #E6E6FA;
+            padding: 0.5em;
+            margin: 15px 0 5px 0;
+            font-size: 1.5em;
+            color: #4d5154;
+        }
+        .page_header_cust{
+            background: #F9F7F6;
+            border-left: 0.5em solid #CEF6E3;
+            padding: 0.5em;
+            margin: 15px 0 5px 0;
+            font-size: 1.5em;
+            color: #4d5154;
+        }
+        .page_header_board{
+            background: #F9F7F6;
+            border-left: 0.5em solid #EFBBBB;
+            padding: 0.5em;
+            margin: 15px 0 5px 0;
+            font-size: 1.5em;
+            color: #4d5154;
+        }
+    </style>
 
 </head>
 <body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #e6e6fa; height: 80px;">
+<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #E6E6FA; height: 60px;">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/"><img src="/uimg/logo1_admin.png" width="120px" height="80px" ></a>
+    <a class="navbar-brand" href="/"><img src="/uimg/logo1_admin.png" width="160px"></a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -107,7 +138,7 @@
                     <div class="sb-sidenav-menu-heading">직원관리메뉴</div>
                     <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
                     </c:if>
-                    <div class="sb-sidenav-menu-heading"><i class="fas fa-user" style="color:purple"></i> 고객관리메뉴</div>
+                    <div class="sb-sidenav-menu-heading"><i class="fas fa-user" style="color:#6a5acd"></i> 고객관리메뉴</div>
                     <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"></div> 회원 관리</a>
                     <a class="nav-link" href="/qna/qna"><div class="sb-nav-link-icon"></div> QnA</a>
                     <a class="nav-link" href="/callcenter"><div class="sb-nav-link-icon"></div> 1:1 채팅</a>
@@ -146,7 +177,7 @@
                     <div class="sb-sidenav-menu-heading"><i class="fas fa-clipboard-list"></i> 게시판관리메뉴</div>
                     <%--게시판 시작--%>
                         <a class="nav-link collapsed" href="/board/notice"><div class="sb-nav-link-icon"></div> 공지사항</a>
-                        <a class="nav-link collapsed" href="/board/fa"><div class="sb-nav-link-icon"></div> F&Q</a>
+                        <a class="nav-link collapsed" href="/board/fa"><div class="sb-nav-link-icon"></div> FAQ</a>
                         <a class="nav-link collapsed" href="/board/event"><div class="sb-nav-link-icon"></div> 이벤트</a>
                     <%--게시판 끝--%>
 

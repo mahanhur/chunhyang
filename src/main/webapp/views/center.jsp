@@ -287,7 +287,6 @@
 </script>
 
 <div class="container-fluid px-4">
-  <h1 class="mt-4">경영정보시스템</h1>
   <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">오늘도 당신을 응원합니다! </li>
   </ol>

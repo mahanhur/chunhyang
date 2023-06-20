@@ -24,7 +24,10 @@
     })
 </script>
 
-    <div class="container-fluid col-lg-8 px-4"></br>
+
+    <div class="container-fluid px-4">
+        <p class="page_header_board"><strong>FAQ</strong></p>
+
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title" style="text-align: center">FAQ 등록</h3>

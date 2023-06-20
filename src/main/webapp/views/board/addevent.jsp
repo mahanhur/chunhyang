@@ -23,8 +23,9 @@
         addevent.init();
     })
 </script>
-
-    <div class="container-fluid col-lg-8 px-4"></br>
+<div class="container-fluid px-4">
+    <p class="page_header_board"><strong>이벤트</strong></p>
+<%--    <div class="container-fluid col-lg-8 px-4"></br>--%>
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title" style="text-align: center">이벤트 등록</h3>

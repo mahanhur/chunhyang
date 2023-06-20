@@ -64,11 +64,7 @@
 
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">배송정보 화면</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>
-            <li class="breadcrumb-item active">#</li>
-        </ol>
+        <p class="page_header_item"><strong>배송정보 화면</strong></p>
         <div class="card mb-4">
             <div class="card-body">
                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#subsitemaddmodal">구독상품 추가</button>

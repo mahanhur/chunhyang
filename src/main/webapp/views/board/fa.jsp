@@ -17,7 +17,7 @@
 
 <main>
     <div class="container-fluid px-4">
-        <h3 class="mt-4 alert alert-success"><strong>Board</strong>: FAQ</h3>
+        <p class="page_header_board"><strong>FAQ</strong></p>
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 서비스화면 담당자들은 작성된 FAQ들을 서비스화면에 이쁘게 출력 바랍니다.</p>

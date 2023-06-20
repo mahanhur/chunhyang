@@ -16,7 +16,7 @@
 </script>
 
     <div class="container-fluid px-4">
-        <h3 class="mt-4 alert alert-success"><strong>Board</strong>: Event</h3>
+        <p class="page_header_board"><strong>이벤트</strong></p>
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 이벤트 상품 및 안내 사항들은 직원분들께서는 숙지해 바랍니다</p>
