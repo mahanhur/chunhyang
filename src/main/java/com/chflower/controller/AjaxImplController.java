@@ -25,7 +25,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -161,11 +163,23 @@ public class AjaxImplController {
         JSONObject celebrity = (JSONObject) obj.get("celebrity");
         String admin_loginkey = (String) celebrity.get("value");
 
+        log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        log.info(admin_loginkey);
+
         Admin admin = adminService.facelogin(admin_loginkey);
+
         session.setAttribute("loginadmin", admin);
 
         //결과를 보낸다
         return "redirect:/";
+    }
+
+    @RequestMapping("/getservertime")
+    public Object getservertime() {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = dateFormat.format(date);
+        return formattedDate;
     }
 
 }

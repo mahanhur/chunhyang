@@ -1,8 +1,10 @@
 package com.chflower.controller;
 
+import com.chflower.dto.Delinfo;
 import com.chflower.dto.Subs;
 import com.chflower.dto.Subsdetail;
 import com.chflower.dto.Subsitem;
+import com.chflower.service.DelinfoService;
 import com.chflower.service.SubsService;
 import com.chflower.service.SubsdetailService;
 import com.chflower.service.SubsitemService;
@@ -34,6 +36,8 @@ public class SubsController {
     SubsService subsService;
     @Autowired
     SubsdetailService subsdetailService;
+    @Autowired
+    DelinfoService delinfoService;
 
     String dir = "subs";
     @RequestMapping("/subsitem")
@@ -93,13 +97,18 @@ public class SubsController {
     public String subsdetail(Model model, Integer subs_id){
         List<Subsdetail> list = null;
         Subsdetail subsdetail;
+        List<Delinfo> dlist = null;
         try {
             if(subs_id != null ) {
                 list = subsdetailService.get2(subs_id);
                 model.addAttribute("sdlist",list);
+                dlist = delinfoService.get();
+                model.addAttribute("dlist", dlist);
             } else {
                 list = subsdetailService.get();
                 model.addAttribute("sdlist",list);
+                dlist = delinfoService.get();
+                model.addAttribute("dlist", dlist);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);

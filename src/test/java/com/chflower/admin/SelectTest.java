@@ -15,16 +15,7 @@ class SelectTest {
     AdminService service;
     @Test
 void contextLoads() {
-        Admin a = null;
-    try {
-        a = service.get(10042);
-        log.info("----------------------------------------------------");
-        log.info(a.toString());
-        log.info("----------------------------------------------------");
-    } catch (Exception e) {
-        log.info("조회 에러......");
-        e.printStackTrace();
-        }
+        service.facelogin("마동석");
     }
 }
 

@@ -14,5 +14,4 @@ import java.util.List;
 public interface DelinfoMapper extends CHMapper<Integer, Delinfo> {
     public List<Delinfo> center(String del_state) ;
     public Delinfo count();
-
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chflower.mapper.ChartMapper">
+
+    <select id="select" parameterType="Integer" resultType="chart">
+    </select>
+
+    <select id="selectall" resultType="chart">
+    </select>
+
+    <select id="subscnttop10" resultType="chart">
+        SELECT rownum, subsitem_id, cnt
+        FROM (
+        SELECT subsitem_id, COUNT(subs_id) AS cnt
+        FROM subsinfo
+        GROUP BY subsitem_id
+        ORDER BY COUNT(subs_id) DESC
+        ) WHERE ROWNUM <= 10
+    </select>
+
+    <select id="subsamounttop10" resultType="chart">
+        select rownum, s.subsitem_id, s.subsitem_name, s.cnt as subs_cnt, s.subsitem_price, s.amount as subs_amount
+        from (
+                 select c.subsitem_id, t.subsitem_name, c.cnt, t.subsitem_price, c.cnt*t.subsitem_price as amount
+                 from (
+                          SELECT subsitem_id, COUNT(subs_id) AS cnt
+                          FROM subsinfo
+                          GROUP BY subsitem_id
+                      ) c left join subsitem t on c.subsitem_id = t.subsitem_id
+                 order by amount desc
+             ) s
+    </select>
+
+
+
+    <select id="itemcnttop10" resultType="chart">
+        select rownum, item_id, cnt
+        from (
+        select item_id, sum(order_cnt) as cnt
+        from orderdetail
+        group by item_id
+        order by sum(order_cnt) desc
+        ) where rownum <= 10
+    </select>
+
+    <select id="itemamounttop10" resultType="chart">
+        select rownum, s.item_id, s.item_name, s.cnt as item_cnt , s.item_price, s.amount as item_amount
+        from(
+                select i.item_id, t.item_name, i.cnt, t.item_price, i.cnt*t.item_price as amount
+                from (select item_id, sum(order_cnt) as cnt
+                      from orderdetail
+                      group by item_id
+                     ) i left join item t on i.item_id = t.item_id
+                order by amount desc
+            ) s
+    </select>
+
+</mapper>

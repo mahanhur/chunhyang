@@ -416,9 +416,15 @@
 
 
     <div class="container-fluid">
-
+        <h3 class="mt-4 alert alert-success"><strong>춘향 서비스페이지 접속 분석차트</strong>: 실시간 접속로그 분석</h3>
+        <div class="card mb-4">
+            <div class="card-body">
+                <p>ㅇ 구독/꽃/비품 각 상품별 상세페이지 접속 로그를 실시간으로 추적한 차트입니다. </p>
+                <hr/>
+            </div>
+        </div>
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">춘향 서비스페이지 접속 분석차트</h1>
+<%--        <h1 class="h3 mb-2 text-gray-800">춘향 서비스페이지 접속 분석차트</h1>--%>
         <br/>
 
         <div class="card shadow mb-4">
