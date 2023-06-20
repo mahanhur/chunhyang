@@ -100,7 +100,7 @@
 </nav>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <c:if test="${loginadmin.admin_level == 1}">
@@ -141,7 +141,6 @@
                         </nav>
                     </div>
                     <%--상품관리 끝--%>
-                    <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카테고리</a>
                     <a class="nav-link collapsed" href="/delivery"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>배송정보관리</a>
 
                     <div class="sb-sidenav-menu-heading">게시판관리메뉴</div>

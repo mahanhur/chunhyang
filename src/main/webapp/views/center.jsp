@@ -305,38 +305,38 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-xl-3 col-md-6">
-                    <div class="card bg-success text-white mb-4">
-                      <div class="card-body"><i class="fas fa-shop"></i> 전체</div>
-                      <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a class="small text-white stretched-link" href="/delivery"><div id="all">0</div></a>
-                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    <div class="card bg text-black mb-4">
+                      <div class="card-body"><span id="all" style="font-size: 400%">0</span></div>
+                      <div class="card-footer d-flex align-items-center justify-content-between bg-info">
+                      <a class="small text-black stretched-link" href="/delivery"><i class="fas fa-shop"></i> 전체</a>
+                      <div class="small text-black"><i class="fas fa-angle-right"></i></div>
                     </div>
                   </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
-                  <div class="card bg-danger text-white mb-4">
-                    <div class="card-body"><i class="fas fa-person"></i> 배송대기</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a class="small text-white stretched-link" href="/delivery?del_state=배송대기"><span id="readytoshipping">0</span></a>
-                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                  <div class="card bg text-black mb-4">
+                    <div class="card-body"><span id="readytoshipping" style="font-size: 400%">0</span></div>
+                    <div class="card-footer d-flex align-items-center justify-content-between bg-danger">
+                      <a class="small text-black stretched-link" href="/delivery?del_state=배송대기"><i class="fas fa-person"></i> 배송대기</a>
+                      <div class="small text-black"><i class="fas fa-angle-right"></i></div>
                     </div>
                   </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
-                  <div class="card bg-primary text-white mb-4">
-                    <div class="card-body"><i class="fas fa-truck-fast"></i> 배송중</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a class="small text-white stretched-link" href="/delivery?del_state=배송중"><span id="onshipping">0</span></a>
-                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                  <div class="card bg text-black mb-4">
+                    <div class="card-body"><span id="onshipping" style="font-size: 400%">0</span></div>
+                    <div class="card-footer d-flex align-items-center justify-content-between bg-warning">
+                      <a class="small text-black stretched-link" href="/delivery?del_state=배송중"><i class="fas fa-truck-fast"></i> 배송중</a>
+                      <div class="small text-black"><i class="fas fa-angle-right"></i></div>
                     </div>
                   </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
-                  <div class="card bg-success text-white mb-4">
-                    <div class="card-body"><i class="fas fa-box"></i> 배송완료</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a class="small text-white stretched-link" href="/delivery?del_state=배송완료"><span id="completetoshipping">0</span></a>
-                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                  <div class="card bg text-black mb-4">
+                    <div class="card-body"><span id="completetoshipping" style="font-size: 400%">0</span></div>
+                    <div class="card-footer d-flex align-items-center justify-content-between bg-warning">
+                      <a class="small text-black stretched-link" href="/delivery?del_state=배송완료"><i class="fas fa-box"></i> 배송완료</a>
+                      <div class="small text-black"><i class="fas fa-angle-right"></i></div>
                     </div>
                   </div>
                 </div>
