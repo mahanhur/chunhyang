@@ -74,7 +74,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-7">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
-              <div class="card-header"><h3 class="text-center font-weight-light my-4">노비 등록</h3></div>
+              <div class="card-header"><h3 class="text-center font-weight-light my-4">직원 등록</h3></div>
               <div class="card-body">
                 <div id="container">
                 <form id="register_form">
@@ -89,8 +89,8 @@
 <%--                    </div>--%>
                     <div class="col-md-6">
                       <div class="form-floating mb-3 mb-md-0">
-                        <input class="form-control" id="admin_name" type="text" name="admin_name" placeholder="노비이름을 입력하세요" />
-                        <label for="admin_name">노비명</label>
+                        <input class="form-control" id="admin_name" type="text" name="admin_name" placeholder="직원이름을 입력하세요" />
+                        <label for="admin_name">직원명</label>
                       </div>
                     </div>
                   </div>
@@ -114,21 +114,21 @@
                   <div>
                     <select class="form-select" id="admin_level" name="admin_level">
                       <option id="opt" vlaue="">업무권한</option>
-                      <option value="1">상노비</option>
-                      <option value="2">중노비</option>
-                      <option value="3">하노비</option>
+                      <option value="1">Level: 1</option>
+                      <option value="2">Level: 2</option>
+                      <option value="3">Level: 3</option>
                     </select>
                   </div>
                   <div class="mt-4 mb-0">
                     <div class="d-grid">
-                      <button type="button" class="btn btn-primary btn-block" id="register_btn">노비 등록</button>
+                      <button type="button" class="btn btn-primary btn-block" id="register_btn">직원 등록</button>
                     </div>
                   </div>
                 </form>
                 </div>
               </div>
               <div class="card-footer text-center py-3">
-                <div class="small"><a href="/admin/login">이미 노비입니까? 로그인 하거라</a></div>
+                <div class="small"><a href="/admin/login">이미 직원입니까? 로그인으로 이동</a></div>
               </div>
             </div>
           </div>
