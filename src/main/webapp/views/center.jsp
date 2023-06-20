@@ -305,7 +305,8 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-xl-3 col-md-6">
-                    <div class="card bg-success text-white mb-4">
+<%--                  bg-success--%>
+                    <div class="card text-white mb-4" style="background-color: 	#a9a9a9">
                       <div class="card-body"><i class="fas fa-shop"></i> 전체</div>
                       <div class="card-footer d-flex align-items-center justify-content-between">
                       <a class="small text-white stretched-link" href="/delivery"><div id="all">0</div></a>
@@ -314,7 +315,7 @@
                   </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
-                  <div class="card bg-danger text-white mb-4">
+                  <div class="card text-white mb-4" style="background-color: #fa8072">
                     <div class="card-body"><i class="fas fa-person"></i> 배송대기</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                       <a class="small text-white stretched-link" href="/delivery?del_state=배송대기"><span id="readytoshipping">0</span></a>
@@ -323,7 +324,7 @@
                   </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
-                  <div class="card bg-primary text-white mb-4">
+                  <div class="card text-white mb-4" style="background-color:#b0e0e6">
                     <div class="card-body"><i class="fas fa-truck-fast"></i> 배송중</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                       <a class="small text-white stretched-link" href="/delivery?del_state=배송중"><span id="onshipping">0</span></a>
@@ -332,7 +333,7 @@
                   </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
-                  <div class="card bg-success text-white mb-4">
+                  <div class="card text-white mb-4" style="background-color:#b0e0e6">
                     <div class="card-body"><i class="fas fa-box"></i> 배송완료</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                       <a class="small text-white stretched-link" href="/delivery?del_state=배송완료"><span id="completetoshipping">0</span></a>

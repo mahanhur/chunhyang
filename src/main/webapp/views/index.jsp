@@ -57,9 +57,9 @@
 
 </head>
 <body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #e6e6fa">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/">춘향 관직자 홈페이지</a>
+    <a class="navbar-brand ps-3" href="/"><img src="/uimg/logo1_admin.png" height="180px" ></a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -100,7 +100,7 @@
 </nav>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion" style="background-color: #f8f8ff">
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <c:if test="${loginadmin.admin_level == 1}">
