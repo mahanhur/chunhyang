@@ -6,6 +6,30 @@
 
 <script>
 
+  $(document).ready(function () {
+    $.ajax({
+      url: '/getdata',
+      success: function (count) {
+        $('#all').html(count.totalcount);
+        $('#readytoshipping').html(count.count1);
+        $('#onshipping').html(count.count2);
+        $('#completetoshipping').html(count.count3);
+      }
+    });
+    setInterval(function () {
+      $.ajax({
+        url: '/getdata',
+        success: function (count) {
+          $('#all').html(count.totalcount);
+          $('#readytoshipping').html(count.count1);
+          $('#onshipping').html(count.count2);
+          $('#completetoshipping').html(count.count3);
+        }
+      })
+    }, 3000)
+  });
+
+
   var calFunc ={
 
     calcDate: function(arg,calendar){

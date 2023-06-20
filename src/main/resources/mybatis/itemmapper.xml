@@ -40,15 +40,20 @@
         VALUES (#{item_id}, #{category_id}, #{item_img}, #{item_name}, #{item_cnt}, #{item_price}, #{item_content}, SYSDATE, #{flower_color}, #{flower_type}, #{flower_size}, '1')
     </insert>
 
+    <update id="update" parameterType="item">
+        UPDATE item
+        SET category_id= #{category_id},
+            item_img= #{item_img},
+            item_name= #{item_name},
+            item_cnt=#{item_cnt},
+            item_price=#{item_price},
+            item_content=#{item_content},
+            flower_color=#{flower_color},
+            flower_type=#{flower_type},
+            flower_size=#{flower_size}
+        WHERE item_id = #{item_id}
+    </update>
 
-
-<!--    <update id="update" parameterType="item">-->
-<!--        UPDATE item-->
-<!--        SET name=#{name},-->
-<!--            price=#{price},-->
-<!--            imgname=#{imgname}-->
-<!--        WHERE id = #{id}-->
-<!--    </update>-->
     <delete id="delete" parameterType="Integer">
         DELETE
         FROM item

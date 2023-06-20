@@ -35,7 +35,11 @@
         VALUES (#{item_id}, #{item_subimg})
     </insert>
 
-
+    <select id="selectimg" parameterType="Integer" resultType="itemimg">
+        SELECT *
+        FROM item_img
+        WHERE item_id = #{item_id}
+    </select>
 <!--    <update id="update" parameterType="item">-->
 <!--        UPDATE item-->
 <!--        SET name=#{name},-->

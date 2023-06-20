@@ -1,11 +1,9 @@
 package com.chflower.controller;
 
-import com.chflower.dto.Admin;
-import com.chflower.dto.Cal;
-import com.chflower.dto.Cust;
-import com.chflower.dto.Message;
+import com.chflower.dto.*;
 import com.chflower.service.AdminService;
 import com.chflower.service.CustService;
+import com.chflower.service.DelinfoService;
 import com.chflower.service.MessageService;
 import com.chflower.util.CFRCelebrityUtil;
 import com.chflower.util.DateUtil;
@@ -43,6 +41,8 @@ public class AjaxImplController {
     MessageService messageService;
     @Autowired
     CFRCelebrityUtil celebrityUtil;
+    @Autowired
+    DelinfoService delinfoService;
 
     @Value("${uploadimgdir}")
     String imgdir;
@@ -163,11 +163,7 @@ public class AjaxImplController {
         JSONObject celebrity = (JSONObject) obj.get("celebrity");
         String admin_loginkey = (String) celebrity.get("value");
 
-        log.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        log.info(admin_loginkey);
-
         Admin admin = adminService.facelogin(admin_loginkey);
-
         session.setAttribute("loginadmin", admin);
 
         //결과를 보낸다
@@ -180,6 +176,13 @@ public class AjaxImplController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = dateFormat.format(date);
         return formattedDate;
+    }
+
+    @RequestMapping("/getdata")
+    public Delinfo getdata(){
+        Delinfo count;
+        count = delinfoService.count();
+        return count;
     }
 
 }
