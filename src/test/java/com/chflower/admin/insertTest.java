@@ -18,7 +18,7 @@ public class insertTest {
     AdminService service;
     @Test
     void contextLoads() throws Exception {
-        Admin obj = new Admin(987654,"111111","유성쥔","3",123456789);
+        Admin obj = new Admin();
         service.register(obj);
         log.info("-----------------------------------------------------------");
         log.info(obj.toString());

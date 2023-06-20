@@ -8,13 +8,13 @@
 <script>
 </script>
 
-<main>
+
     <div class="container-fluid px-4">
-        <h1 class="mt-4">주문 관리 화면</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>
-            <li class="breadcrumb-item active">#</li>
-        </ol>
+        <p class="page_header_item"><strong>주문 관리 화면</strong></p>
+<%--        <ol class="breadcrumb mb-4">--%>
+<%--            <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>--%>
+<%--            <li class="breadcrumb-item active">#</li>--%>
+<%--        </ol>--%>
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 주문 현황을 관리하는 화면입니다.</p>
@@ -109,8 +109,6 @@
             </div>
         </div>
     </div>
-</main>
-
 
 
 

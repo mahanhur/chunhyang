@@ -48,18 +48,49 @@
     <%--websocket--%>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-
+    <%-- font --%>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     ----------------------------------------------------------------------------------------
-
-
-
-
+    <style>
+        * {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        .nav-link{
+            padding: 0px;
+        }
+        .page_header_item{
+            background: #F9F7F6;
+            border-left: 0.5em solid #E6E6FA;
+            padding: 0.5em;
+            margin: 15px 0 5px 0;
+            font-size: 1.5em;
+            color: #4d5154;
+        }
+        .page_header_cust{
+            background: #F9F7F6;
+            border-left: 0.5em solid #CEF6E3;
+            padding: 0.5em;
+            margin: 15px 0 5px 0;
+            font-size: 1.5em;
+            color: #4d5154;
+        }
+        .page_header_board{
+            background: #F9F7F6;
+            border-left: 0.5em solid #EFBBBB;
+            padding: 0.5em;
+            margin: 15px 0 5px 0;
+            font-size: 1.5em;
+            color: #4d5154;
+        }
+    </style>
 
 </head>
 <body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #E6E6FA; height: 60px;">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/">춘향 관직자 홈페이지</a>
+    <a class="navbar-brand" href="/"><img src="/uimg/logo1_admin.png" width="160px"></a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -75,7 +106,7 @@
                                 <i class="fas fa-user fa-fw"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
                                 <li><a class="dropdown-item" href="/admin/login">로그인</a></li>
-                                <li><a class="dropdown-item" href="/admin/register">노비등록</a></li>
+                                <li><a class="dropdown-item" href="/admin/register">관리자등록</a></li>
                             </ul>
                         </li>
                     </c:when>
@@ -100,74 +131,60 @@
 </nav>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion" style="background-color: #f8f8ff">
             <div class="sb-sidenav-menu">
                 <div class="nav">
+                    <c:if test="${loginadmin.admin_level == 1}">
+                    <div class="sb-sidenav-menu-heading">직원관리메뉴</div>
                     <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
-                            <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>회원 관리</a>
+                    </c:if>
+                    <div class="sb-sidenav-menu-heading"><i class="fas fa-user" style="color:#6a5acd"></i> 고객관리메뉴</div>
+                    <a class="nav-link collapsed" href="/cust"><div class="sb-nav-link-icon"></div> 회원 관리</a>
+                    <a class="nav-link" href="/qna/qna"><div class="sb-nav-link-icon"></div> QnA</a>
+                    <a class="nav-link" href="/callcenter"><div class="sb-nav-link-icon"></div> 1:1 채팅</a>
+
+                    <div class="sb-sidenav-menu-heading"><i class="fas fa-box"></i> 상품관리메뉴</div>
+                        <%--구독 시작--%>
+                        <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            <div class="sb-nav-link-icon"></div>
+                             구독상품관리
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseAuth1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/subs/subsitem"> 구독상품 관리</a>
+                                <a class="nav-link" href="/subs/subsinfo"> 구독 신청정보 관리</a>
+                                <a class="nav-link" href="/subs/subsdetail"> 구독상품 상세관리</a>
+                            </nav>
+                        </div>
+                        <%--구독 끝--%>
                     <%--상품관리 시작--%>
                     <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#itemsCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                        <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
-                        상품관리
+                        <div class="sb-nav-link-icon"></div>
+                         일반상품관리
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="itemsCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link collapsed" href="/item/all"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>
-                            <a class="nav-link collapsed" href="/order/all"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>주문 관리</a>
-                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>찜?장바구니? 관리</a>
+                            <a class="nav-link collapsed" href="/item/all"><div class="sb-nav-link-icon"></div> 상품 관리</a>
+                            <a class="nav-link collapsed" href="/order/all"><div class="sb-nav-link-icon"></div> 주문 관리</a>
+                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"></div> 장바구니 관리</a>
                         </nav>
                     </div>
-                    <%--                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>상품 관리</a>--%>
                     <%--상품관리 끝--%>
+                    <a class="nav-link collapsed" href="/delivery"><div class="sb-nav-link-icon"></div> 배송정보관리</a>
 
-                    <a class="nav-link collapsed" href="/category"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>카데고리</a>
-                            <a class="nav-link collapsed" href="/delivery"><div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>배송정보관리</a>
-                            <%--구독 시작--%>
-                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
-                                구독상품관리
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="pagesCollapseAuth1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/subs/subsitem">구독상품 관리</a>
-                                    <a class="nav-link" href="/subs/subsinfo">구독 신청정보 관리</a>
-                                    <a class="nav-link" href="/subs/subsdetail">구독상품 상세관리</a>
-                                </nav>
-                            </div>
-                            <%--구독 끝--%>
-                            <%--게시판 시작--%>
-                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth3" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
-                                게시판
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="pagesCollapseAuth3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/board/notice">공지사항</a>
-                                    <a class="nav-link" href="/board/fa">F&Q</a>
-                                    <a class="nav-link" href="/board/event">이벤트</a>
-                                </nav>
-                            </div>
-                            <%--게시판 끝--%>
-                            <%--고객응대 시작--%>
-                            <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth2" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
-                                고객문의사항
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="pagesCollapseAuth2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/qna/qna">QnA</a>
-                                    <a class="nav-link" href="/callcenter">1:1 채팅</a>
-                                </nav>
-                            </div>
-                            <%--고객응대 끝--%>
-                    <a class="nav-link" href="/chart">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Charts
-                    </a>
+                    <div class="sb-sidenav-menu-heading"><i class="fas fa-clipboard-list"></i> 게시판관리메뉴</div>
+                    <%--게시판 시작--%>
+                        <a class="nav-link collapsed" href="/board/notice"><div class="sb-nav-link-icon"></div> 공지사항</a>
+                        <a class="nav-link collapsed" href="/board/fa"><div class="sb-nav-link-icon"></div> FAQ</a>
+                        <a class="nav-link collapsed" href="/board/event"><div class="sb-nav-link-icon"></div> 이벤트</a>
+                    <%--게시판 끝--%>
+
+                    <div class="sb-sidenav-menu-heading"><i class="fas fa-chart-area"></i> 분석 및 통계</div>
+                    <a class="nav-link" href="/chart/livechart"><div class="sb-nav-link-icon"></div>  실시간통계차트</a>
+                    <a class="nav-link" href="/chart/chart"><div class="sb-nav-link-icon"></div> 매출분석</a>
+
                 </div>
             </div>
             <c:choose>

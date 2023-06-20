@@ -47,11 +47,7 @@
 
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">구독상품 배송관리 화면</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>
-            <li class="breadcrumb-item active">#</li>
-        </ol>
+        <p class="page_header_item"><strong>구독상품 배송관리 화면</strong></p>
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 구독 상품 배송현황을 관리하는 화면입니다.</p>
@@ -77,6 +73,8 @@
                     </thead>
                     <tbody>
                         <c:forEach var="obj" items="${sdlist}" varStatus="status">
+                            <c:forEach var="dobj" items="${dlist}">
+                                <c:if test="${obj.subsdetail_id == dobj.subsdetail_id}">
                             <tr>
                                 <td><a href="#subsdetail_id_${obj.subsdetail_id}" data-toggle="modal">${obj.subsdetail_id}</a></td>
                                 <td>${obj.subs_id}</td>
@@ -84,9 +82,13 @@
                                 <td>
                                     <input type="hidden" class="subsdetail_id" value="${obj.subsdetail_id}" name="subsdetail_id">
                                     <input type="text" class="datePicker subs_duedate" name="subs_duedate" value="<fmt:formatDate  value="${obj.subs_duedate}" pattern="yyyy-MM-dd" />"/>
+                                    <c:if test="${dobj.del_state == '배송대기'}">
                                     <button type="button" class="btn btn-outline-primary duedate_btn">수정</button>
+                                    </c:if>
                                 </td>
-                                <td>쨘</td>
+                                <td>${dobj.del_state}</td>
+<%--                                <td>쨘</td>--%>
+
                             </tr>
 
 
@@ -128,8 +130,8 @@
                             </div>
                         </div>
                         <!-- details Modal END-->
-
-
+                                </c:if>
+                            </c:forEach>
                     </c:forEach>
                     </tbody>
                 </table>

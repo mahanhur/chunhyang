@@ -1,11 +1,9 @@
 package com.chflower.controller;
 
-import com.chflower.dto.Admin;
-import com.chflower.dto.Cal;
-import com.chflower.dto.Cust;
-import com.chflower.dto.Message;
+import com.chflower.dto.*;
 import com.chflower.service.AdminService;
 import com.chflower.service.CustService;
+import com.chflower.service.DelinfoService;
 import com.chflower.service.MessageService;
 import com.chflower.util.CFRCelebrityUtil;
 import com.chflower.util.DateUtil;
@@ -25,7 +23,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -41,6 +41,8 @@ public class AjaxImplController {
     MessageService messageService;
     @Autowired
     CFRCelebrityUtil celebrityUtil;
+    @Autowired
+    DelinfoService delinfoService;
 
     @Value("${uploadimgdir}")
     String imgdir;
@@ -166,6 +168,21 @@ public class AjaxImplController {
 
         //결과를 보낸다
         return "redirect:/";
+    }
+
+    @RequestMapping("/getservertime")
+    public Object getservertime() {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = dateFormat.format(date);
+        return formattedDate;
+    }
+
+    @RequestMapping("/getdata")
+    public Delinfo getdata(){
+        Delinfo count;
+        count = delinfoService.count();
+        return count;
     }
 
 }

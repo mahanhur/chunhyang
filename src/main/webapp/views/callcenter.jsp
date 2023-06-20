@@ -77,31 +77,41 @@
 
 </script>
 <!-- Begin Page Content -->
-<div class="container-fluid">
-
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800"></h1>
-
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">1:1 고객상담</h6>
-        </div>
-        <div class="card-body">
-            <div id="container"></div>
-            <div class="col-sm-5">
-                <h4 id="adm_id">${loginadmin.admin_name}</h4>
-                <H4 id="status">대기중</H4>
-                <button id="connect">채팅 연결</button>
-                <button id="disconnect">연결 해제</button>
-                <br>
-                <input type="text" id="target"> <%-- 메세지 보낸사람의 id가 표시되는 공간 --%>
-
-                <input type="text" id="totext"><button id="sendto">전송</button>
-                <div id="to"></div>
-
+<main>
+    <div class="container-fluid px-4">
+        <p class="page_header_cust"><strong>[Q&A] 1:1 채팅</strong></p>
+        <div class="card mb-4">
+            <div class="card-body">
+                <p>ㅇ 고객만족부 담당자들은 문의사항에 대하여 정확하고 신속한 답변 바랍니다..</p>
+                <p>ㅇ 선택삭제 기능은 작동 안합니다</p>
+                <hr/>
             </div>
         </div>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800"></h1>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header">
+                <i class="fas fa-user"></i>
+                실시간 고객상담
+            </div>
+            <div class="card-body">
+                <div id="container"></div>
+                <div class="col-sm-5">
+                    <h4 id="adm_id">${loginadmin.admin_name}</h4>
+                    <H4 id="status">대기중</H4>
+                    <button id="connect">채팅 연결</button>
+                    <button id="disconnect">연결 해제</button>
+                    <br>
+                    <input type="text" id="target"> <%-- 메세지 보낸사람의 id가 표시되는 공간 --%>
+
+                    <input type="text" id="totext"><button id="sendto">전송</button>
+                    <div id="to"></div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
     </div>
-    <!-- /.container-fluid -->
-</div>
+</main>

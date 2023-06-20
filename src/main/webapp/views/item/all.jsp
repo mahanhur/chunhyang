@@ -39,15 +39,27 @@
     #datatablesSimple td {
         text-align: center; /* 내용 가운데 정렬 */
     }
+    /*.page_header{*/
+    /*    border-left: 10px solid #ADD8E6;*/
+    /*    padding: 0.5em;*/
+    /*    margin: 15px 0 5px 0;*/
+    /*    border-bottom: 2px solid #ADD8E6;*/
+    /*    font-size: 1.5em;*/
+    /*    color: #4d5154;*/
+    /*}*/
+    /*.page_header{*/
+    /*    background: #F9F7F6;*/
+    /*    border-left: 0.5em solid #E6E6FA;*/
+    /*    padding: 0.5em;*/
+    /*    margin: 15px 0 5px 0;*/
+    /*    font-size: 1.5em;*/
+    /*    color: #4d5154;*/
+    /*}*/
 </style>
 
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">판매상품 관리 화면</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>
-            <li class="breadcrumb-item active">#</li>
-        </ol>
+        <p class="page_header_item"><strong>판매상품 관리 화면</strong></p>
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 판매 상품을 관리하실 수 있는 화면입니다.</p>
@@ -97,6 +109,4 @@
             </div>
         </div>
     </div>
-
-
 </main>

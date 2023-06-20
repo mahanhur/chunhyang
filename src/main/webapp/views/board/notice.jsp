@@ -16,7 +16,7 @@
 </script>
 
     <div class="container-fluid px-4">
-        <h3 class="mt-4 alert alert-success"><strong>Board</strong>: Notice</h3>
+        <p class="page_header_board"><strong>공지사항</strong></p>
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 필독사항은 반드시 읽어주시기 바랍니다</p>

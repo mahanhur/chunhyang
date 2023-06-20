@@ -6,6 +6,30 @@
 
 <script>
 
+  $(document).ready(function () {
+    $.ajax({
+      url: '/getdata',
+      success: function (count) {
+        $('#all').html(count.totalcount);
+        $('#readytoshipping').html(count.count1);
+        $('#onshipping').html(count.count2);
+        $('#completetoshipping').html(count.count3);
+      }
+    });
+    setInterval(function () {
+      $.ajax({
+        url: '/getdata',
+        success: function (count) {
+          $('#all').html(count.totalcount);
+          $('#readytoshipping').html(count.count1);
+          $('#onshipping').html(count.count2);
+          $('#completetoshipping').html(count.count3);
+        }
+      })
+    }, 3000)
+  });
+
+
   var calFunc ={
 
     calcDate: function(arg,calendar){
@@ -91,8 +115,72 @@
   };
 
   $(function(){
+    setInterval(function(){
+      $.ajax({
+        url:'/getservertime',
+        success:function(data){
+          $('#server_time').html(data);
+        },
+        error:function(){
+        }
+      });
+    },1000);
     $('#next_btn').hide();
     $('#select_time').hide();
+
+    // 숫자카운트1
+    const $counter1 = document.querySelector("#all");
+    const max1 = ${count.totalcount};
+    counter($counter1, max1);
+    function counter($counter1, max1) {
+      let now = max1;
+      const handle = setInterval(() => {
+        $counter1.innerHTML = Math.ceil(max1 - now);
+        if (now < 1) {clearInterval(handle);        }
+        const step = now / 10;
+        now -= step;
+      }, 50);
+    }
+    // 숫자카운트2
+    const $counter2 = document.querySelector("#readytoshipping");
+    const max2 = ${count.count1};
+    counter($counter2, max2);
+    function counter($counter2, max1) {
+      let now = max2;
+      const handle = setInterval(() => {
+        $counter2.innerHTML = Math.ceil(max2 - now);
+        if (now < 1) {clearInterval(handle);        }
+        const step = now / 10;
+        now -= step;
+      }, 50);
+    }
+    // 숫자카운트3
+    const $counter3 = document.querySelector("#onshipping");
+    const max3 = ${count.count2};
+    counter($counter3, max3);
+    function counter($counter3, max3) {
+      let now = max3;
+      const handle = setInterval(() => {
+        $counter3.innerHTML = Math.ceil(max3 - now);
+        if (now < 1) {clearInterval(handle);        }
+        const step = now / 10;
+        now -= step;
+      }, 50);
+    }
+    // 숫자카운트4
+    const $counter4 = document.querySelector("#completetoshipping");
+    const max4 = ${count.count3};
+    counter($counter4, max4);
+    function counter($counter4, max4) {
+      let now = max4;
+      const handle = setInterval(() => {
+        $counter4.innerHTML = Math.ceil(max4 - now);
+        if (now < 1) {clearInterval(handle);        }
+        const step = now / 10;
+        now -= step;
+      }, 50);
+    }
+
 
 
     var calendar = new FullCalendar.Calendar($('#calendar')[0], {
@@ -199,85 +287,97 @@
 </script>
 
 <div class="container-fluid px-4">
-  <h1 class="mt-4">춘향 ADMIN SYSTEM</h1>
   <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">오늘도 당신을 응원합니다! </li>
   </ol>
+  <hr/>
   <div class="row">
-    <div class="col-xl-2 col-md-6">
-      <div class="card bg text-black mb-4">
-        <div class="card-body"><i class="fas fa-shop"></i> 전체</div>
-        <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="/delivery"><span id="all">${count.totalcount}</span></a>
-          <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+
+    <div>
+      <div class="col-xl-12">
+        <div class="container">
+
+          <div class="card mb-4">
+            <div class="card-header">
+              💐현재시간(<span id="server_time"></span>) 춘향서비스 실시간 배송 현황💐
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg text-black mb-4">
+                      <div class="card-body"><span id="all" style="font-size: 400%">0</span></div>
+                      <div class="card-footer d-flex align-items-center justify-content-between" style="background-color: #dcdcdc">
+                      <a class="small text-black stretched-link" href="/delivery"><i class="fas fa-shop"></i> 전체</a>
+                      <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="card bg text-black mb-4">
+                    <div class="card-body"><span id="readytoshipping" style="font-size: 400%">0</span></div>
+                    <div class="card-footer d-flex align-items-center justify-content-between" style="background-color: #e9967a">
+                      <a class="small text-black stretched-link" href="/delivery?del_state=배송대기"><i class="fas fa-person"></i> 배송대기</a>
+                      <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="card bg text-black mb-4">
+                    <div class="card-body"><span id="onshipping" style="font-size: 400%">0</span></div>
+                    <div class="card-footer d-flex align-items-center justify-content-between" style="background-color: #ffdab9">
+                      <a class="small text-black stretched-link" href="/delivery?del_state=배송중"><i class="fas fa-truck-fast"></i> 배송중</a>
+                      <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="card bg text-black mb-4">
+                    <div class="card-body"><span id="completetoshipping" style="font-size: 400%">0</span></div>
+                    <div class="card-footer d-flex align-items-center justify-content-between" style="background-color: #c0c0c0">
+                      <a class="small text-black stretched-link" href="/delivery?del_state=배송완료"><i class="fas fa-box"></i> 배송완료</a>
+                      <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-    <div class="col-xl-2 col-md-6">
-      <div class="card bg text-black mb-4">
-        <div class="card-body"><i class="fas fa-person"></i> 배송대기</div>
-        <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="/delivery?del_state=배송대기"><span id="readytoshipping">${count.count1}</span></a>
-          <div class="small text-black"><i class="fas fa-angle-right"></i></div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-md-6">
-      <div class="card bg text-black mb-4">
-        <div class="card-body"><i class="fas fa-truck-fast"></i> 배송중</div>
-        <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="/delivery?del_state=배송중"><span id="onshipping">${count.count2}</span></a>
-          <div class="small text-black"><i class="fas fa-angle-right"></i></div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-md-6">
-      <div class="card bg text-black mb-4">
-        <div class="card-body"><i class="fas fa-box"></i> 배송완료</div>
-        <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="/delivery?del_state=배송완료"><span id="completetoshipping">${count.count3}</span></a>
-          <div class="small text-black"><i class="fas fa-angle-right"></i></div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-md-6">
-      <div class="card bg text-black mb-4">
-        <div class="card-body"><i class="fas fa-right-to-bracket"></i> 반품요청</div>
-        <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="#"><span id="refund">13</span></a>
-          <div class="small text-black"><i class="fas fa-angle-right"></i></div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-md-6">
-      <div class="card bg text-black mb-4">
-        <div class="card-body"><i class="fas fa-guitar"></i> 기타</div>
-        <div class="card-footer d-flex align-items-center justify-content-between">
-          <a class="small text-black stretched-link" href="/delivery?del_state=기타"><span id="etc">13</span></a>
-          <div class="small text-black"><i class="fas fa-angle-right"></i></div>
-        </div>
-      </div>
-    </div>
+
   </div>
   <hr></br>
 
   <div>
     <div class="col-xl-12">
       <div class="container">
-        <div>
-          <div>
-            <div id="reservation" class="row content col-sm-12" >
-              <h6 class="col-sm-2">일자: <span id="tdate"></span></h6>
-              <h6 class="col-sm-2">시간: <span id="ttime"></span></h6>
-              <h6 class="col-sm-2" id="select_time">시간선택:<span id="stime"></span></h6>
-              <h6 class="col-sm-2" id="next_btn"><a href="#" class="btn btn-sm btn-primary ml-lg-4">예약</a></h6>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <i class="fas fa-chart-area me-1"></i>
+            Area Chart Example
+          </div>
+          <div class="card-body">
+            <div class="align-content-center">
+              <div>
+                <div id="reservation" class="row content col-sm-12">
+                  <h6 class="col-sm-2">일자: <span id="tdate"></span></h6>
+                  <h6 class="col-sm-2">시간: <span id="ttime"></span></h6>
+                  <h6 class="col-sm-2" id="select_time">시간선택:<span id="stime"></span></h6>
+                  <h6 class="col-sm-2" id="next_btn"><a href="#" class="btn btn-sm btn-primary ml-lg-4">예약</a></h6>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div id='calendar-container' class="d-flex align-content-center">
+                  <div id='calendar' style="width: 100%; height: 100%;"></div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-sm-10  text-center ">
-            <div id='calendar-container'>
-              <div id='calendar'></div>
-            </div>
-          </div>
+
+
         </div>
       </div>
     </div>
