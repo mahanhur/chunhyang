@@ -307,7 +307,7 @@
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg text-black mb-4">
                       <div class="card-body"><span id="all" style="font-size: 400%">0</span></div>
-                      <div class="card-footer d-flex align-items-center justify-content-between bg-info">
+                      <div class="card-footer d-flex align-items-center justify-content-between" style="background-color: #dcdcdc">
                       <a class="small text-black stretched-link" href="/delivery"><i class="fas fa-shop"></i> 전체</a>
                       <div class="small text-black"><i class="fas fa-angle-right"></i></div>
                     </div>
@@ -316,7 +316,7 @@
                 <div class="col-xl-3 col-md-6">
                   <div class="card bg text-black mb-4">
                     <div class="card-body"><span id="readytoshipping" style="font-size: 400%">0</span></div>
-                    <div class="card-footer d-flex align-items-center justify-content-between bg-danger">
+                    <div class="card-footer d-flex align-items-center justify-content-between" style="background-color: #e9967a">
                       <a class="small text-black stretched-link" href="/delivery?del_state=배송대기"><i class="fas fa-person"></i> 배송대기</a>
                       <div class="small text-black"><i class="fas fa-angle-right"></i></div>
                     </div>
@@ -325,7 +325,7 @@
                 <div class="col-xl-3 col-md-6">
                   <div class="card bg text-black mb-4">
                     <div class="card-body"><span id="onshipping" style="font-size: 400%">0</span></div>
-                    <div class="card-footer d-flex align-items-center justify-content-between bg-warning">
+                    <div class="card-footer d-flex align-items-center justify-content-between" style="background-color: #ffdab9">
                       <a class="small text-black stretched-link" href="/delivery?del_state=배송중"><i class="fas fa-truck-fast"></i> 배송중</a>
                       <div class="small text-black"><i class="fas fa-angle-right"></i></div>
                     </div>
@@ -334,7 +334,7 @@
                 <div class="col-xl-3 col-md-6">
                   <div class="card bg text-black mb-4">
                     <div class="card-body"><span id="completetoshipping" style="font-size: 400%">0</span></div>
-                    <div class="card-footer d-flex align-items-center justify-content-between bg-warning">
+                    <div class="card-footer d-flex align-items-center justify-content-between" style="background-color: #c0c0c0">
                       <a class="small text-black stretched-link" href="/delivery?del_state=배송완료"><i class="fas fa-box"></i> 배송완료</a>
                       <div class="small text-black"><i class="fas fa-angle-right"></i></div>
                     </div>
@@ -370,8 +370,8 @@
                   <h6 class="col-sm-2" id="next_btn"><a href="#" class="btn btn-sm btn-primary ml-lg-4">예약</a></h6>
                 </div>
               </div>
-              <div class="col-sm-10 text-center align-content-center">
-                <div id='calendar-container' class="d-flex justify-content-center">
+              <div class="col-sm-12">
+                <div id='calendar-container' class="d-flex align-content-center">
                   <div id='calendar' style="width: 100%; height: 100%;"></div>
                 </div>
               </div>

@@ -57,9 +57,9 @@
 
 </head>
 <body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #e6e6fa">
+<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #e6e6fa; height: 80px;">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/"><img src="/uimg/logo1_admin.png" height="180px" ></a>
+    <a class="navbar-brand ps-3" href="/"><img src="/uimg/logo1_admin.png" width="120px" height="80px" ></a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -75,7 +75,7 @@
                                 <i class="fas fa-user fa-fw"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
                                 <li><a class="dropdown-item" href="/admin/login">로그인</a></li>
-                                <li><a class="dropdown-item" href="/admin/register">노비등록</a></li>
+                                <li><a class="dropdown-item" href="/admin/register">관리자등록</a></li>
                             </ul>
                         </li>
                     </c:when>
