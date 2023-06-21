@@ -1,10 +1,7 @@
 package com.chflower.controller;
 
 import com.chflower.dto.*;
-import com.chflower.service.AdminService;
-import com.chflower.service.CustService;
-import com.chflower.service.DelinfoService;
-import com.chflower.service.MessageService;
+import com.chflower.service.*;
 import com.chflower.util.CFRCelebrityUtil;
 import com.chflower.util.DateUtil;
 import com.chflower.util.FileUploadUtil;
@@ -15,6 +12,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,6 +41,8 @@ public class AjaxImplController {
     CFRCelebrityUtil celebrityUtil;
     @Autowired
     DelinfoService delinfoService;
+    @Autowired
+    ChartService chartService;
 
     @Value("${uploadimgdir}")
     String imgdir;
@@ -183,6 +183,26 @@ public class AjaxImplController {
         Delinfo count;
         count = delinfoService.count();
         return count;
+    }
+
+
+    @RequestMapping("/chartimpl")
+    public Object chartimpl(@DateTimeFormat(pattern = "yyyy-MM-dd") Date date1, @DateTimeFormat(pattern = "yyyy-MM-dd") Date date2){
+
+        JSONObject jo = new JSONObject();
+        Chart chart1 = new Chart(date1, date2);
+        Integer substotal = chartService.substotal(chart1);
+
+        Chart chart2 = new Chart(date1, date2);
+        Integer itemtotal = chartService.itemtotal(chart2);
+
+        if(substotal != null){
+            jo.put("substotal", substotal);
+        }
+        if(itemtotal != null) {
+            jo.put("itemtotal", itemtotal);
+        }
+        return jo;
     }
 
 }

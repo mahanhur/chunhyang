@@ -10,16 +10,6 @@
     <select id="selectall" resultType="chart">
     </select>
 
-    <select id="subscnttop10" resultType="chart">
-        SELECT rownum, subsitem_id, cnt
-        FROM (
-        SELECT subsitem_id, COUNT(subs_id) AS cnt
-        FROM subsinfo
-        GROUP BY subsitem_id
-        ORDER BY COUNT(subs_id) DESC
-        ) WHERE ROWNUM <![CDATA[<=]]> 10
-    </select>
-
     <select id="subsamounttop10" resultType="chart">
         select rownum, s.subsitem_id, s.subsitem_name, s.cnt as subs_cnt, s.subsitem_price, s.amount as subs_amount
         from (
@@ -33,18 +23,6 @@
              ) s
     </select>
 
-
-
-    <select id="itemcnttop10" resultType="chart">
-        select rownum, item_id, cnt
-        from (
-        select item_id, sum(order_cnt) as cnt
-        from orderdetail
-        group by item_id
-        order by sum(order_cnt) desc
-        ) where rownum <![CDATA[<=]]> 10
-    </select>
-
     <select id="itemamounttop10" resultType="chart">
         select rownum, s.item_id, s.item_name, s.cnt as item_cnt , s.item_price, s.amount as item_amount
         from(
@@ -55,6 +33,43 @@
                      ) i left join item t on i.item_id = t.item_id
                 order by amount desc
             ) s
+    </select>
+
+    <select id="subsamountworst10" resultType="chart">
+        select rownum, s.subsitem_id, s.subsitem_name, s.cnt as subs_cnt, s.subsitem_price, s.amount as subs_amount
+        from (
+                 select c.subsitem_id, t.subsitem_name, c.cnt, t.subsitem_price, c.cnt*t.subsitem_price as amount
+                 from (
+                          SELECT subsitem_id, COUNT(subs_id) AS cnt
+                          FROM subsinfo
+                          GROUP BY subsitem_id
+                      ) c left join subsitem t on c.subsitem_id = t.subsitem_id
+                 order by amount
+             ) s
+    </select>
+
+    <select id="itemamountworst10" resultType="chart">
+        select rownum, s.item_id, s.item_name, s.cnt as item_cnt , s.item_price, s.amount as item_amount
+        from(
+                select i.item_id, t.item_name, i.cnt, t.item_price, i.cnt*t.item_price as amount
+                from (select item_id, sum(order_cnt) as cnt
+                      from orderdetail
+                      group by item_id
+                     ) i left join item t on i.item_id = t.item_id
+                order by amount
+            ) s
+    </select>
+
+    <select id="substotal" parameterType="chart" resultType="int">
+        select sum(subs_pay_amount) as substotal
+        from subsinfo
+        where to_char(subs_rdate,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')
+    </select>
+
+    <select id="itemtotal" parameterType="chart" resultType="int">
+        select sum(pay_amount) as itemtotal
+        from item_order
+        where to_char(order_date,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')
     </select>
 
 </mapper>
