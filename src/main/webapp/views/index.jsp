@@ -168,7 +168,7 @@
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link collapsed" href="/item/all"><div class="sb-nav-link-icon"></div> 상품 관리</a>
                             <a class="nav-link collapsed" href="/order/all"><div class="sb-nav-link-icon"></div> 주문 관리</a>
-                            <a class="nav-link collapsed" href="/item"><div class="sb-nav-link-icon"></div> 장바구니 관리</a>
+                            <a class="nav-link collapsed" href="/cart/all"><div class="sb-nav-link-icon"></div> 장바구니 관리</a>
                         </nav>
                     </div>
                     <%--상품관리 끝--%>

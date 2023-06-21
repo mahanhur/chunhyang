@@ -24,8 +24,6 @@ public class PushNotificationUtil {
     // Modification Field ---------------------------------------
     private static final String PROJECT_ID = "kbstar-f33b5";
     public static final String firebaseConfig = "fcm_admin.json";
-    public static final String clientToken ="epeA2QWFT_OA_rtD1pzE0i:APA91bFn624mRBfHhoZViKFsWLdC8zPlA5etEhHPY00G6z2DeodVxC_I9pjHExlOv6AdkKiu-3ViAB1DELDAtjyHNB0bkxnqM9DsXq4CL8I1dPSmMor6jCpo5RSseR5ZJETvI6ZU1M4W";
-    public static final String imgUrl = "https://github.com/leejeani/admin/blob/master/src/main/resources/static/img/a.jpg";
     // Modification Field ---------------------------------------
 
     private static final String BASE_URL = "https://fcm.googleapis.com";
@@ -85,7 +83,7 @@ public class PushNotificationUtil {
         }
     }
 
-    private static JsonObject buildNotificationMessage(String title, String body, String next) {
+    private static JsonObject buildNotificationMessage(String title, String body, String next, String imgUrl) {
         JsonObject jNotification = new JsonObject();
         jNotification.addProperty("title", title);
         jNotification.addProperty("body", body);
@@ -106,17 +104,50 @@ public class PushNotificationUtil {
             2. token
             3. condition -> multiple topic
          */
-        //jMessage.addProperty("topic", "news");
-        jMessage.addProperty("token",clientToken);
+
+//        kb앱들한테 다날려라
+        jMessage.addProperty("topic", "kb");
 
         JsonObject jFcm = new JsonObject();
         jFcm.add(MESSAGE_KEY, jMessage);
 
         return jFcm;
     }
-    public static void sendCommonMessage(String title, String body, String next) throws IOException {
-        JsonObject notificationMessage = buildNotificationMessage(title, body, next);
+    private static JsonObject buildNotificationTargetMessage(String title, String body, String next, String token) {
+        JsonObject jNotification = new JsonObject();
+        jNotification.addProperty("title", title);
+        jNotification.addProperty("body", body);
+        jNotification.addProperty("image", "");
+
+
+        JsonObject jMessage = new JsonObject();
+        jMessage.add("notification", jNotification);
+
+
+        JsonObject jData = new JsonObject();
+        jData.addProperty("key1", next);
+        jMessage.add("data", jData);
+
+        /*
+            firebase
+            1. topic
+            2. token
+            3. condition -> multiple topic
+         */
+        //jMessage.addProperty("topic", "kbs");
+        jMessage.addProperty("token",token);
+
+        JsonObject jFcm = new JsonObject();
+        jFcm.add(MESSAGE_KEY, jMessage);
+
+        return jFcm;
+    }
+    public static void sendCommonMessage(String title, String body, String next, String imgUrl) throws IOException {
+        JsonObject notificationMessage = buildNotificationMessage(title, body, next, imgUrl);
         sendMessage(notificationMessage);
     }
-
+    public static void sendTargetMessage(String title, String body, String next, String token) throws IOException {
+        JsonObject notificationMessage = buildNotificationTargetMessage(title, body, next, token);
+        sendMessage(notificationMessage);
+    }
 }
