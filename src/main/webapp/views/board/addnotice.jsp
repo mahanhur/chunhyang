@@ -24,8 +24,11 @@
         addnotice.init();
     })
 </script>
-
-    <div class="container-fluid col-lg-8 px-4"></br>
+<main>
+<div class="container-fluid px-4">
+    <p class="page_header_board"><strong>공지사항</strong></p>
+<%--    <div class="container-fluid col-lg-8 px-4"></br>--%>
+<%--        <p class="page_header_board"><strong>공지사항</strong></p>--%>
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title" style="text-align: center">공지사항 등록</h3>
@@ -60,3 +63,4 @@
             </form>
         </div>
     </div>
+</main>

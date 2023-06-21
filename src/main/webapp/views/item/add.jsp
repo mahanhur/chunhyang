@@ -28,17 +28,15 @@
     });
 </script>
 <div class="container-fluid px-4">
-    <h1 class="mt-4">판매상품 관리 화면</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>
-        <li class="breadcrumb-item active">#</li>
-    </ol>
+    <p class="page_header_item"><strong>판매상품 관리 화면</strong></p>
+
     <!-- 판매상품추가 -->
     <div class="card shadow mb-4" style="width:50%">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
             판매상품 추가
         </div>
+
         <div class="card-body">
 
             <!-- Form -->
@@ -185,3 +183,4 @@
                         </div>
                     </div>
                 </form>
+        </div>

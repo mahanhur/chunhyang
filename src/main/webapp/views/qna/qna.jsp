@@ -17,7 +17,7 @@
 
 <main>
     <div class="container-fluid px-4">
-        <h3 class="mt-4 alert alert-success"><strong>Customer Question</strong>: Qna</h3>
+        <p class="page_header_cust"><strong>[Q&A] 고객문의</strong></p>
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 고객만족부 담당자들은 문의사항에 대하여 정확하고 신속한 답변 바랍니다..</p>
