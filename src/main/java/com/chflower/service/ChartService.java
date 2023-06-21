@@ -36,14 +36,26 @@ public class ChartService implements CHService<Integer, Chart> {
     public List<Chart> get() throws Exception {
         return null;
     }
-
-    public List<Chart> subscnttop10() {
-        return mapper.subscnttop10();
+    public List<Chart> subsamounttop10() {
+        return mapper.subsamounttop10();
     }
-    public List<Chart> itemcnttop10() {
-        return mapper.itemcnttop10();
+    public List<Chart> itemamounttop10() {
+        return mapper.itemamounttop10();
+    }
+    public List<Chart> subsamountworst10() {
+        return mapper.subsamountworst10();
+    }
+    public List<Chart> itemamountworst10() {
+        return mapper.itemamountworst10();
     }
 
+    public Integer substotal(Chart chart) {
+        return mapper.substotal(chart);
+    }
+
+    public Integer itemtotal(Chart chart) {
+        return mapper.itemtotal(chart);
+    }
 
 
 }

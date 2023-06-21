@@ -110,7 +110,7 @@
                                 accessibility: {
                                     announceNewData: {
                                         enabled: true,
-                                        minAnnounceInterval: 1000,
+                                        minAnnounceInterval: 500,
                                         announcementFormatter: function (allSeries, newSeries, newPoint) {
                                             if (newPoint) {
                                                 return 'New point added. Value: ' + newPoint.y;
@@ -140,7 +140,7 @@
             createChart();
 
             // 일정 간격마다 데이터 업데이트
-            setInterval(createChart, parseInt(pollingInput.value, 10) * 1000);
+            setInterval(createChart, parseInt(pollingInput.value, 10) * 500);
         },
         chart2: function() {
             var defaultData = 'http://127.0.0.1:8090/logs/itemcountlog.log';
@@ -235,12 +235,12 @@
                                     type: 'spline'
                                 },
                                 title: {
-                                    text: '구독상품'
+                                    text: '일반상품'
                                 },
                                 accessibility: {
                                     announceNewData: {
                                         enabled: true,
-                                        minAnnounceInterval: 1000,
+                                        minAnnounceInterval: 500,
                                         announcementFormatter: function (allSeries, newSeries, newPoint) {
                                             if (newPoint) {
                                                 return 'New point added. Value: ' + newPoint.y;
@@ -270,7 +270,7 @@
             createChart();
 
             // 일정 간격마다 데이터 업데이트
-            setInterval(createChart, parseInt(pollingInput.value, 10) * 1000);
+            setInterval(createChart, parseInt(pollingInput.value, 10) * 500);
         },
         chart3: function() {
             var defaultData = 'http://127.0.0.1:8090/logs/bipumcountlog.log';
@@ -365,12 +365,12 @@
                                     type: 'spline'
                                 },
                                 title: {
-                                    text: '구독상품'
+                                    text: '비품'
                                 },
                                 accessibility: {
                                     announceNewData: {
                                         enabled: true,
-                                        minAnnounceInterval: 1000,
+                                        minAnnounceInterval: 500,
                                         announcementFormatter: function (allSeries, newSeries, newPoint) {
                                             if (newPoint) {
                                                 return 'New point added. Value: ' + newPoint.y;
@@ -400,7 +400,7 @@
             createChart();
 
             // 일정 간격마다 데이터 업데이트
-            setInterval(createChart, parseInt(pollingInput.value, 10) * 1000);
+            setInterval(createChart, parseInt(pollingInput.value, 10) * 500);
         }
     };
 

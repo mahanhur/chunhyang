@@ -114,7 +114,7 @@
 
                     <div class="sb-sidenav-menu-heading"><i class="fas fa-box"></i> 상품관리메뉴</div>
                         <%--구독 시작--%>
-                        <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                        <a class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
                             <div class="sb-nav-link-icon"></div>
                              구독상품관리
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -128,7 +128,7 @@
                         </div>
                         <%--구독 끝--%>
                     <%--상품관리 시작--%>
-                    <a class="nav-link collapsed"data-bs-toggle="collapse" data-bs-target="#itemsCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                    <a class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#itemsCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
                         <div class="sb-nav-link-icon"></div>
                          일반상품관리
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
