@@ -138,53 +138,53 @@
                     <div class="sb-sidenav-menu-heading">직원관리메뉴</div>
                     <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
                     </c:if>
-                    <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-user" style="color:#6a5acd"></i> 고객관리메뉴</div>
-                    <a class="nav-link collapsed" href="/cust" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 회원 관리</a>
-                    <a class="nav-link" href="/qna/qna" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> QnA</a>
-                    <a class="nav-link" href="/callcenter" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 1:1 채팅</a>
+                    <div class="sb-sidenav-menu-heading" style="padding-bottom: 0; padding-left: 20px; color: dimgray"><i class="fas fa-user" style="color:dimgray"></i> 고객관리메뉴</div>
+                    <a class="nav-link collapsed" href="/cust" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 회원 관리</a>
+                    <a class="nav-link" href="/qna/qna" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> QnA</a>
+                    <a class="nav-link" href="/callcenter" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 1:1 채팅</a>
 
-                    <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-box"></i> 상품관리메뉴</div>
+                    <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px; color: dimgray"><i class="fas fa-box" style="color:dimgray"></i> 상품관리메뉴</div>
                         <%--구독 시작--%>
-                        <a class="nav-link collapsed" style="padding-bottom: 0;padding-left: 20px" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                        <a class="nav-link collapsed" style="padding-bottom: 0;padding-left: 20px; color: grey" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
                             <div class="sb-nav-link-icon"></div>
                              구독상품관리
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="pagesCollapseAuth1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/subs/subsitem" style="padding-bottom: 0;padding-left: 10px"><div class="sb-nav-link-icon"></div> 구독상품 관리</a>
-                                <a class="nav-link" href="/subs/subsinfo" style="padding-bottom: 0;padding-left: 10px"><div class="sb-nav-link-icon"></div> 구독 신청정보 관리</a>
-                                <a class="nav-link" href="/subs/subsdetail" style="padding-bottom: 0;padding-left: 10px"><div class="sb-nav-link-icon"></div> 구독상품 상세관리</a>
+                                <a class="nav-link" href="/subs/subsitem" style="padding-bottom: 0;padding-left: 10px; color: grey"><div class="sb-nav-link-icon"></div> 구독상품 관리</a>
+                                <a class="nav-link" href="/subs/subsinfo" style="padding-bottom: 0;padding-left: 10px; color: grey"><div class="sb-nav-link-icon"></div> 구독 신청정보 관리</a>
+                                <a class="nav-link" href="/subs/subsdetail" style="padding-bottom: 0;padding-left: 10px; color: grey"><div class="sb-nav-link-icon"></div> 구독상품 상세관리</a>
                             </nav>
                         </div>
                         <%--구독 끝--%>
                         <%--상품관리 시작--%>
-                        <a class="nav-link collapsed" style="padding-bottom: 0;padding-left: 20px" data-bs-toggle="collapse" data-bs-target="#itemsCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                        <a class="nav-link collapsed" style="padding-bottom: 0;padding-left: 20px; color: grey" data-bs-toggle="collapse" data-bs-target="#itemsCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
                             <div class="sb-nav-link-icon"></div>
                              일반상품관리
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="itemsCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link collapsed" href="/item/all" style="padding-bottom: 0;padding-left: 10px"><div class="sb-nav-link-icon"></div> 상품 관리</a>
-                                <a class="nav-link collapsed" href="/order/all" style="padding-bottom: 0;padding-left: 10px"><div class="sb-nav-link-icon"></div> 주문 관리</a>
-                                <a class="nav-link collapsed" href="/item" style="padding-bottom: 0;padding-left: 10px"><div class="sb-nav-link-icon"></div> 장바구니 관리</a>
+                                <a class="nav-link collapsed" href="/item/all" style="padding-bottom: 0;padding-left: 10px; color: grey"><div class="sb-nav-link-icon"></div> 상품 관리</a>
+                                <a class="nav-link collapsed" href="/order/all" style="padding-bottom: 0;padding-left: 10px; color: grey"><div class="sb-nav-link-icon"></div> 주문 관리</a>
+                                <a class="nav-link collapsed" href="/cart/all" style="padding-bottom: 0;padding-left: 10px; color: grey"><div class="sb-nav-link-icon"></div> 장바구니 관리</a>
                             </nav>
                         </div>
                         <%--상품관리 끝--%>
                         <%--배송관리 --%>
-                        <a class="nav-link collapsed" href="/delivery" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 배송정보관리</a>
+                        <a class="nav-link collapsed" href="/delivery" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 배송정보관리</a>
 
-                    <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-clipboard-list"></i> 게시판관리메뉴</div>
+                    <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px; color: dimgray"><i class="fas fa-clipboard-list" style="color: dimgray"></i> 게시판관리메뉴</div>
                     <%--게시판 시작--%>
-                        <a class="nav-link collapsed" href="/board/notice" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 공지사항</a>
-                        <a class="nav-link collapsed" href="/board/fa" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> FAQ</a>
-                        <a class="nav-link collapsed" href="/board/event" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 이벤트</a>
+                        <a class="nav-link collapsed" href="/board/notice" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 공지사항</a>
+                        <a class="nav-link collapsed" href="/board/fa" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> FAQ</a>
+                        <a class="nav-link collapsed" href="/board/event" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 이벤트</a>
                     <%--게시판 끝--%>
 
-                    <div class="sb-sidenav-menu-heading"style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-chart-area"></i> 분석 및 통계</div>
-                    <a class="nav-link" href="/chart/livechart" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div>  실시간통계차트</a>
-                    <a class="nav-link" href="/chart/chart" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 매출분석</a>
+                    <div class="sb-sidenav-menu-heading"style="padding-bottom: 0;padding-left: 20px; color: dimgray"><i class="fas fa-chart-area" style="color: dimgray"></i> 분석 및 통계</div>
+                    <a class="nav-link" href="/chart/livechart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div>  실시간통계차트</a>
+                    <a class="nav-link" href="/chart/chart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 매출분석</a>
 
                 </div>
             </div>
