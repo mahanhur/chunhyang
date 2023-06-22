@@ -83,7 +83,7 @@ public class AjaxImplController {
             jo.put("start",obj.getDuedate());
             jo.put("end", obj.getDuedate());
             jo.put("color","green");
-            jo.put("url","/subsdetail");
+            jo.put("url","/subs/subsdetail");
             log.info("++++++++++++++++++++"+String.valueOf(jo));
             ja.add(jo);
         }
@@ -186,7 +186,7 @@ public class AjaxImplController {
 
 
         List<Chart> itemtop10 ;
-        itemtop10 = chartService.itemamounttop10();
+        itemtop10 = chartService.itemtop10(chart1);
 
         JSONArray ja = new JSONArray();
         for (int i = 0; i < 10; i++) {
