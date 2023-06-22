@@ -42,6 +42,9 @@ public class ChartService implements CHService<Integer, Chart> {
     public List<Chart> itemamounttop10() {
         return mapper.itemamounttop10();
     }
+    public List<Chart> itemtop10(Chart chart) {
+        return mapper.itemtop10(chart);
+    }
     public List<Chart> subsamountworst10() {
         return mapper.subsamountworst10();
     }
@@ -56,6 +59,20 @@ public class ChartService implements CHService<Integer, Chart> {
     public Integer itemtotal(Chart chart) {
         return mapper.itemtotal(chart);
     }
+
+    public Integer custcount(Chart chart) {
+        return mapper.custcount(chart);
+    }
+    public Integer delfincount(Chart chart) {
+        return mapper.delfincount(chart);
+    }
+    public Integer reviewcount(Chart chart) {
+        return mapper.reviewcount(chart);
+    }
+    public Double reviewscore(Chart chart) {
+        return mapper.reviewscore(chart);
+    }
+
 
 
 }

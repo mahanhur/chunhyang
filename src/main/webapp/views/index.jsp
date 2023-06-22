@@ -135,8 +135,8 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <c:if test="${loginadmin.admin_level == 1}">
-                    <div class="sb-sidenav-menu-heading">직원관리메뉴</div>
-                    <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
+                        <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-user"></i> 직원관리메뉴</div>
+                        <a class="nav-link collapsed" href="/admin" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 직원 관리</a>
                     </c:if>
                     <div class="sb-sidenav-menu-heading" style="padding-bottom: 0; padding-left: 20px; color: dimgray"><i class="fas fa-user" style="color:dimgray"></i> 고객관리메뉴</div>
                     <a class="nav-link collapsed" href="/cust" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 회원 관리</a>
@@ -184,6 +184,7 @@
 
                     <div class="sb-sidenav-menu-heading"style="padding-bottom: 0;padding-left: 20px; color: dimgray"><i class="fas fa-chart-area" style="color: dimgray"></i> 분석 및 통계</div>
                     <a class="nav-link" href="/chart/livechart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div>  실시간통계차트</a>
+                    <a class="nav-link" href="/chart/livechart2" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div>  기간별분석</a>
                     <a class="nav-link" href="/chart/chart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 매출분석</a>
                     <a class="nav-link" href="/chart/custchart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 고객분석</a>
                 </div>

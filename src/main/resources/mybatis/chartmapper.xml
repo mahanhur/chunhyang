@@ -19,8 +19,8 @@
                           FROM subsinfo
                           GROUP BY subsitem_id
                       ) c left join subsitem t on c.subsitem_id = t.subsitem_id
-                 order by amount desc
-             ) s
+                 order by c.cnt desc
+             ) s WHERE ROWNUM <![CDATA[<=]]> 10
     </select>
 
     <select id="itemamounttop10" resultType="chart">
@@ -32,7 +32,28 @@
                       group by item_id
                      ) i left join item t on i.item_id = t.item_id
                 order by amount desc
-            ) s
+            ) s WHERE ROWNUM <![CDATA[<=]]> 10
+    </select>
+
+
+    <select id="itemtop10" parameterType="chart" resultType="chart">
+        SELECT rownum, s.item_id, s.item_name, s.item_cnt, s.item_price, s.item_amount
+        FROM (
+        SELECT i.item_id, t.item_name, i.cnt AS item_cnt, t.item_price, i.cnt * t.item_price AS item_amount
+        FROM (
+        SELECT item_id, SUM(order_cnt) AS cnt
+        FROM orderdetail
+        WHERE order_id IN (
+        SELECT order_id
+        FROM item_order
+        WHERE to_char(order_date, 'yyyy-MM-dd') BETWEEN to_char(#{date1}, 'yyyy-MM-dd') AND to_char(#{date2}, 'yyyy-MM-dd')
+        )
+        GROUP BY item_id
+        ) i
+        LEFT JOIN item t ON i.item_id = t.item_id
+        ORDER BY item_amount DESC
+        ) s
+        WHERE ROWNUM <![CDATA[<=]]> 10
     </select>
 
     <select id="subsamountworst10" resultType="chart">
@@ -44,8 +65,8 @@
                           FROM subsinfo
                           GROUP BY subsitem_id
                       ) c left join subsitem t on c.subsitem_id = t.subsitem_id
-                 order by amount
-             ) s
+                 order by c.cnt
+             ) s WHERE ROWNUM <![CDATA[<=]]> 10
     </select>
 
     <select id="itemamountworst10" resultType="chart">
@@ -57,7 +78,7 @@
                       group by item_id
                      ) i left join item t on i.item_id = t.item_id
                 order by amount
-            ) s
+            ) s WHERE ROWNUM <![CDATA[<=]]> 10
     </select>
 
     <select id="substotal" parameterType="chart" resultType="int">
@@ -70,6 +91,30 @@
         select sum(pay_amount) as itemtotal
         from item_order
         where to_char(order_date,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')
+    </select>
+
+    <select id="custcount" parameterType="chart" resultType="int">
+        select count(cust_id) as custcount
+        from cust
+        where to_char(cust_rdate,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')
+    </select>
+
+    <select id="delfincount" parameterType="chart" resultType="int">
+        select count(del_id) as delfincount
+        from delinfo
+        where to_char(del_findate,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')
+    </select>
+
+    <select id="reviewcount" parameterType="chart" resultType="int">
+        select count(review_id) as reviewcount
+        from item_review
+        where to_char(review_rdata,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')
+    </select>
+
+    <select id="reviewscore" parameterType="chart" resultType="double">
+        select avg(review_score) as reviewscore
+        from item_review
+        where to_char(review_rdata,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')
     </select>
 
 </mapper>

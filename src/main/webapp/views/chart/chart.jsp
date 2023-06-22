@@ -29,7 +29,7 @@
                                 <th>순위</th>
                                 <th>상품번호</th>
                                 <th>상품이름</th>
-                                <th>총 판매금액</th>
+                                <th>총 판매량</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -38,7 +38,7 @@
                                 <td>${saobj.rownum}</td>
                                 <td>${saobj.subsitem_id}</td>
                                 <td>${saobj.subsitem_name}</td>
-                                <td>${saobj.subs_amount}</td>
+                                <td>${saobj.subs_cnt}</td>
                             </tr>
                             </c:forEach>
 
@@ -97,7 +97,7 @@
                                 <th>순위</th>
                                 <th>상품번호</th>
                                 <th>상품이름</th>
-                                <th>총 판매금액</th>
+                                <th>총 판매량</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -106,7 +106,7 @@
                                 <td>${sobj.rownum}</td>
                                 <td>${sobj.subsitem_id}</td>
                                 <td>${sobj.subsitem_name}</td>
-                                <td>${sobj.subs_amount}</td>
+                                <td>${sobj.subs_cnt}</td>
                             </tr>
                             </c:forEach>
 
