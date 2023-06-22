@@ -1,5 +1,6 @@
 package com.chflower.service;
 
+import com.chflower.dto.Cal;
 import com.chflower.dto.Subsdetail;
 import com.chflower.frame.CHService;
 import com.chflower.mapper.SubsdetailMapper;
@@ -45,5 +46,7 @@ public class SubsdetailService implements CHService<Integer, Subsdetail> {
     public List<Subsdetail> get2(Integer subsdetail_id) throws Exception {
         return mapper.get2(subsdetail_id);
     }
-
+    public List<Cal> getcount() throws Exception {
+        return mapper.getcount();
+    }
 }

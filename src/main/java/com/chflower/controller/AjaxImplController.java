@@ -43,6 +43,8 @@ public class AjaxImplController {
     DelinfoService delinfoService;
     @Autowired
     ChartService chartService;
+    @Autowired
+    SubsdetailService subsdetailService;
 
     @Value("${uploadimgdir}")
     String imgdir;
@@ -69,37 +71,20 @@ public class AjaxImplController {
         return result;
     }
     @RequestMapping("/getcal3")
-    public Object getcal3(String start, String end){
-        log.info(start);
-        log.info(end);
+    public Object getcal3() throws Exception {
         List<Cal> list= new ArrayList<>();
-        list.add(new Cal("title1","2023-05-01","2023-05-05","1","/cust"));
-        list.add(new Cal("aa","2023-05-03","2023-05-06","2","/cust"));
-        list.add(new Cal("ss","2023-05-06","2023-05-09","3","/cust"));
-        list.add(new Cal("ss","2023-05-10","2023-05-12","3","/cust"));
-        list.add(new Cal("ss","2023-05-16","2023-05-19","2","/cust"));
-        list.add(new Cal("단체휴가","2023-06-07","2023-06-07","3","/cust"));
-        // Java Object ---> JSON
-        // JSON(JavaScript Object Notation)
-        // [{},{},{},...]
+        list = subsdetailService.getcount();
+
+        log.info("++++++++++=="+list);
         JSONArray ja = new JSONArray();
         for(Cal obj:list){
             JSONObject jo = new JSONObject();
-
-            jo.put("title",obj.getTitle());
-            jo.put("start",obj.getStart());
-            jo.put("end", DateUtil.getDateStr(obj.getEnd()));
-
-            if(obj.getDiv().equals("1")){
-                jo.put("color","green");
-            }else if(obj.getDiv().equals("2")){
-                jo.put("color","blue");
-            }else{
-                jo.put("color","red");
-            }
-
-            jo.put("url",obj.getUrl());
-
+            jo.put("title","배송예정:"+obj.getCount()+"건");
+            jo.put("start",obj.getDuedate());
+            jo.put("end", obj.getDuedate());
+            jo.put("color","green");
+            jo.put("url","/subsdetail");
+            log.info("++++++++++++++++++++"+String.valueOf(jo));
             ja.add(jo);
         }
         return ja;

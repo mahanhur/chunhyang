@@ -4,6 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chflower.mapper.SubsdetailMapper">
 
+    <select id="getcount" resultType="cal">
+        SELECT TO_CHAR(subs_duedate, 'YYYY-MM-DD') AS duedate, COUNT(*) AS count
+        FROM subsdetail
+        GROUP BY subs_duedate
+    </select>
     <select id="select" parameterType="int" resultType="subsdetail">
         SELECT * FROM subsdetail WHERE subs_id=#{subs_id}
     </select>
