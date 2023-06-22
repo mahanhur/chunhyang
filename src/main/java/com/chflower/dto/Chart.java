@@ -46,4 +46,5 @@ public class Chart {
         this.date1 = date1;
         this.date2 = date2;
     }
+
 }

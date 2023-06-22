@@ -5,6 +5,7 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/datepick.css" />
+
 <style>
     .datepickcard {
         border: solid 0.2px lightgray;
@@ -14,81 +15,112 @@
 
 
 <script>
-    let substotal = 0;
-    let itemtotal = 0;
+    let mantotalsales =0;
+    let womantotalsales =0;
     let totals = 0;
-    let delfincount = 0;
-    let reviewcount = 0;
-    let reviewscore = 0;
     let ja;
     let chartData;
+    let tableData;
+
+    function upcount(location, max, unit) {
+        let $counter1 = document.querySelector(location);
+        let max1 = max;
+        counter($counter1, max1);
+
+        function counter($counter1, max1) {
+            let now = max1;
+            const handle = setInterval(() => {
+                $counter1.innerHTML = Math.ceil(max1 - now).toLocaleString() + unit
+                if (now < 1) {
+                    clearInterval(handle);
+                }
+                const step = now / 10;
+                now -= step;
+            }, 10);
+        }
+    }
     let chart2 = {
         init: function() {
+            //당일자 디폴트 세팅
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+            var dateString = year + '-' + month  + '-' + day;
+
+            chart2.dataset(dateString, dateString );
+            $('.datepicker1').val(dateString);
+            $('.datepicker2').val(dateString);
+
+            //버튼클릭시 정보제공
             $('.datepicker').datepicker();
+            let date1 = $('.datepicker1').val();
+            let date2 = $('.datepicker2').val();
             $('.chart_btn').click( function() {
-                let date1 = $('.datepicker1').val();
-                let date2 = $('.datepicker2').val();
-                $.ajax({
-                    url:'/chartimpl2',
-                    method:'post',
-                    data: {
-                        date1:date1,
-                        date2:date2
-                    },
-                    success: function(data) {
-                        if(data.substotal == null) {
-                            data.substotal = 0;
-                        }
-                        substotal = data.substotal;
-                        let substotalwon = substotal.toLocaleString();
-
-                        if(data.itemtotal == null) {
-                            data.itemtotal = 0;
-                        }
-                        itemtotal = data.itemtotal;
-                        let itemtotalwon = itemtotal.toLocaleString();
-
-                        if(data.custcount == null) {
-                            data.custcount = 0;
-                        }
-                        custcount = data.custcount;
-
-                        if(data.delfincount == null) {
-                            data.delfincount = 0;
-                        }
-                        delfincount = data.delfincount;
-
-                        if(data.reviewcount == null) {
-                            data.reviewcount = 0;
-                        }
-                        reviewcount = data.reviewcount;
-
-                        if(data.reviewscore == null) {
-                            data.reviewscore = 0;
-                        }
-                        reviewscore = data.reviewscore;
-
-                        totals = (substotal+itemtotal).toLocaleString();
-                        $('.totals').html(totals + '원');
-                        $('.substotal').html(substotalwon +'원');
-                        $('.itemtotal').html(itemtotalwon +'원');
-                        $('.custcount').html(custcount +'명');
-                        $('.delfincount').html(delfincount +'건');
-                        $('.reviewcount').html(reviewcount +'건');
-                        $('.reviewscore').html('(' + reviewscore +'점)');
-                        $('.stars').attr('data-value', Math.round(reviewscore));
-
-
-                        ja = data.ja
-                        chartData = ja.map(item => [item.name, item.amount]);
-                        chart2.chart1(chartData);
-                    }
-                });
+                date1 = $('.datepicker1').val();
+                date2 = $('.datepicker2').val();
+                chart2.dataset(date1, date2);
             })
         },
-        stars: function() {
+        dataset: function(date1, date2) {
+            $('tbody').empty();
+            $.ajax({
+                url:'/chartimpl2',
+                method:'post',
+                data: {
+                    date1:date1,
+                    date2:date2
+                },
+                success: function(data) {
+                    if(data.mantotalsales == null) {
+                        data.mantotalsales = 0;
+                    }
+                    mantotalsales = data.mantotalsales;
+
+                    if(data.womantotalsales == null) {
+                        data.womantotalsales = 0;
+                    }
+                    womantotalsales = data.womantotalsales;
+
+                    upcount('.totals', mantotalsales+womantotalsales, '원');
+                    upcount('.mantotalsales', mantotalsales, '원');
+                    upcount('.womantotalsales', womantotalsales, '원');
+
+                    ja = data.ja;
+                    chartData = ja.map(item => [item.name, item.amount]);
+                    chart2.chart1(chartData);
+
+                    tableData = ja.map(item => [item.rownum, item.name,  item.price, item.cnt, item.amount]);
+                    chart2.table(tableData);
+           }
+            });
+
         },
-        chart1: function(ja) {
+        table: function(tableData) {
+            let tags = "";
+            for (let i = 0; i < tableData.length; i++) {
+                tags = '<tr>';
+                tags += '<td>';
+                tags += tableData[i][0];
+                tags += '</td>';
+                tags += '<td>';
+                tags += tableData[i][1];
+                tags += '</td>';
+                tags += '<td>';
+                tags += tableData[i][2].toLocaleString() + '원';
+                tags += '</td>';
+                tags += '<td>';
+                tags += tableData[i][3].toLocaleString() + '개';
+                tags += '</td>';
+                tags += '<td>';
+                tags += tableData[i][4].toLocaleString() + '원';
+                tags += '</td>';
+                tags += '</tr>';
+                $('tbody').append(tags);
+            }
+        },
+
+        chart1: function(chartData) {
             Highcharts.chart('container1', {
                 chart: {
                     plotBackgroundColor: null,
@@ -97,7 +129,7 @@
                     type: 'pie'
                 },
                 title: {
-                    text: '해당기간 성별 매출 비중',
+                    text: '해당기간 판매금액 비중',
                     align: 'center'
                 },
                 tooltip: {
@@ -122,11 +154,11 @@
                     name: '비중',
                     colorByPoint: true,
                     data: [{
-                        name: '구독상품',
-                        y: substotal / (substotal+itemtotal) * 100
+                        name: '남자',
+                        y: mantotalsales / (mantotalsales+womantotalsales) * 100
                     },  {
-                        name: '일반상품',
-                        y: itemtotal / (substotal+itemtotal) * 100
+                        name: '여자',
+                        y: womantotalsales / (mantotalsales+womantotalsales) * 100
                     }]
                 }]
             });
@@ -206,12 +238,11 @@
 
 
     })
-
 </script>
 
 <main>
     <div class="container-fluid">
-        <p class="page_header_item"><strong>회원 분석 및 통계</strong></p>
+        <p class="page_header_item"><strong>기간별 분석 및 통계</strong></p>
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 시작일자와 종료일자를 입력하시면 <span style="font-weight: bold; color:red;">해당 기간 동안</span>의 분석 및 통계자료를 확인하실 수 있습니다.</p>
@@ -226,16 +257,66 @@
         </div>
 
         <div style="display: flex; flex-direction: row;">
-            <div class="col-lg-5">
-                <%--                매출액비중 차트--%>
-                <div class="card mb-1" >
-                    <div class="card-header" style="font-weight: bold; background-color: #0dcaf0" >
-                        남녀 매출액 비중 차트
+            <div class="col-lg-6">
+                <%--                전체 매출액--%>
+                <div class="row">
+                    <%--            매출액--%>
+                    <div class="">
+                        <div class="card mb-2">
+                            <!-- Card contents -->
+                            <div class="card-header" style="font-weight: bold; background-color: #ffecb5">
+                                전체 매출액
+                            </div>
+                            <div class="card-body totals" style="font-size: 400%; text-align: center">
+                                0 원
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <figure class="highcharts-figure">
-                            <div id="container1"></div>
-                        </figure>
+                    <%--매출액end--%>
+                </div>
+
+                <%--                구독/일반상품 매출액--%>
+                <div class="row">
+                    <%--            매출액--%>
+                    <div class="col-lg-6">
+                        <div class="card mb-1">
+                            <!-- Card contents -->
+                            <div class="card-header" style="font-weight: bold; background-color: #F7F8E0">
+                                남자 매출액
+                            </div>
+                            <div class="card-body mantotalsales" style="font-size: 200%; text-align: center">
+                                0 원
+                            </div>
+                        </div>
+                    </div>
+                    <%--매출액end--%>
+
+                    <%--            매출액--%>
+                    <div class="col-lg-6">
+                        <div class="card mb-1">
+                            <!-- Card contents -->
+                            <div class="card-header" style="font-weight: bold; background-color: #F7F8E0">
+                                여자 매출액
+                            </div>
+                            <div class="card-body womantotalsales" style="font-size: 200%; text-align: center">
+                                0 원
+                            </div>
+                        </div>
+                    </div>
+                    <%--매출액end--%>
+                </div>
+                <%--                custcount--%>
+                <div class="row">
+                    <div class="">
+                        <div class="card mb-2">
+                            <!-- Card contents -->
+                            <div class="card-header" style="font-weight: bold; background-color: #F8E0EC">
+                                가입 고객 수
+                            </div>
+                            <div class="card-body custcount" style="font-size: 400%; text-align: center">
+                                0 명
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -243,12 +324,12 @@
             <div class="col-lg-5" style="margin-left: 3%">
                 <%--                매출액비중 차트--%>
                 <div class="card mb-1" >
-                    <div class="card-header" style="font-weight: bold; background-color: #0dcaf0" >
+                    <div class="card-header" style="font-weight: bold; background-color: #E0ECF8" >
                         매출액 비중 차트
                     </div>
                     <div class="card-body">
                         <figure class="highcharts-figure">
-                            <div id="container3"></div>
+                            <div id="container1"></div>
                         </figure>
                     </div>
                 </div>
@@ -260,7 +341,7 @@
             <div class="col-lg-4">
                 <div class="card mb-1">
                     <!-- Card contents -->
-                    <div class="card-header" style="font-weight: bold; background-color: #ffecb5">
+                    <div class="card-header" style="font-weight: bold; background-color: #E0F8E0">
                         배송완료 건수
                     </div>
                     <div class="card-body delfincount" style="font-size: 200%; text-align: center">
@@ -272,7 +353,7 @@
             <div class="col-lg-4">
                 <div class="card mb-1">
                     <!-- Card contents -->
-                    <div class="card-header" style="font-weight: bold; background-color: #ffecb5">
+                    <div class="card-header" style="font-weight: bold; background-color: #E0F8E0">
                         리뷰등록 건수
                     </div>
                     <div class="card-body reviewcount" style="font-size: 200%; text-align: center">
@@ -283,7 +364,7 @@
             <div class="col-lg-4">
                 <div class="card mb-1">
                     <!-- Card contents -->
-                    <div class="card-header" style="font-weight: bold; background-color: #ffecb5">
+                    <div class="card-header" style="font-weight: bold; background-color: #E0F8E0">
                         등록리뷰 평점
                     </div>
                     <div class="card-body " style="font-size: 200%; text-align: center">
@@ -327,12 +408,13 @@
                 </div>
             </div>
         </div>
+        <br/>
 
         <div class="col-lg-12">
             <%--                top10 매출액 데이터--%>
             <div class="card mb-12" >
                 <div class="card-header" style="font-weight: bold;" >
-                    판매금액 추이 차트
+                    판매금액기준 TOP10 데이터
                 </div>
                 <div class="card-body">
                     <table class="table table-sm table-hover">
@@ -346,14 +428,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${subsamount}" var="saobj">
-                            <tr>
-                                <td>${saobj.rownum}</td>
-                                <td>${saobj.subsitem_id}</td>
-                                <td>${saobj.subsitem_name}</td>
-                                <td>${saobj.subs_cnt}</td>
-                            </tr>
-                        </c:forEach>
 
                         </tbody>
                     </table>

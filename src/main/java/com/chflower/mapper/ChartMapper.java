@@ -21,4 +21,6 @@ public interface ChartMapper extends CHMapper<Integer, Chart> {
     public Integer delfincount(Chart chart);
     public Integer reviewcount(Chart chart);
     public Double reviewscore(Chart chart);
+    public Integer mantotalsales(Chart chart);
+    public Integer womantotalsales(Chart chart);
 }

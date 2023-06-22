@@ -73,6 +73,12 @@ public class ChartService implements CHService<Integer, Chart> {
         return mapper.reviewscore(chart);
     }
 
+    public Integer mantotalsales(Chart chart) {
+        return mapper.mantotalsales(chart);
+    }
 
+    public Integer womantotalsales(Chart chart) {
+        return mapper.womantotalsales(chart);
+    }
 
 }

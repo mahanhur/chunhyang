@@ -117,4 +117,32 @@
         where to_char(review_rdata,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')
     </select>
 
+    <select id="mantotalsales" parameterType="chart" resultType="int">
+        SELECT sum(b.total_payment) as paid
+        FROM cust c LEFT OUTER JOIN (SELECT
+                    COALESCE(io.CUST_ID, s.CUST_ID) AS cust_id,
+                    COALESCE(io.ORDER_DATE, s.SUBS_RDATE) AS rdate,
+                    COALESCE(io.PAY_AMOUNT, 0) + COALESCE(s.SUBS_PAY_AMOUNT, 0) AS total_payment
+                FROM item_order io
+                FULL OUTER JOIN
+                subsinfo s ON io.CUST_ID = s.CUST_ID AND io.ORDER_DATE = s.SUBS_RDATE
+                ) b ON c.cust_id = b.cust_id
+        where  to_char(b.rdate,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')        and c.gender =1
+        group by c.gender
+    </select>
+
+    <select id="womantotalsales" parameterType="chart" resultType="int">
+        SELECT sum(b.total_payment) as paid
+        FROM cust c LEFT OUTER JOIN (SELECT
+                                         COALESCE(io.CUST_ID, s.CUST_ID) AS cust_id,
+                                         COALESCE(io.ORDER_DATE, s.SUBS_RDATE) AS rdate,
+                                         COALESCE(io.PAY_AMOUNT, 0) + COALESCE(s.SUBS_PAY_AMOUNT, 0) AS total_payment
+                                     FROM item_order io
+                                              FULL OUTER JOIN
+                                          subsinfo s ON io.CUST_ID = s.CUST_ID AND io.ORDER_DATE = s.SUBS_RDATE
+        ) b ON c.cust_id = b.cust_id
+        where  to_char(b.rdate,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')        and c.gender =2
+        group by c.gender
+    </select>
+
 </mapper>
