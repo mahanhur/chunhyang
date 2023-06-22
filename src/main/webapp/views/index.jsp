@@ -186,7 +186,7 @@
                     <a class="nav-link" href="/chart/livechart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div>  실시간통계차트</a>
                     <a class="nav-link" href="/chart/livechart2" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div>  기간별분석</a>
                     <a class="nav-link" href="/chart/chart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 매출분석</a>
-                    <a class="nav-link" href="/chart/itemchart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 상품분석</a>
+                    <a class="nav-link" href="/chart/custchart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 고객분석</a>
                 </div>
             </div>
             <c:choose>

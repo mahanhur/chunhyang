@@ -83,7 +83,7 @@ public class AjaxImplController {
             jo.put("start",obj.getDuedate());
             jo.put("end", obj.getDuedate());
             jo.put("color","green");
-            jo.put("url","/subsdetail");
+            jo.put("url","/subs/subsdetail");
             log.info("++++++++++++++++++++"+String.valueOf(jo));
             ja.add(jo);
         }
