@@ -185,7 +185,7 @@
                     <div class="sb-sidenav-menu-heading"style="padding-bottom: 0;padding-left: 20px; color: dimgray"><i class="fas fa-chart-area" style="color: dimgray"></i> 분석 및 통계</div>
                     <a class="nav-link" href="/chart/livechart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div>  실시간통계차트</a>
                     <a class="nav-link" href="/chart/chart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 매출분석</a>
-                    <a class="nav-link" href="/chart/itemchart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 상품분석</a>
+                    <a class="nav-link" href="/chart/custchart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 고객분석</a>
                 </div>
             </div>
             <c:choose>
