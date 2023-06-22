@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chflower.mapper.CustchartMapper">
+
+        <select id="getMonthlyTotal" resultType="custchart">
+            <![CDATA[
+            SELECT COALESCE(s.MONTH, o.MONTH) AS MONTH, COALESCE(s.gender, o.gender) AS gender, (COALESCE(s.total, 0) + COALESCE(o.total, 0)) AS total
+            FROM
+                (
+                    SELECT TO_NUMBER(TO_CHAR(s.subs_rdate, 'MM')) AS MONTH, c.gender, SUM(s.subs_pay_amount) AS total
+                    FROM subsinfo s
+                    LEFT JOIN cust c ON s.cust_id = c.cust_id
+                    WHERE c.gender IS NOT NULL
+                    GROUP BY TO_CHAR(s.subs_rdate, 'MM'), c.gender
+                ) s
+                FULL JOIN
+                (
+                    SELECT TO_NUMBER(TO_CHAR(o.order_date, 'MM')) AS MONTH, c.gender, SUM(o.pay_amount) AS total
+                    FROM item_order o
+                    LEFT JOIN cust c ON o.cust_id = c.cust_id
+                    WHERE c.gender IS NOT NULL
+                    GROUP BY TO_CHAR(o.order_date, 'MM'), c.gender
+                ) o
+            ON s.MONTH = o.MONTH AND s.gender = o.gender
+            ORDER BY 1
+            ]]>
+    </select>
+
+    <select id="getGenderTotal" resultType="custchart">
+            <![CDATA[
+            SELECT COALESCE(s.gender, o.gender) AS gender, (COALESCE(s.gendertotal, 0) + COALESCE(o.gendertotal, 0)) AS gendertotal
+            FROM
+                (
+                    SELECT c.gender, SUM(s.subs_pay_amount) AS gendertotal
+                    FROM subsinfo s
+                             LEFT JOIN cust c ON s.cust_id = c.cust_id
+                    WHERE c.gender IS NOT NULL
+                    GROUP BY c.gender
+                ) s
+                    FULL JOIN
+                (
+                    SELECT c.gender, SUM(o.pay_amount) AS gendertotal
+                    FROM item_order o
+                             LEFT JOIN cust c ON o.cust_id = c.cust_id
+                    WHERE c.gender IS NOT NULL
+                    GROUP BY c.gender
+                ) o
+                ON s.gender = o.gender
+            ORDER BY 1
+            ]]>
+    </select>
+
+
+</mapper>

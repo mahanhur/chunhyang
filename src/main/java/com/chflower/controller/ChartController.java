@@ -69,24 +69,7 @@ public class ChartController {
     }
 
     @RequestMapping("/custchart")
-    public String custchart(Model model){
-
-        List<Chart> subsamount1 ;
-        subsamount1 = chartService.subsamounttop10();
-        model.addAttribute("subsamount", subsamount1);
-
-        List<Chart> itemamount1 ;
-        itemamount1 = chartService.itemamounttop10();
-        model.addAttribute("itemamount", itemamount1);
-
-        List<Chart> subsamount2 ;
-        subsamount2 = chartService.subsamountworst10();
-        model.addAttribute("subsamount2", subsamount2);
-
-        List<Chart> itemamount2 ;
-        itemamount2 = chartService.itemamountworst10();
-        model.addAttribute("itemamount2", itemamount2);
-
+    public String custchart(Model model) {
         model.addAttribute("center",  dir+"/custchart");
         return "index";
     }
