@@ -174,20 +174,51 @@ public class AjaxImplController {
     @RequestMapping("/chartimpl")
     public Object chartimpl(@DateTimeFormat(pattern = "yyyy-MM-dd") Date date1, @DateTimeFormat(pattern = "yyyy-MM-dd") Date date2){
 
-        JSONObject jo = new JSONObject();
+        JSONObject jo1 = new JSONObject();
         Chart chart1 = new Chart(date1, date2);
         Integer substotal = chartService.substotal(chart1);
+        Integer itemtotal = chartService.itemtotal(chart1);
+        Integer custcount = chartService.custcount(chart1);
+        Integer delfincount = chartService.delfincount(chart1);
+        Integer reviewcount = chartService.reviewcount(chart1);
+        Double reviewscore = chartService.reviewscore(chart1);
 
-        Chart chart2 = new Chart(date1, date2);
-        Integer itemtotal = chartService.itemtotal(chart2);
+
+
+        List<Chart> itemtop10 ;
+        itemtop10 = chartService.itemamounttop10();
+
+        JSONArray ja = new JSONArray();
+        for (int i = 0; i < 10; i++) {
+            JSONObject item = new JSONObject();
+            item.put("rownum", itemtop10.get(i).getRownum());
+            item.put("name", itemtop10.get(i).getItem_name());
+            item.put("cnt", itemtop10.get(i).getItem_cnt());
+            item.put("price", itemtop10.get(i).getItem_price());
+            item.put("amount", itemtop10.get(i).getItem_amount());
+            ja.add(item);
+        }
+        jo1.put("ja", ja);
 
         if(substotal != null){
-            jo.put("substotal", substotal);
+            jo1.put("substotal", substotal);
         }
         if(itemtotal != null) {
-            jo.put("itemtotal", itemtotal);
+            jo1.put("itemtotal", itemtotal);
         }
-        return jo;
+        if(custcount != null) {
+            jo1.put("custcount", custcount);
+        }
+        if(delfincount != null) {
+            jo1.put("delfincount", delfincount);
+        }
+        if(reviewcount != null) {
+            jo1.put("reviewcount", reviewcount);
+        }
+        if(reviewscore != null) {
+            jo1.put("reviewscore", reviewscore);
+        }
+        return jo1;
     }
 
 }
