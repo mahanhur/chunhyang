@@ -45,6 +45,8 @@ public class AjaxImplController {
     ChartService chartService;
     @Autowired
     SubsdetailService subsdetailService;
+    @Autowired
+    CustchartService custchartService;
 
     @Value("${uploadimgdir}")
     String imgdir;
@@ -219,6 +221,33 @@ public class AjaxImplController {
             jo1.put("reviewscore", reviewscore);
         }
         return jo1;
+    }
+
+    @RequestMapping("/custchartimpl")
+    public Object custchartimpl() throws Exception {
+
+        List<Custchart> list = custchartService.getMonthlyTotal();
+        JSONArray fma = new JSONArray();
+        JSONArray ma = new JSONArray();
+        for (Custchart c : list) {
+            if (c.getGender().equals("2")) {
+                fma.add(c.getTotal());
+            } else {
+                ma.add(c.getTotal());
+            }
+        }
+        JSONObject fmo = new JSONObject();
+        JSONObject mo = new JSONObject();
+
+        fmo.put("name", "Female");
+        fmo.put("data", fma);
+        mo.put("name", "Male");
+        mo.put("data", ma);
+        JSONArray data = new JSONArray();
+        data.add(fmo);
+        data.add(mo);
+
+        return data;
     }
 
 }

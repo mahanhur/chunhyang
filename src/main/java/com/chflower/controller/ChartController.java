@@ -68,6 +68,11 @@ public class ChartController {
         return "index";
     }
 
+    @RequestMapping("/custchart")
+    public String custchart(Model model) {
+        model.addAttribute("center",  dir+"/custchart");
+        return "index";
+    }
 
 
 }
