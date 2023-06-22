@@ -22,10 +22,29 @@
     let reviewscore = 0;
     let ja;
     let chartData;
+    let tableData;
+    function upcount(location, max, unit) {
+        let $counter1 = document.querySelector(location);
+        let max1 = max;
+        counter($counter1, max1);
+
+        function counter($counter1, max1) {
+            let now = max1;
+            const handle = setInterval(() => {
+                $counter1.innerHTML = Math.ceil(max1 - now).toLocaleString() + unit
+                if (now < 1) {
+                    clearInterval(handle);
+                }
+                const step = now / 10;
+                now -= step;
+            }, 10);
+        }
+    }
     let chart2 = {
         init: function() {
                 $('.datepicker').datepicker();
                 $('.chart_btn').click( function() {
+                    $('tbody').empty();
                     let date1 = $('.datepicker1').val();
                     let date2 = $('.datepicker2').val();
                     $.ajax({
@@ -73,26 +92,57 @@
                             
                             
                             totals = (substotal+itemtotal).toLocaleString();
-                            $('.totals').html(totals + '원');
-                            $('.substotal').html(substotalwon +'원');
-                            $('.itemtotal').html(itemtotalwon +'원');
-                            $('.custcount').html(custcount +'명');
-                            $('.delfincount').html(delfincount +'건');
-                            $('.reviewcount').html(reviewcount +'건');
-                            $('.reviewscore').html('(' + reviewscore +'점)');
+                            // $('.totals').html(totals + '원');
+                            upcount('.totals', substotal+itemtotal, '원');
+                            // $('.substotal').html(substotalwon +'원');
+                            upcount('.substotal', substotal, '원');
+                            // $('.itemtotal').html(itemtotalwon +'원');
+                            upcount('.itemtotal', itemtotal, '원');
+                            // $('.custcount').html(custcount +'명');
+                            upcount('.custcount', custcount, '명');
+                            // $('.delfincount').html(delfincount +'건');
+                            upcount('.delfincount', delfincount, '건');
+                            // $('.reviewcount').html(reviewcount +'건');
+                            upcount('.reviewcount', reviewcount, '건');
+                            // $('.reviewscore').html('(' + reviewscore +'점)');
+                            upcount('.reviewscore', reviewscore, '점');
                             $('.stars').attr('data-value', Math.round(reviewscore));
 
 
-                            ja = data.ja
+                            ja = data.ja;
                             chartData = ja.map(item => [item.name, item.amount]);
                             chart2.chart1(chartData);
+
+                            tableData = ja.map(item => [item.rownum, item.name,  item.price, item.cnt, item.amount]);
+                            chart2.table(tableData);
                         }
                     });
             })
         },
-        stars: function() {
+        table: function(tableData) {
+            let tags = "";
+            for (let i = 0; i < tableData.length; i++) {
+                tags = '<tr>';
+                tags += '<td>';
+                tags += tableData[i][0];
+                tags += '</td>';
+                tags += '<td>';
+                tags += tableData[i][1];
+                tags += '</td>';
+                tags += '<td>';
+                tags += tableData[i][2].toLocaleString() + '원';
+                tags += '</td>';
+                tags += '<td>';
+                tags += tableData[i][3].toLocaleString() + '개';
+                tags += '</td>';
+                tags += '<td>';
+                tags += tableData[i][4].toLocaleString() + '원';
+                tags += '</td>';
+                tags += '</tr>';
+                $('tbody').append(tags);
+            }
         },
-        chart1: function(ja) {
+        chart1: function(chartData) {
             Highcharts.chart('container1', {
                 chart: {
                     plotBackgroundColor: null,
@@ -223,6 +273,8 @@
     <%--        now -= step;--%>
     <%--    }, 50);--%>
     <%--}--%>
+
+
 </script>
 
 <main>
@@ -266,7 +318,7 @@
                     <div class="col-lg-6">
                         <div class="card mb-1">
                             <!-- Card contents -->
-                            <div class="card-header" style="font-weight: bold; background-color: #ffecb5">
+                            <div class="card-header" style="font-weight: bold; background-color: #F7F8E0">
                                 구독상품 매출액
                             </div>
                             <div class="card-body substotal" style="font-size: 200%; text-align: center">
@@ -280,7 +332,7 @@
                     <div class="col-lg-6">
                         <div class="card mb-1">
                             <!-- Card contents -->
-                            <div class="card-header" style="font-weight: bold; background-color: #ffecb5">
+                            <div class="card-header" style="font-weight: bold; background-color: #F7F8E0">
                                 일반상품 매출액
                             </div>
                             <div class="card-body itemtotal" style="font-size: 200%; text-align: center">
@@ -295,7 +347,7 @@
                     <div class="">
                         <div class="card mb-2">
                             <!-- Card contents -->
-                            <div class="card-header" style="font-weight: bold; background-color: #EFBBBB">
+                            <div class="card-header" style="font-weight: bold; background-color: #F8E0EC">
                                 가입 고객 수
                             </div>
                             <div class="card-body custcount" style="font-size: 400%; text-align: center">
@@ -309,7 +361,7 @@
             <div class="col-lg-5" style="margin-left: 3%">
 <%--                매출액비중 차트--%>
                 <div class="card mb-1" >
-                    <div class="card-header" style="font-weight: bold; background-color: #0dcaf0" >
+                    <div class="card-header" style="font-weight: bold; background-color: #E0ECF8" >
                         매출액 비중 차트
                     </div>
                     <div class="card-body">
@@ -326,7 +378,7 @@
             <div class="col-lg-4">
                 <div class="card mb-1">
                     <!-- Card contents -->
-                    <div class="card-header" style="font-weight: bold; background-color: #ffecb5">
+                    <div class="card-header" style="font-weight: bold; background-color: #E0F8E0">
                         배송완료 건수
                     </div>
                     <div class="card-body delfincount" style="font-size: 200%; text-align: center">
@@ -338,7 +390,7 @@
             <div class="col-lg-4">
                 <div class="card mb-1">
                     <!-- Card contents -->
-                    <div class="card-header" style="font-weight: bold; background-color: #ffecb5">
+                    <div class="card-header" style="font-weight: bold; background-color: #E0F8E0">
                         리뷰등록 건수
                     </div>
                     <div class="card-body reviewcount" style="font-size: 200%; text-align: center">
@@ -349,7 +401,7 @@
             <div class="col-lg-4">
                 <div class="card mb-1">
                     <!-- Card contents -->
-                    <div class="card-header" style="font-weight: bold; background-color: #ffecb5">
+                    <div class="card-header" style="font-weight: bold; background-color: #E0F8E0">
                         등록리뷰 평점
                     </div>
                     <div class="card-body " style="font-size: 200%; text-align: center">
@@ -393,12 +445,13 @@
                 </div>
             </div>
         </div>
+        <br/>
 
         <div class="col-lg-12">
             <%--                top10 매출액 데이터--%>
             <div class="card mb-12" >
                 <div class="card-header" style="font-weight: bold;" >
-                    판매금액 추이 차트
+                    판매금액기준 TOP10 데이터
                 </div>
                 <div class="card-body">
                     <table class="table table-sm table-hover">
@@ -412,14 +465,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${subsamount}" var="saobj">
-                            <tr>
-                                <td>${saobj.rownum}</td>
-                                <td>${saobj.subsitem_id}</td>
-                                <td>${saobj.subsitem_name}</td>
-                                <td>${saobj.subs_cnt}</td>
-                            </tr>
-                        </c:forEach>
 
                         </tbody>
                     </table>

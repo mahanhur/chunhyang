@@ -35,6 +35,27 @@
             ) s WHERE ROWNUM <![CDATA[<=]]> 10
     </select>
 
+
+    <select id="itemtop10" parameterType="chart" resultType="chart">
+        SELECT rownum, s.item_id, s.item_name, s.item_cnt, s.item_price, s.item_amount
+        FROM (
+        SELECT i.item_id, t.item_name, i.cnt AS item_cnt, t.item_price, i.cnt * t.item_price AS item_amount
+        FROM (
+        SELECT item_id, SUM(order_cnt) AS cnt
+        FROM orderdetail
+        WHERE order_id IN (
+        SELECT order_id
+        FROM item_order
+        WHERE to_char(order_date, 'yyyy-MM-dd') BETWEEN to_char(#{date1}, 'yyyy-MM-dd') AND to_char(#{date2}, 'yyyy-MM-dd')
+        )
+        GROUP BY item_id
+        ) i
+        LEFT JOIN item t ON i.item_id = t.item_id
+        ORDER BY item_amount DESC
+        ) s
+        WHERE ROWNUM <![CDATA[<=]]> 10
+    </select>
+
     <select id="subsamountworst10" resultType="chart">
         select rownum, s.subsitem_id, s.subsitem_name, s.cnt as subs_cnt, s.subsitem_price, s.amount as subs_amount
         from (

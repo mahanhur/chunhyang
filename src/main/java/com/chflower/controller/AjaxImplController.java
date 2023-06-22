@@ -186,7 +186,7 @@ public class AjaxImplController {
 
 
         List<Chart> itemtop10 ;
-        itemtop10 = chartService.itemamounttop10();
+        itemtop10 = chartService.itemtop10(chart1);
 
         JSONArray ja = new JSONArray();
         for (int i = 0; i < 10; i++) {

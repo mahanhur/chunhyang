@@ -42,6 +42,9 @@ public class ChartService implements CHService<Integer, Chart> {
     public List<Chart> itemamounttop10() {
         return mapper.itemamounttop10();
     }
+    public List<Chart> itemtop10(Chart chart) {
+        return mapper.itemtop10(chart);
+    }
     public List<Chart> subsamountworst10() {
         return mapper.subsamountworst10();
     }
