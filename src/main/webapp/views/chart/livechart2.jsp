@@ -23,6 +23,7 @@
     let ja;
     let chartData;
     let tableData;
+
     function upcount(location, max, unit) {
         let $counter1 = document.querySelector(location);
         let max1 = max;
@@ -42,82 +43,90 @@
     }
     let chart2 = {
         init: function() {
-                $('.datepicker').datepicker();
-                $('.chart_btn').click( function() {
-                    $('tbody').empty();
-                    let date1 = $('.datepicker1').val();
-                    let date2 = $('.datepicker2').val();
-                    $.ajax({
-                        url:'/chartimpl',
-                        method:'post',
-                        data: {
-                            date1:date1,
-                            date2:date2
-                        },
-                        success: function(data) {
-                            if(data.substotal == null) {
-                                data.substotal = 0;
-                            }
-                            substotal = data.substotal;
-                            let substotalwon = substotal.toLocaleString();
+            //당일자 디폴트 세팅
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+            var dateString = year + '-' + month  + '-' + day;
 
-                            if(data.itemtotal == null) {
-                                data.itemtotal = 0;
-                            }
-                            itemtotal = data.itemtotal;
-                            let itemtotalwon = itemtotal.toLocaleString();
+            chart2.dataset(dateString, dateString );
+            $('.datepicker1').val(dateString);
+            $('.datepicker2').val(dateString);
 
-                            if(data.custcount == null) {
-                                data.custcount = 0;
-                            }
-                            custcount = data.custcount;
-
-                            if(data.delfincount == null) {
-                                data.delfincount = 0;
-                            }
-                            delfincount = data.delfincount;
-                            
-                            if(data.reviewcount == null) {
-                                data.reviewcount = 0;
-                            }
-                            reviewcount = data.reviewcount;
-                            
-                            if(data.reviewscore == null) {
-                                data.reviewscore = 0;
-                            }
-                            reviewscore = data.reviewscore;
-                            
-
-
-                            
-                            
-                            totals = (substotal+itemtotal).toLocaleString();
-                            // $('.totals').html(totals + '원');
-                            upcount('.totals', substotal+itemtotal, '원');
-                            // $('.substotal').html(substotalwon +'원');
-                            upcount('.substotal', substotal, '원');
-                            // $('.itemtotal').html(itemtotalwon +'원');
-                            upcount('.itemtotal', itemtotal, '원');
-                            // $('.custcount').html(custcount +'명');
-                            upcount('.custcount', custcount, '명');
-                            // $('.delfincount').html(delfincount +'건');
-                            upcount('.delfincount', delfincount, '건');
-                            // $('.reviewcount').html(reviewcount +'건');
-                            upcount('.reviewcount', reviewcount, '건');
-                            // $('.reviewscore').html('(' + reviewscore +'점)');
-                            upcount('.reviewscore', reviewscore, '점');
-                            $('.stars').attr('data-value', Math.round(reviewscore));
-
-
-                            ja = data.ja;
-                            chartData = ja.map(item => [item.name, item.amount]);
-                            chart2.chart1(chartData);
-
-                            tableData = ja.map(item => [item.rownum, item.name,  item.price, item.cnt, item.amount]);
-                            chart2.table(tableData);
-                        }
-                    });
+            //버튼클릭시 정보제공
+            $('.datepicker').datepicker();
+            let date1 = $('.datepicker1').val();
+            let date2 = $('.datepicker2').val();
+            $('.chart_btn').click( function() {
+                date1 = $('.datepicker1').val();
+                date2 = $('.datepicker2').val();
+                chart2.dataset(date1, date2);
             })
+        },
+        dataset: function(date1, date2) {
+            $('tbody').empty();
+            $.ajax({
+                url:'/chartimpl',
+                method:'post',
+                data: {
+                    date1:date1,
+                    date2:date2
+                },
+                success: function(data) {
+                    if(data.substotal == null) {
+                        data.substotal = 0;
+                    }
+                    substotal = data.substotal;
+
+                    if(data.itemtotal == null) {
+                        data.itemtotal = 0;
+                    }
+                    itemtotal = data.itemtotal;
+
+                    if(data.custcount == null) {
+                        data.custcount = 0;
+                    }
+                    custcount = data.custcount;
+
+                    if(data.delfincount == null) {
+                        data.delfincount = 0;
+                    }
+                    delfincount = data.delfincount;
+
+                    if(data.reviewcount == null) {
+                        data.reviewcount = 0;
+                    }
+                    reviewcount = data.reviewcount;
+
+                    if(data.reviewscore == null) {
+                        data.reviewscore = 0;
+                    }
+                    reviewscore = data.reviewscore;
+
+
+
+
+
+                    upcount('.totals', substotal+itemtotal, '원');
+                    upcount('.substotal', substotal, '원');
+                    upcount('.itemtotal', itemtotal, '원');
+                    upcount('.custcount', custcount, '명');
+                    upcount('.delfincount', delfincount, '건');
+                    upcount('.reviewcount', reviewcount, '건');
+                    upcount('.reviewscore', reviewscore, '점');
+                    $('.stars').attr('data-value', Math.round(reviewscore));
+
+
+                    ja = data.ja;
+                    chartData = ja.map(item => [item.name, item.amount]);
+                    chart2.chart1(chartData);
+
+                    tableData = ja.map(item => [item.rownum, item.name,  item.price, item.cnt, item.amount]);
+                    chart2.table(tableData);
+                }
+            });
+
         },
         table: function(tableData) {
             let tags = "";
