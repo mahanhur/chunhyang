@@ -16,4 +16,8 @@ public interface ChartMapper extends CHMapper<Integer, Chart> {
     public List<Chart> itemamountworst10();
     public Integer substotal(Chart chart);
     public Integer itemtotal(Chart chart);
+    public Integer custcount(Chart chart);
+    public Integer delfincount(Chart chart);
+    public Integer reviewcount(Chart chart);
+    public Double reviewscore(Chart chart);
 }

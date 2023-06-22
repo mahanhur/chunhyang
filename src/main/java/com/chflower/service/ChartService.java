@@ -57,5 +57,19 @@ public class ChartService implements CHService<Integer, Chart> {
         return mapper.itemtotal(chart);
     }
 
+    public Integer custcount(Chart chart) {
+        return mapper.custcount(chart);
+    }
+    public Integer delfincount(Chart chart) {
+        return mapper.delfincount(chart);
+    }
+    public Integer reviewcount(Chart chart) {
+        return mapper.reviewcount(chart);
+    }
+    public Double reviewscore(Chart chart) {
+        return mapper.reviewscore(chart);
+    }
+
+
 
 }

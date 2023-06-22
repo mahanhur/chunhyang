@@ -135,15 +135,15 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <c:if test="${loginadmin.admin_level == 1}">
-                    <div class="sb-sidenav-menu-heading">직원관리메뉴</div>
-                    <a class="nav-link collapsed" href="/admin"><div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>직원 관리</a>
+                        <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-user"></i> 직원관리메뉴</div>
+                        <a class="nav-link collapsed" href="/admin" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 직원 관리</a>
                     </c:if>
-                    <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-user" style="color:#6a5acd"></i> 고객관리메뉴</div>
+                    <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-user" ></i> 고객관리메뉴</div>
                     <a class="nav-link collapsed" href="/cust" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 회원 관리</a>
                     <a class="nav-link" href="/qna/qna" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> QnA</a>
                     <a class="nav-link" href="/callcenter" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 1:1 채팅</a>
 
-                    <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-box"></i> 상품관리메뉴</div>
+                    <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px;"><i class="fas fa-box" ></i> 상품관리메뉴</div>
                         <%--구독 시작--%>
                         <a class="nav-link collapsed" style="padding-bottom: 0;padding-left: 20px" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
                             <div class="sb-nav-link-icon"></div>
@@ -182,7 +182,7 @@
                         <a class="nav-link collapsed" href="/board/event" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 이벤트</a>
                     <%--게시판 끝--%>
 
-                    <div class="sb-sidenav-menu-heading"style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-chart-area"></i> 분석 및 통계</div>
+                    <div class="sb-sidenav-menu-heading"style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-chart-area" style="color:mediumpurple"></i> 분석 및 통계</div>
                     <a class="nav-link" href="/chart/livechart" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div>  실시간통계차트</a>
                     <a class="nav-link" href="/chart/chart" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 매출분석</a>
 
