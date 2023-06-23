@@ -125,6 +125,30 @@
         }
       });
     },1000);
+    setInterval(function(){
+      $.ajax({
+        url:'/cntsubs',
+        success:function(data){
+          if(data != "") {
+            toastr.success("구독상품 주문이 추가되었습니다.");
+          }
+        },
+        error:function(){
+        }
+      });
+    },1000);
+    setInterval(function(){
+      $.ajax({
+        url:'/cntitem',
+        success:function(data){
+          if(data != "") {
+            toastr.info("일반상품 주문이 추가되었습니다.");
+          }
+        },
+        error:function(){
+        }
+      });
+    },1000);
     $('#next_btn').hide();
     $('#select_time').hide();
 
@@ -253,7 +277,7 @@
         var param = "";
         param+="start="+start;
         param+="&end="+end;
-        //alert(param);
+        // alert(param);
         $.ajax({
           url: "/getcal3",
           type: "get",
@@ -288,7 +312,7 @@
 
 <div class="container-fluid px-4">
   <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">오늘도 당신을 응원합니다! </li>
+    <li class="breadcrumb-item active"></li>
   </ol>
   <hr/>
   <div class="row">
@@ -357,18 +381,10 @@
         <div class="card mb-4">
           <div class="card-header">
             <i class="fas fa-chart-area me-1"></i>
-            Area Chart Example
+            배송 캘린더
           </div>
           <div class="card-body">
             <div class="align-content-center">
-              <div>
-                <div id="reservation" class="row content col-sm-12">
-                  <h6 class="col-sm-2">일자: <span id="tdate"></span></h6>
-                  <h6 class="col-sm-2">시간: <span id="ttime"></span></h6>
-                  <h6 class="col-sm-2" id="select_time">시간선택:<span id="stime"></span></h6>
-                  <h6 class="col-sm-2" id="next_btn"><a href="#" class="btn btn-sm btn-primary ml-lg-4">예약</a></h6>
-                </div>
-              </div>
               <div class="col-sm-12">
                 <div id='calendar-container' class="d-flex align-content-center">
                   <div id='calendar' style="width: 100%; height: 100%;"></div>

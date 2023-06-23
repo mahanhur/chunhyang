@@ -52,6 +52,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <%--typed 라이브러리--%>
+    <script type="text/javascript" src="/js/typed.js"></script>
+<%--    toastr 라이브러리--%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     ----------------------------------------------------------------------------------------
     <style>
         * {
@@ -86,6 +91,27 @@
         }
     </style>
 
+    <script>
+    let typed = {
+        init: function () {
+            $(".typed").typed({
+                strings: ['오늘도 출근하신 당신', '절대 멈추지 말고', '쇠빠지게 열심히', '일을 합니다♥'],
+                typeSpeed: 100,
+                backSpeed: 100,
+                cursorChar: '_',
+                backDelay: 0,
+                shuffle: false,
+                fadeOut: true,
+                loop: true,
+                smartBackspace: true
+            });
+        }
+    }
+    $(function (){
+        typed.init();
+    })
+</script>
+
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #E6E6FA; height: 80px;align-items: center">
@@ -94,6 +120,10 @@
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
+
+    <%--typed 라이브러리 적용되는 부분--%>
+    <h1><span class="typed"></span></h1>
+
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group"></div>
     </form>

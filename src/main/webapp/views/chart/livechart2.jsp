@@ -289,7 +289,7 @@
 <main>
     <div class="container-fluid">
         <p class="page_header_item"><strong>기간별 분석 및 통계</strong></p>
-        <div class="card mb-4">
+        <div class="card mb-4 datepickcard">
             <div class="card-body">
                 <p>ㅇ 시작일자와 종료일자를 입력하시면 <span style="font-weight: bold; color:red;">해당 기간 동안</span>의 분석 및 통계자료를 확인하실 수 있습니다.</p>
                 <div style="display: flex; flex-direction: row; align-items: center;">
@@ -304,7 +304,7 @@
 
         <div style="display: flex; flex-direction: row;">
             <div class="col-lg-6">
-<%--                전체 매출액--%>
+                <%--                전체 매출액--%>
                 <div class="row">
                     <%--            매출액--%>
                     <div class="">
@@ -321,7 +321,7 @@
                     <%--매출액end--%>
                 </div>
 
-<%--                구독/일반상품 매출액--%>
+                <%--                구독/일반상품 매출액--%>
                 <div class="row">
                     <%--            매출액--%>
                     <div class="col-lg-6">
@@ -351,7 +351,7 @@
                     </div>
                     <%--매출액end--%>
                 </div>
-    <%--                custcount--%>
+                <%--                custcount--%>
                 <div class="row">
                     <div class="">
                         <div class="card mb-2">
@@ -368,7 +368,7 @@
             </div>
 
             <div class="col-lg-5" style="margin-left: 3%">
-<%--                매출액비중 차트--%>
+                <%--                매출액비중 차트--%>
                 <div class="card mb-1" >
                     <div class="card-header" style="font-weight: bold; background-color: #E0ECF8" >
                         매출액 비중 차트

@@ -19,6 +19,9 @@
         FROM item
         WHERE item_id = #{item_id}
     </select>
+    <select id="selectcount" resultType="int">
+        select count(order_id) from item_order
+    </select>
 
 
     <!--    id는 ItemMapper의 함수의 이름들이다-->

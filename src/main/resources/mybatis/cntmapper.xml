@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chflower.mapper.CntMapper">
+
+    <select id="select" parameterType="int" resultType="cnt">
+        SELECT * FROM cntinfo WHERE cnt_id=#{cnt_id}
+    </select>
+    <select id="selectall" resultType="cnt">
+        SELECT * FROM cnt
+    </select>
+    <select id="cntsubs" resultType="int">
+        select MAX(subs_cnt) from cnt
+    </select>
+    <select id="cntitem" resultType="int">
+        select MAX(item_cnt) from cnt
+    </select>
+
+    <insert id="insert" parameterType="int">
+    </insert>
+    <insert id="subscntinsert">
+        INSERT INTO cnt VALUES (cnt_seq.nextval, (select count(subs_id) from subsinfo), null)
+    </insert>
+    <insert id="itemcntinsert">
+        INSERT INTO cnt VALUES (cnt_seq.nextval, null, (select count(order_id) from item_order))
+    </insert>
+    <update id="update" parameterType="cnt">
+    </update>
+    <delete id="delete" parameterType="int">
+    </delete>
+
+</mapper>

@@ -47,6 +47,12 @@ public class AjaxImplController {
     SubsdetailService subsdetailService;
     @Autowired
     CustchartService custchartService;
+    @Autowired
+    CntService cntService;
+    @Autowired
+    SubsService subsService;
+    @Autowired
+    ItemService itemService;
 
     @Value("${uploadimgdir}")
     String imgdir;
@@ -74,21 +80,25 @@ public class AjaxImplController {
     }
     @RequestMapping("/getcal3")
     public Object getcal3() throws Exception {
-        List<Cal> list= new ArrayList<>();
-        list = subsdetailService.getcount();
+        List<Cal> list = subsdetailService.getcount();
 
-        log.info("++++++++++=="+list);
+        log.info("++++++++++==" + list);
         JSONArray ja = new JSONArray();
-        for(Cal obj:list){
+        Date today = new Date(); // 현재 날짜와 시간을 가져옴
+
+        for (Cal obj : list) {
             JSONObject jo = new JSONObject();
-            jo.put("title","배송예정:"+obj.getCount()+"건");
-            jo.put("start",obj.getDuedate());
-            jo.put("end", obj.getDuedate());
-            jo.put("color","green");
-            jo.put("url","/subs/subsdetail");
-            log.info("++++++++++++++++++++"+String.valueOf(jo));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date dueDate = dateFormat.parse(obj.getDuedate());
+            jo.put("title", dueDate.before(today) ? "배송지연:" + obj.getCount() + "건" : "배송예정:" + obj.getCount() + "건");
+            jo.put("start", dueDate);
+            jo.put("end", "dueDate");
+            jo.put("color", dueDate.before(today) ? "red" : "green");
+            jo.put("url", "/subs/subsdetail");
+            log.info("++++++++++++++++++++" + String.valueOf(jo));
             ja.add(jo);
         }
+
         return ja;
     }
     @RequestMapping("/gettime")
@@ -170,6 +180,32 @@ public class AjaxImplController {
         Delinfo count;
         count = delinfoService.count();
         return count;
+    }
+
+
+    @RequestMapping("/cntsubs")
+    @ResponseBody
+    public Object cntsubs(Model model) {
+        Integer cntsubs = cntService.cntsubs();
+        Integer selectcount = subsService.selectcount();
+
+        if(selectcount > cntsubs) {
+            cntService.subscntinsert();
+            return selectcount;
+        }
+        return null;
+    }
+    @RequestMapping("/cntitem")
+    @ResponseBody
+    public Object cntitem(Model model) {
+        Integer cntitem = cntService.cntitem();
+        Integer selectcount = itemService.selectcount();
+
+        if(selectcount > cntitem) {
+            cntService.itemcntinsert();
+            return selectcount;
+        }
+        return null;
     }
 
 
