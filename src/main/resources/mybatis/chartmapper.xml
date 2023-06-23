@@ -128,7 +128,7 @@
                 subsinfo s ON io.CUST_ID = s.CUST_ID AND io.ORDER_DATE = s.SUBS_RDATE
                 ) b ON c.cust_id = b.cust_id
         where  to_char(b.rdate,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')        and c.gender =1
-        group by c.gender
+--         group by c.gender
     </select>
 
     <select id="womantotalsales" parameterType="chart" resultType="int">
@@ -142,7 +142,7 @@
                                           subsinfo s ON io.CUST_ID = s.CUST_ID AND io.ORDER_DATE = s.SUBS_RDATE
         ) b ON c.cust_id = b.cust_id
         where  to_char(b.rdate,'yyyy-MM-dd') between to_char(#{date1},'yyyy-MM-dd') and to_char(#{date2},'yyyy-MM-dd')        and c.gender =2
-        group by c.gender
+--         group by c.gender
     </select>
 
 </mapper>

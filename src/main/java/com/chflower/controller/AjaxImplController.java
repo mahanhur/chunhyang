@@ -261,9 +261,6 @@ public class AjaxImplController {
         Integer mantotalsales = chartService.mantotalsales(chart2);
         Integer womantotalsales = chartService.womantotalsales(chart2);
 
-//        List<Chart> itemtop10 ;
-//        itemtop10 = chartService.itemtop10(chart2);
-
         JSONArray ja = new JSONArray();
         jo2.put("ja", ja);
 
