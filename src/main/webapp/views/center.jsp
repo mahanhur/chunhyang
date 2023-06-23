@@ -288,7 +288,7 @@
 
 <div class="container-fluid px-4">
   <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">오늘도 당신을 응원합니다! </li>
+    <li class="breadcrumb-item active"></li>
   </ol>
   <hr/>
   <div class="row">
