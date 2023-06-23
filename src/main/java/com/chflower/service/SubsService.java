@@ -38,4 +38,8 @@ public class SubsService implements CHService<Integer, Subs> {
     public List<Subs> get() throws Exception {
         return mapper.selectall();
     }
+
+    public int selectcount() {
+        return mapper.selectcount();
+    }
 }

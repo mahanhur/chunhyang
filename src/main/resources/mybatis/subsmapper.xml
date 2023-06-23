@@ -10,6 +10,10 @@
     <select id="selectall" resultType="subs">
         SELECT * FROM subsinfo
     </select>
+    <select id="selectcount" resultType="int">
+        select count(subs_id) from subsinfo
+    </select>
+
     <insert id="insert" parameterType="subs">
     </insert>
     <update id="update" parameterType="subs">

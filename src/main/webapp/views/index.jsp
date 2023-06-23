@@ -53,11 +53,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <%--typed 라이브러리--%>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="/js/typed.js"></script>
+<%--    toastr 라이브러리--%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     ----------------------------------------------------------------------------------------
     <style>
-
+        * {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        .nav-link{
+            padding: 0px;
+        }
+        .page_header_item{
+            background: #F9F7F6;
+            border-left: 0.5em solid #E6E6FA;
+            padding: 0.5em;
+            margin: 15px 0 5px 0;
+            font-size: 1.5em;
+            color: #4d5154;
+        }
+        .page_header_cust{
+            background: #F9F7F6;
+            border-left: 0.5em solid #CEF6E3;
+            padding: 0.5em;
+            margin: 15px 0 5px 0;
+            font-size: 1.5em;
+            color: #4d5154;
+        }
+        .page_header_board{
+            background: #F9F7F6;
+            border-left: 0.5em solid #EFBBBB;
+            padding: 0.5em;
+            margin: 15px 0 5px 0;
+            font-size: 1.5em;
+            color: #4d5154;
+        }
     </style>
 
     <script>
