@@ -10,6 +10,7 @@ import lombok.*;
 
 public class Admin {
     private int admin_id;
+    private String admin_email;
     private String admin_pwd;
     private String admin_name;
     private String admin_level;

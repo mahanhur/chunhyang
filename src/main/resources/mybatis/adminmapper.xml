@@ -23,8 +23,8 @@
     </select>
 
     <insert id="insert" parameterType="ADMIN">
-        INSERT INTO ADMIN (ADMIN_ID, ADMIN_PWD, ADMIN_NAME, ADMIN_LEVEL, ADMIN_LOGINKEY)
-         VALUES(ADMIN_SEQ.NEXTVAL,#{admin_pwd},#{admin_name},#{admin_level}, null)  --여기는 DTO의 속성 이름이랑 정확히 일치해야함
+        INSERT INTO ADMIN (ADMIN_ID, ADMIN_PWD, ADMIN_EMAIL, ADMIN_NAME, ADMIN_LEVEL, ADMIN_LOGINKEY)
+         VALUES(ADMIN_SEQ.NEXTVAL,#{admin_pwd},#{admin_email},#{admin_name},#{admin_level}, null)  --여기는 DTO의 속성 이름이랑 정확히 일치해야함
     </insert>
 
     <update id="update" parameterType="ADMIN">

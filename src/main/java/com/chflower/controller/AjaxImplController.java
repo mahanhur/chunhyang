@@ -5,6 +5,7 @@ import com.chflower.service.*;
 import com.chflower.util.CFRCelebrityUtil;
 import com.chflower.util.DateUtil;
 import com.chflower.util.FileUploadUtil;
+import com.chflower.util.SendMailUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -53,6 +54,8 @@ public class AjaxImplController {
     SubsService subsService;
     @Autowired
     ItemService itemService;
+    @Autowired
+    SendMailUtil sendMailUtil;
 
     @Value("${uploadimgdir}")
     String imgdir;
@@ -304,6 +307,14 @@ public class AjaxImplController {
         jo2.put("womantotalsales", womantotalsales);
 
         return jo2;
+    }
+
+    @RequestMapping("/mailConfirm")
+    public Object mailConfirm(String email) throws Exception {
+        String code;
+        code = sendMailUtil.sendAuthMessage(email,"테스트 성공");
+        System.out.println("인증코드 : " + code);
+        return code;
     }
 
 }
