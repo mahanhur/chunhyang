@@ -286,8 +286,8 @@
 </script>
 
     <div class="textcontainer">
-        <span class="particletext hearts">${radmin.admin_name} </span>
-        <span class="particletext bubbles">님 환영합니다.</span>
+        <span class="particletext hearts">${radmin.admin_name}님 </span><br>
+        <span class="particletext bubbles">환영합니다.</span>
     </div>
 
     <div class="textcontainer">

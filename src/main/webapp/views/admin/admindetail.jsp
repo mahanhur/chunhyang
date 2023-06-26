@@ -49,13 +49,13 @@
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3 mb-md-0">
                                             <input class="form-control" id="admin_id" type="number" name="admin_id" value="${admin.admin_id}" readonly/>
-                                            <label for="admin_id">노비번호: 수정 하실수 없습니다</label>
+                                            <label for="admin_id">사번: 수정 하실수 없습니다</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3 mb-md-0">
                                             <input class="form-control" id="admin_name" type="text" name="admin_name" value="${admin.admin_name}" />
-                                            <label for="admin_name">노비명</label>
+                                            <label for="admin_name">직원명</label>
                                         </div>
                                     </div>
                                 </div>
@@ -68,10 +68,10 @@
                                     </div>
                                 <div class="col-md-6">
                                     <select class="form-select" id="admin_level" name="admin_level">
-                                        <option id="opt" vlaue="${admin.admin_level}">${admin.admin_level}</option>
-                                        <option value="1">상노비</option>
-                                        <option value="2">중노비</option>
-                                        <option value="3">하노비</option>
+                                        <option id="opt" vlaue=""${admin.admin_level}">현재 Level: ${admin.admin_level}</option>
+                                        <option value="1">Level: 1</option>
+                                        <option value="2">Level: 2</option>
+                                        <option value="3">Level: 3</option>
                                     </select>
                                 </div>
                                 <div class="mt-4 mb-0">
@@ -79,11 +79,9 @@
                                         <button type="button" class="btn btn-primary btn-block" id="update_btn">정보 수정</button>
                                     </div>
                                 </div>
+                                </div>
                             </form>
                         </div>
-                    </div>
-                    <div class="card-footer text-center py-3">
-                        <div class="small"><a href="#">Link</a></div>
                     </div>
                 </div>
             </div>

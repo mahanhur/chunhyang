@@ -3,9 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <main>
-    <div class="container-fluid px-4">
-        <h1 class="mt-4">Cust 리스트</h1>
-
+    <div class="container-fluid px-4 py-3">
+        <h1 class="mt-4"></h1>
         <div class="card mb-4">
             <div class="card-body">
                 <button type="button" class="btn btn-outline-primary"
@@ -38,8 +37,8 @@
                             <td>${obj.phone}</td>
                             <td>${obj.age}</td>
                             <td>${obj.email}</td>
-                            <td>${obj.cust_rdate}</td>
-                            <td>${obj.cust_del_date}</td>
+                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.cust_rdate}" /></td>
+                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.cust_del_date}" /></td>
                         </tr>
                     </c:forEach>
                     </tbody>

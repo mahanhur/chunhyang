@@ -57,7 +57,7 @@
 <%--    toastr 라이브러리--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    ----------------------------------------------------------------------------------------
+<%--    ------------------------------------------------------------------------------------------%>
     <style>
         * {
             font-family: 'Nanum Gothic', sans-serif;
@@ -91,7 +91,7 @@
         }
     </style>
 
-    <script>
+<script>
     let typed = {
         init: function () {
             $(".typed").typed({
@@ -169,7 +169,7 @@
                         <a class="nav-link collapsed" href="/admin" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 직원 관리</a>
                     </c:if>
                     <div class="sb-sidenav-menu-heading" style="padding-bottom: 0; padding-left: 20px; color: dimgray"><i class="fas fa-user" style="color:dimgray"></i> 고객관리메뉴</div>
-                    <a class="nav-link collapsed" href="/cust" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 회원 관리</a>
+                    <a class="nav-link collapsed" href="/cust/cust" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 회원 관리</a>
                     <a class="nav-link" href="/qna/qna" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> QnA</a>
                     <a class="nav-link" href="/callcenter" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 1:1 채팅</a>
 
