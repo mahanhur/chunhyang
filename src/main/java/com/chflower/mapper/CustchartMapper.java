@@ -12,4 +12,5 @@ import java.util.List;
 public interface CustchartMapper extends CHMapper<Integer, Custchart> {
     List<Custchart> getMonthlyTotal();
     List<Custchart> getGenderTotal();
+    List<Custchart> getAgeTotal();
 }

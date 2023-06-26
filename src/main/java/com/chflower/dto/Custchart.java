@@ -14,6 +14,7 @@ public class Custchart {
 
     String agegroup;
     Double agegrouptotal;
+    Double agegroupratio;
 
     Double gendertotal;
 
@@ -22,9 +23,9 @@ public class Custchart {
         this.gendertotal = gendertotal;
     }
 
-    public Custchart(String gender, String agegroup, Double agegrouptotal) {
-        this.gender = gender;
+    public Custchart(String agegroup, String gender, Double agegrouptotal) {
         this.agegroup = agegroup;
+        this.gender = gender;
         this.agegrouptotal = agegrouptotal;
     }
 }

@@ -288,6 +288,33 @@ public class AjaxImplController {
 
         return data;
     }
+    @RequestMapping("/custchartimpl2")
+    public Object custchartimpl2() throws Exception {
+        List<Custchart> list = custchartService.getAgeTotal();
+        JSONArray fma = new JSONArray();
+        JSONArray ma = new JSONArray();
+
+        for (Custchart c : list) {
+            if (c.getGender().equals("1")) {
+                ma.add(-c.getAgegroupratio()*100);
+            } else {
+                fma.add(c.getAgegroupratio()*100);
+            }
+        }
+        JSONObject fmo = new JSONObject();
+        JSONObject mo = new JSONObject();
+
+        mo.put("name", "남자");
+        mo.put("data", ma);
+        fmo.put("name", "여자");
+        fmo.put("data", fma);
+
+        JSONArray data = new JSONArray();
+        data.add(mo);
+        data.add(fmo);
+
+        return data;
+    }
 
     //==============================회원차트 만들기==================================
     @RequestMapping("/chartimpl2")
