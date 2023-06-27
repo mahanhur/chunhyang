@@ -46,4 +46,9 @@ public class CustchartService implements CHService<Integer, Custchart> {
     public List<Custchart> getGenderTotal() throws Exception {
         return custchartMapper.getGenderTotal();
     }
+    public List<Custchart> getAgeTotal() throws Exception {
+        return custchartMapper.getAgeTotal();
+    }
+
+
 }

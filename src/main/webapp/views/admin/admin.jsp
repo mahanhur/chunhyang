@@ -4,14 +4,14 @@
 
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">노비 리스트</h1>
+        <h1 class="mt-4">직원 리스트</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>
+            <li class="breadcrumb-item"><a href="/">메인페이지로</a></li>
         </ol>
         <div class="card mb-4">
             <div class="card-body">
                 <button type="button" class="btn btn-outline-primary"
-                        onclick="location.href='/admin/register'">노비 추가</button>
+                        onclick="location.href='/admin/register'">직원 추가</button>
             </div>
         </div>
         <div class="card mb-4">
@@ -23,9 +23,10 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>노비 품번</th>
-                            <th>노비 이름</th>
-                            <th>노비 레벨</th>
+                            <th>직원 사번</th>
+                            <th>직원 이름</th>
+                            <th>직원 메일</th>
+                            <th>권한 레벨</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,6 +34,7 @@
                         <tr>
                             <td>${obj.admin_id}</td>
                             <td>${obj.admin_name}</td>
+                            <td>${obj.admin_email}</td>
                             <td>${obj.admin_level}</td>
                         </tr>
                     </c:forEach>
