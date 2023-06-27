@@ -36,7 +36,7 @@ public class ChartController {
     String dir = "chart";
     @RequestMapping("/livechart")
     public String livechart(Model model){
-        model.addAttribute("center",  dir+"/livechart");
+        model.addAttribute("center",  dir+"/livechart3");
         return "index";
     }
     @RequestMapping("/livechart2")
@@ -45,6 +45,12 @@ public class ChartController {
         model.addAttribute("center",  dir+"/livechart2");
         return "index";
     }
+//    @RequestMapping("/livechart3")
+//    public String livechart3(Model model){
+//
+//        model.addAttribute("center",  dir+"/livechart3");
+//        return "index";
+//    }
     @RequestMapping("/chart")
     public String chart(Model model){
 

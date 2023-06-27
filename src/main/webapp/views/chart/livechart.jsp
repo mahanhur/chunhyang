@@ -13,7 +13,7 @@
             this.chart3();
         },
         chart1: function() {
-            var defaultData = 'http://127.0.0.1:8090/logs/subscountlog.log';
+            var defaultData = 'http://127.0.0.1:8090/logs/itemclicklog.log';
             var urlInput = document.getElementById('fetchURL1');
             var pollingCheckbox = document.getElementById('enablePolling1');
             var pollingInput = document.getElementById('pollingTime1');
@@ -292,7 +292,7 @@
                         lines.forEach(line => {
                             var parts = line.split(',');
                             var timestamp = parts[0];
-                            var id = parts[1].trim().replace(/'/g, '');
+                            var idorigin = parts[1].trim().replace(/'/g, '');
 
                             function subsitem(idorigin) {
                                 let id = "";
@@ -327,7 +327,7 @@
                                 }
                                 return id;
                             }
-                            // var id = subsitem(idorigin);
+                            var id = subsitem(idorigin);
                             var count = parseInt(parts[2].trim());
 
                             if (!seriesData[id]) {
