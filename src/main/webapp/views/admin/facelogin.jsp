@@ -49,18 +49,24 @@
                 processData: false,
                 contentType: false,
                 success: function (data) {
-                    // $('#imgname').val(data);
-                    $('#imgname').val('ma.jpg');
-                    let imgname = 'ma.jpg'
-                    // let imgname = data
+                    $('#imgname').val(data);
+                    // $('#imgname').val('ma.jpg');
+                    // let imgname = 'ma.jpg'
+                    let imgname = data
                     $.ajax({
                         type:'post',
                         url:'/faceloginimpl',
                         data: {imgname: imgname},
                         success: function(){
                             location.href="/";
+                        },
+                        error: function() {
+                            alert("얼굴로 로그인에 실패하였습니다.");
                         }
                     });
+                },
+                error: function() {
+                    alert("얼굴로 로그인에 실패하였습니다.");
                 }
             });
         }
