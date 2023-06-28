@@ -27,7 +27,7 @@
                 chart: {
                     type: 'bar'
                 }, title: {
-                    text: '차트제목',
+                    text: '연령대별 매출액',
                     align: 'left'
                 },
                 accessibility: {
@@ -104,18 +104,18 @@
 
                 xAxis: {
                     categories: [
-                        'Jan',
-                        'Feb',
-                        'Mar',
-                        'Apr',
-                        'May',
-                        'Jun',
-                        'Jul',
-                        'Aug',
-                        'Sep',
-                        'Oct',
-                        'Nov',
-                        'Dec'
+                        '1월',
+                        '2월',
+                        '3월',
+                        '4월',
+                        '5월',
+                        '6월',
+                        '7월',
+                        '8월',
+                        '9월',
+                        '10월',
+                        '11월',
+                        '12월'
                     ],
                     crosshair: true
                 },
@@ -174,6 +174,135 @@
     });
 </script>
 
+
+<script>
+    let mantotalsales =0;
+    let womantotalsales =0;
+    let totals = 0;
+    let ja;
+    let chartData;
+    let tableData;
+
+    function upcount(location, max, unit) {
+        let $counter1 = document.querySelector(location);
+        let max1 = max;
+        counter($counter1, max1);
+
+        function counter($counter1, max1) {
+            let now = max1;
+            const handle = setInterval(() => {
+                $counter1.innerHTML = Math.ceil(max1 - now).toLocaleString() + unit
+                if (now < 1) {
+                    clearInterval(handle);
+                }
+                const step = now / 10;
+                now -= step;
+            }, 10);
+        }
+    }
+    let chart2 = {
+        init: function() {
+            //당일자 디폴트 세팅
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+            var dateString = year + '-' + month  + '-' + day;
+
+            chart2.dataset(dateString, dateString );
+
+        },
+        dataset: function(date1, date2) {
+            $.ajax({
+                url:'/chartimpl2',
+                method:'post',
+                data: {
+                    date1:date1,
+                    date2:date2
+                },
+                success: function(data) {
+                    if(data.mantotalsales == null) {
+                        data.mantotalsales = 0;
+                    }
+                    mantotalsales = data.mantotalsales;
+
+                    if(data.womantotalsales == null) {
+                        data.womantotalsales = 0;
+                    }
+                    womantotalsales = data.womantotalsales;
+
+                    upcount('.totals', mantotalsales+womantotalsales, '원');
+                    upcount('.mantotalsales', mantotalsales, '원');
+                    upcount('.womantotalsales', womantotalsales, '원');
+
+                    ja = data.ja;
+                    chartData = ja.map(item => [item.name, item.amount]);
+                    chart2.chart1(chartData);
+
+                    // tableData = ja.map(item => [item.rownum, item.name,  item.price, item.cnt, item.amount]);
+                    // chart2.table(tableData);
+                }
+            });
+
+        },
+        table: function(tableData) {
+
+        },
+
+        chart1: function(chartData) {
+            Highcharts.chart('container3', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: '해당기간 판매금액 비중',
+                    align: 'center'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        }
+                    }
+                },
+                series: [{
+                    name: '비중',
+                    colorByPoint: true,
+                    data: [{
+                        name: '남자',
+                        y: mantotalsales / (mantotalsales+womantotalsales) * 100
+                    },  {
+                        name: '여자',
+                        y: womantotalsales / (mantotalsales+womantotalsales) * 100
+                    }]
+                }]
+            });
+        }
+
+    }
+
+
+
+    $(function () {
+        chart2.init();
+        chart2.chart1();
+    })
+</script>
+
 <main>
 
 
@@ -188,14 +317,12 @@
 <%--매출chart--%>
             <div class="col-lg-12">
                 <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-chart-area me-1"></i>
-                        Area Chart Example
+                    <div class="card-header" style="font-weight: bold; background-color: #E0ECF8" >
+                        매출액 추이 차트
                     </div>
                     <div class="card-body">
-                        <div class="chart-area" id="container1" width="100%" height="30"></div>
+                        <div id="container1" width="100%" height="30"></div>
                     </div>
-                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                 </div>
             </div>
 
@@ -340,15 +467,15 @@
 
 
                 <div class="col-lg-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-chart-bar me-1"></i>
-                            Bar Chart Example
+                    <div class="card mb-1" >
+                        <div class="card-header" style="font-weight: bold; background-color: #E0ECF8" >
+                            연령대별 매출액 비교 차트
                         </div>
                         <div class="card-body">
-                            <div class="chart-area" id="container2" width="100%" height="50"></div>
+                            <figure class="highcharts-figure">
+                                <div id="container2" width="100%" height="30"></div>
+                            </figure>
                         </div>
-                        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                     </div>
                 </div>
 
@@ -356,11 +483,11 @@
                     <%--                매출액비중 차트--%>
                     <div class="card mb-1" >
                         <div class="card-header" style="font-weight: bold; background-color: #E0ECF8" >
-                            매출액 비중 차트
+                            성별에 따른 매출액 비중 차트
                         </div>
                         <div class="card-body">
                             <figure class="highcharts-figure">
-                                <div id="container3"></div>
+                                <div id="container3" width="100%" height="30"></div>
                             </figure>
                         </div>
                     </div>
