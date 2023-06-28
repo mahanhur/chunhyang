@@ -14,8 +14,6 @@
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 장바구니 현황을 관리하는 화면입니다.</p>
-                <p>ㅇ 주문번호를 클릭하시면 해당주문의 상세내역을 보실 수 있습니다.</p>
-                <p>ㅇ 주문 정보 삭제는 <span style="font-weight: bold; color:red;">신중히</span> 처리해 주시기 바랍니다.</p>
             </div>
         </div>
         <div class="card mb-4">

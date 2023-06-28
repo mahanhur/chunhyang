@@ -12,14 +12,14 @@
             this.chart2();
         },
         chart1: function () {
-            var defaultData = 'http://127.0.0.1:8090/logs/itemclicklog.log';
+            var defaultData = 'http://49.50.160.198:8090/logs/itemclicklog.log';
             var urlInput = document.getElementById('fetchURL3');
             var pollingCheckbox = document.getElementById('enablePolling3');
             var pollingInput = document.getElementById('pollingTime3');
             var chart;
 
             function createChart() {
-                var dataUrl = 'http://127.0.0.1:8090/logs/itemclicklog.log';
+                var dataUrl = 'http://49.50.160.198:8090/logs/itemclicklog.log';
 
                 // 데이터 가공
                 fetch(dataUrl)
@@ -98,7 +98,7 @@
             }
 
             function setDefaultData() {
-                var logFile = 'http://127.0.0.1:8090/logs/itemclickcount.log';
+                var logFile = 'http://49.50.160.198:8090/logs/itemclickcount.log';
 
                 fetch(logFile)
                     .then(response => response.text())
@@ -147,7 +147,7 @@
             setInterval(createChart, parseInt(pollingInput.value, 10) * 500);
         },
         chart2: function() {
-            var defaultData = 'http://127.0.0.1:8090/logs/subscountlog.log';
+            var defaultData = 'http://49.50.160.198:8090/logs/subscountlog.log';
             var urlInput = document.getElementById('fetchURL1');
             var pollingCheckbox = document.getElementById('enablePolling1');
             var pollingInput = document.getElementById('pollingTime1');
@@ -287,13 +287,13 @@
 
 
     <main>
-        <div class="container-fluid">
-            <p class="page_header_item"><strong>실시간 분석 및 통계</strong></p>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <p>ㅇ 당일자 고객들의 클릭 현황을 실시간으로 분석한 차트입니다.
-                </div>
+        <div class="container-fluid"><br/>
+        <p class="page_header_item"><strong>실시간 분석 및 통계</strong></p>
+        <div class="card mb-4">
+            <div class="card-body">
+                <p>ㅇ 당일자 고객들의 클릭 현황을 실시간으로 분석한 차트입니다.
             </div>
+        </div>
 
         <div class="card shadow mb-4">
             <div class="card-header" style="font-weight: bold; background-color: #ffecb5">

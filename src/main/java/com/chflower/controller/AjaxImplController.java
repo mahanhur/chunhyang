@@ -164,7 +164,11 @@ public class AjaxImplController {
         String admin_loginkey = (String) celebrity.get("value");
 
         Admin admin = adminService.facelogin(admin_loginkey);
-        session.setAttribute("loginadmin", admin);
+        if(admin != null) {
+            session.setAttribute("loginadmin", admin);
+        } else {
+            throw new Exception("facelogin error");
+        }
 
         //결과를 보낸다
         return "redirect:/";

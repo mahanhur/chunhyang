@@ -67,8 +67,6 @@
         <p class="page_header_item"><strong>배송정보 화면</strong></p>
         <div class="card mb-4">
             <div class="card-body">
-                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#subsitemaddmodal">구독상품 추가</button>
-                <button type="button" class="btn btn-outline-danger">구독상품 삭제</button>
             </div>
         </div>
         <div class="card mb-4">

@@ -43,7 +43,14 @@
                 DataTable : Item
             </div>
             <div class="card-body">
-                <table id="datatablesSimple">
+                <table class="table table-striped">
+                    <colgroup>
+                        <col width="15%"/>
+                        <col width="10%"/>
+                        <col width="15%"/>
+                        <col width="10%"/>
+                        <col width="50%"/>
+                    </colgroup>
                     <thead>
                     <tr>
                         <th>상품 표출 이미지</th>
@@ -57,7 +64,7 @@
                     <c:forEach var="obj" items="${slist}">
                         <tr>
                             <td>
-                                <img id="item_img" src="/uimg/${obj.subsitem_img}" alt=${obj.subsitem_img}>
+                                <img style="width: 40%;" id="item_img" src="/uimg/${obj.subsitem_img}" alt=${obj.subsitem_img}>
                             </td>
                             <td>${obj.subsitem_id}</td>
                             <td>${obj.subsitem_name}</td>
