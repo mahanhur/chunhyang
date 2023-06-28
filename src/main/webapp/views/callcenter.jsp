@@ -4,21 +4,13 @@
 <%--JSTL : 통화 날짜를 표현하게 해주는 문법--%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<style>
-    #to {
-        width: 400px;
-        height: 200px;
-        overflow: auto;
-        border: 2px solid green;
-    }
-</style>
-
 <script>
     let callcenter = {
         id:null,
         stompClient:null,
         init:function(){
             this.id = $('#adm_id').text();
+            callcenter.connect();
             $("#connect").click(function() {
                 callcenter.connect();
             });
@@ -40,7 +32,7 @@
                 console.log('Connected: ' + frame);
 
                 this.subscribe('/send/to/'+sid, function(msg) {
-                    $('#target').val(JSON.parse(msg.body).sendid);
+                    // $('#target').val(JSON.parse(msg.body).sendid);
                     $("#to").prepend(
                         "<h4>" + JSON.parse(msg.body).sendid +":"+
                         JSON.parse(msg.body).content1
@@ -76,14 +68,87 @@
     })
 
 </script>
-<!-- Begin Page Content -->
+<style>
+    #to {
+        width: 400px;
+        height: 200px;
+        overflow: auto;
+        border-radius: 5px;
+        padding: 0 10px;
+        border: 1px solid #ced4da;
+
+    }
+
+    .page_header_cust {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .card-body p {
+        margin-bottom: 10px;
+    }
+
+    .card-header {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .col-sm-5 {
+        margin-top: 20px;
+    }
+
+    #adm_id {
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    #status {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    #connect,
+    #disconnect,
+    #sendto {
+        margin-bottom: 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: transparent;
+        color: #007bff;
+        font-weight: bold;
+        border: 2px solid #007bff;
+    }
+
+    #connect:hover,
+    #disconnect:hover,
+    #sendto:hover {
+        background-color: transparent;
+        color: #0056b3;
+        cursor: pointer;
+    }
+
+    #target,
+    #totext {
+        margin-top: 10px;
+        height: 35px;
+        width: 250px;
+        border-radius: 5px;
+        padding: 0 10px;
+        border: 1px solid #ced4da;
+    }
+</style>
+
+
 <main>
     <div class="container-fluid px-4">
-        <p class="page_header_cust"><strong>[Q&A] 1:1 채팅</strong></p>
+        <p class="page_header_cust"><strong>[1:1 채팅상담]</strong></p>
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 고객만족부 담당자들은 문의사항에 대하여 정확하고 신속한 답변 바랍니다..</p>
-                <p>ㅇ 선택삭제 기능은 작동 안합니다</p>
                 <hr/>
             </div>
         </div>
@@ -91,7 +156,8 @@
         <h1 class="h3 mb-2 text-gray-800"></h1>
 
         <!-- DataTales Example -->
-        <div class="card shadow mb-4">
+
+        <div class="card shadow mb-4 col-lg-5 px-2" style="padding: 10px">
             <div class="card-header">
                 <i class="fas fa-user"></i>
                 실시간 고객상담
@@ -100,13 +166,13 @@
                 <div id="container"></div>
                 <div class="col-sm-5">
                     <h4 id="adm_id">${loginadmin.admin_name}</h4>
-                    <H4 id="status">대기중</H4>
+                    <h4 id="status">대기중</h4>
                     <button id="connect">채팅 연결</button>
                     <button id="disconnect">연결 해제</button>
                     <br>
-                    <input type="text" id="target"> <%-- 메세지 보낸사람의 id가 표시되는 공간 --%>
-
-                    <input type="text" id="totext"><button id="sendto">전송</button>
+                    고객ID: <input type="text" id="target">
+                    메세지: <input type="text" id="totext">
+                    <button id="sendto">전송</button>
                     <div id="to"></div>
 
                 </div>

@@ -19,7 +19,7 @@
     }
     #logintext {
         margin: 50px;
-        color: white;
+        color: lightgray;
         font-size: 15vmin;
         line-height: 1;
         font-weight: bold;

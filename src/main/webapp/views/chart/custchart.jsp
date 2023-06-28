@@ -23,8 +23,8 @@
                 chart: {
                     type: 'bar'
                 }, title: {
-                    text: '차트제목',
-                    align: 'left'
+                    text: ' 연령별 남녀 판매금액 비중',
+                    align: 'center'
                 },
                 accessibility: {
                     point: {
