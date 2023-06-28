@@ -3,6 +3,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<style>
+    .medium_img {
+        width: 80px;
+        height: 80px;
+    }
+</style>
+
 <script>
     let answer_detail = {
         init:function (){
@@ -68,7 +75,18 @@
                 <div class="form-group">
                     <label for="noti_title">질문</label>
                     <input class="form-control" id="noti_title" name="noti_title" placeholder="질문을 입력해주세요" value="${gqna.qna_contents}">
-                </div>
+                </div><br>
+                <p><label class="form-label" for="img">
+                    첨부파일
+                </label></p>
+                    <c:if test="${gqna.qna_image1 != null}">
+                    <img  class = "medium_img" src="/uimg/${gqna.qna_image1}">
+                    </c:if>
+                    <c:if test="${gqna.qna_image2 != null}">
+                    <img  class = "medium_img" src="/uimg/${gqna.qna_image2}">
+                    </c:if>
+                <input id="img" hidden>
+                <hr>
                 <div class="form-group">
                     <label for="answer_contents">답변</label>
                     <textarea class="form-control" id="answer_contents" name="answer_contents" rows="5"
