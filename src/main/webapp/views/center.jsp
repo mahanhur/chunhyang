@@ -309,7 +309,26 @@
 
   });
 </script>
-
+<script>
+  let typed = {
+    init: function () {
+      $(".typed").typed({
+        strings: ['오늘도 출근하신 당신', '절대 멈추지 말고', '쇠빠지게 열심히', '일을 합니다♥'],
+        typeSpeed: 200,
+        backSpeed: 100,
+        cursorChar: '_',
+        backDelay: 0,
+        shuffle: false,
+        fadeOut: true,
+        loop: true,
+        smartBackspace: true
+      });
+    }
+  }
+  $(function (){
+    typed.init();
+  })
+</script>
 <div class="container-fluid px-4">
   <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active"></li>
@@ -320,6 +339,9 @@
     <div>
       <div class="col-xl-12">
         <div class="container">
+
+          <%--typed 라이브러리 적용되는 부분--%>
+          <h1><span class="typed"></span></h1>
 
           <div class="card mb-4">
             <div class="card-header">
