@@ -157,7 +157,7 @@
                         <a class="nav-link collapsed" style="padding-bottom: 0;padding-left: 20px; color: grey" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth1" aria-expanded="false" aria-controls="pagesCollapseAuth">
                             <div class="sb-nav-link-icon"></div>
                              구독상품관리
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <div><i class="fas fa-angle-down" style="margin-left: 5px"></i></div>
                         </a>
                         <div class="collapse" id="pagesCollapseAuth1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
@@ -171,7 +171,7 @@
                         <a class="nav-link collapsed" style="padding-bottom: 0;padding-left: 20px; color: grey" data-bs-toggle="collapse" data-bs-target="#itemsCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
                             <div class="sb-nav-link-icon"></div>
                              일반상품관리
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <div><i class="fas fa-angle-down" style="margin-left: 5px"></i></div>
                         </a>
                         <div class="collapse" id="itemsCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
