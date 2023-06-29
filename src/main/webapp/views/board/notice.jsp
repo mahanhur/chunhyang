@@ -15,7 +15,8 @@
     })
 </script>
 
-    <div class="container-fluid px-4">
+<main>
+    <div class="container-fluid"><br/>
         <p class="page_header_board"><strong>공지사항</strong></p>
         <div class="card mb-4">
             <div class="card-body">
@@ -60,3 +61,4 @@
             </div>
         </div>
     </div>
+</main>

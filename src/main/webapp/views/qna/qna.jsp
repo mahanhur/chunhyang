@@ -16,7 +16,7 @@
 </script>
 
 <main>
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4"><br>
         <p class="page_header_cust"><strong>[Q&A] 고객문의</strong></p>
         <div class="card mb-4">
             <div class="card-body">

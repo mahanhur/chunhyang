@@ -24,7 +24,7 @@
 </style>
 
 <main>
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4"><br>
         <p class="page_header_item"><strong>판매상품 관리 화면</strong></p>
         <div class="card mb-4">
             <div class="card-body">
