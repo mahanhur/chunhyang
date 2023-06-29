@@ -192,9 +192,9 @@
                     <%--게시판 끝--%>
 
                     <div class="sb-sidenav-menu-heading"style="padding-bottom: 0;padding-left: 20px; color: dimgray"><i class="fas fa-chart-area" style="color: dimgray"></i> 분석 및 통계</div>
-                    <a class="nav-link" href="/chart/livechart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div>  실시간통계차트</a>
-                    <a class="nav-link" href="/chart/livechart2" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div>  기간별분석</a>
-                    <a class="nav-link" href="/chart/chart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 매출/고객분석</a>
+                    <a class="nav-link" href="/chart/chart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div> 매출/고객 분석</a>
+                    <a class="nav-link" href="/chart/livechart2" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div>  기간별 분석</a>
+                    <a class="nav-link" href="/chart/livechart" style="padding-bottom: 0;padding-left: 20px; color: grey"><div class="sb-nav-link-icon"></div>  실시간 모니터링</a>
                 </div>
             </div>
             <c:choose>

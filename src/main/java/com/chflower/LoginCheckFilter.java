@@ -12,7 +12,7 @@ import java.util.Enumeration;
 
 @Slf4j
 public class LoginCheckFilter implements Filter {
-    private static final String[] whitelist = {"/","/checkid","/custcheckid", "/register","/registerimpl", "/login","/loginimpl", "/logout","/css/*","/js/*","/webjars/*"};
+    private static final String[] whitelist = {"/mailConfirm","/saveimg/","/saveimg","/faceloginimpl","/facelogin","/admin/registerimpl","/admin/register","/admin/login","/admin/loginimpl","/admin/logoutimpl","/css/*","/js/*","/webjars/*"};
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -29,10 +29,10 @@ public class LoginCheckFilter implements Filter {
         try {
             if (isLoginCheckPath(requestURI)) {
                 HttpSession session = httpRequest.getSession(false);
-                if (session == null || session.getAttribute("logincust") == null) {
+                if (session == null || session.getAttribute("loginadmin") == null) {
                     log.info("미인증 사용자 요청 {}", requestURI);
                     //로그인으로 redirect
-                    httpResponse.sendRedirect("/login?redirectURL=" + requestURI);
+                    httpResponse.sendRedirect("/admin/login?redirectURL=" + requestURI);
                     return; //여기가 중요, 미인증 사용자는 다음으로 진행하지 않고 끝!
                 }
             }
@@ -43,10 +43,6 @@ public class LoginCheckFilter implements Filter {
             log.info("인증 체크 필터 종료 {}", requestURI);
         }
     }
-
-    /**
-     * 화이트 리스트의 경우 인증 체크X
-     */
     private boolean isLoginCheckPath(String requestURI) {
         return !PatternMatchUtils.simpleMatch(whitelist, requestURI);
     }

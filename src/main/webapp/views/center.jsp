@@ -108,11 +108,6 @@
 
   };
 
-  function set_time(time){
-    $('#ttime').text(time+':00');
-    $('#next_btn').fadeIn();
-
-  };
 
   $(function(){
     setInterval(function(){
@@ -246,10 +241,6 @@
         const day = ('0' + date.getDate()).slice(-2);
         const dateStr = year + '-' + month + '-' + day;
 
-        if(new Date(xObj.startDisp) < new Date(dateStr)){
-          alert('Fail');
-          return;
-        }
 
         $('#tdate').text(xObj.startDisp);
 
@@ -264,11 +255,8 @@
           $(arr).each(function(index,item){
             tt = item.substr(0,item.indexOf(':'));
 
-            html += '<div><a href="#" class="btn btn-sm btn-outline-primary ml-lg-4" onclick="set_time('+tt+')">'+item+'</a></div>';
+            html += '<div><a href="#" class="btn btn-sm btn-outline-primary ml-lg-4">'+item+'</a></div>';
           });
-          $('#select_time').show();
-
-          $('#stime').html(html);
         });
       },
       events:  function(info, successCallback, failureCallback){
@@ -295,17 +283,6 @@
 
 
     calendar.render();
-
-    $('#next_btn').click(function(){
-      var c  = confirm('예약하시겠습니까');
-      if(c == true){
-        var day = $('#tdate').text();
-        var time = $('#ttime').text();
-        location.href='/reservation?id=${logincust.id}&day='+day+'&time='+time;
-      }
-
-    });
-
 
   });
 </script>

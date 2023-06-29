@@ -282,9 +282,9 @@ public class AjaxImplController {
         JSONObject fmo = new JSONObject();
         JSONObject mo = new JSONObject();
 
-        fmo.put("name", "Female");
+        fmo.put("name", "여성");
         fmo.put("data", fma);
-        mo.put("name", "Male");
+        mo.put("name", "남성");
         mo.put("data", ma);
         JSONArray data = new JSONArray();
         data.add(fmo);

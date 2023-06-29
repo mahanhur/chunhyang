@@ -41,9 +41,9 @@ public class AdminController {
     }
 
     @RequestMapping("/admin/register")
-    public String register(Model model) {
-        model.addAttribute("center", dir+"register");
-        return "index";
+    public String register(Model model,String redirectURL) {
+        model.addAttribute("redirectURL",  redirectURL);
+        return "admin/register";
     };
 
         @RequestMapping("/admin/registerimpl")
@@ -70,14 +70,13 @@ public class AdminController {
     @RequestMapping("/admin/login")
     public String login(Model model,String redirectURL){
         model.addAttribute("redirectURL",  redirectURL);
-        model.addAttribute("center",  dir+"login");
-        return "index";
+        return "admin/login";
     }
 
     @RequestMapping("/facelogin")
     public String facelogin(Model model,String redirectURL){
-        model.addAttribute("center",  dir+"facelogin");
-        return "index";
+        model.addAttribute("redirectURL",  redirectURL);
+        return "admin/facelogin";
     }
 
 
