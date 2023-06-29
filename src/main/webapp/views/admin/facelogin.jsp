@@ -158,12 +158,12 @@
                             location.href="/";
                         },
                         error: function() {
-                            alert("얼굴로 로그인에 실패하였습니다.");
+                            toastr.error("얼굴로 로그인에 실패하였습니다.");
                         }
                     });
                 },
                 error: function() {
-                    alert("얼굴로 로그인에 실패하였습니다.");
+                    toastr.error("얼굴로 로그인에 실패하였습니다.");
                 }
             });
         }
