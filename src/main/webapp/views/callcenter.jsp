@@ -79,13 +79,6 @@
 
     }
 
-    .page_header_cust {
-        margin-top: 30px;
-        margin-bottom: 20px;
-        font-size: 24px;
-        font-weight: bold;
-    }
-
     .card-body p {
         margin-bottom: 10px;
     }
@@ -142,21 +135,14 @@
     }
 </style>
 
-
 <main>
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4"><br>
         <p class="page_header_cust"><strong>[1:1 채팅상담]</strong></p>
         <div class="card mb-4">
             <div class="card-body">
-                <p>ㅇ 고객만족부 담당자들은 문의사항에 대하여 정확하고 신속한 답변 바랍니다..</p>
-                <hr/>
+                <p>ㅇ 고객만족부 담당자들은 문의사항에 대하여 정확하고 신속한 답변 바랍니다.</p>
             </div>
         </div>
-        <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800"></h1>
-
-        <!-- DataTales Example -->
-
         <div class="card shadow mb-4 col-lg-5 px-2" style="padding: 10px">
             <div class="card-header">
                 <i class="fas fa-user"></i>

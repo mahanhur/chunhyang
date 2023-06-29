@@ -9,7 +9,7 @@
 </script>
 
 <main>
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4"><br>
         <p class="page_header_item"><strong>구독 신청정보 관리 화면</strong></p>
 <%--        <ol class="breadcrumb mb-4">--%>
 <%--            <li class="breadcrumb-item"><a href="/">관직자 메인페이지로</a></li>--%>

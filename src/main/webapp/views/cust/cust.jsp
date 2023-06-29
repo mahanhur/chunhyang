@@ -3,12 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <main>
-    <div class="container-fluid px-4 py-3">
-        <h1 class="mt-4"></h1>
+    <div class="container-fluid px-4"><br/>
+        <p class="page_header_cust"><strong>회원 리스트</strong></p>
         <div class="card mb-4">
             <div class="card-body">
-                <button type="button" class="btn btn-outline-primary"
-                        onclick="location.href='/cust/register'">cust 추가</button>
+                <p>ㅇ 회원 관리 화면입니다.</p>
+                <p>ㅇ 당사의 회원분들은 독립유동자 분들이시니 응대시 친절하게 하시기 바랍니다.</p>
+                <hr/>
+                <button type="button" class="btn btn-outline-primary" onclick="location.href='/cust/register'">회원 추가</button>
             </div>
         </div>
         <div class="card mb-4">

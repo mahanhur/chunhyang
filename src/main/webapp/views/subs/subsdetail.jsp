@@ -46,7 +46,7 @@
 </script>
 
 <main>
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4"><br>
         <p class="page_header_item"><strong>구독상품 배송관리 화면</strong></p>
         <div class="card mb-4">
             <div class="card-body">
