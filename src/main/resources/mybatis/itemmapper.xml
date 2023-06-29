@@ -28,6 +28,7 @@
     <select id="selectall" resultType="item">
         SELECT *
         FROM item
+        order by item_id DESC
     </select>
 
 

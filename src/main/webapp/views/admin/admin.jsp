@@ -3,15 +3,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <main>
-    <div class="container-fluid px-4">
-        <h1 class="mt-4">직원 리스트</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/">메인페이지로</a></li>
-        </ol>
+    <div class="container-fluid px-4"><br/>
+        <p class="page_header_board"><strong>직원 리스트</strong></p>
         <div class="card mb-4">
             <div class="card-body">
-                <button type="button" class="btn btn-outline-primary"
-                        onclick="location.href='/admin/register'">직원 추가</button>
+                <p>ㅇ 직원 추가시 신분확인은 필시 하사기 바랍니다</p>
+                <hr/>
+                <button type="button" class="btn btn-outline-primary" onclick="location.href='/admin/register'">직원 추가</button>
             </div>
         </div>
         <div class="card mb-4">

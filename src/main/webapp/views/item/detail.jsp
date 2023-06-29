@@ -87,7 +87,7 @@
     }
 </style>
 
-<div class="container-fluid px-4">
+<div class="container-fluid px-4"><br>
     <p class="page_header_item"><strong>판매상품 관리 화면</strong></p>
 
     <!-- 판매상품조회 -->

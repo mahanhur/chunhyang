@@ -15,7 +15,7 @@
     })
 </script>
 
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4"><br>
         <p class="page_header_board"><strong>이벤트</strong></p>
         <div class="card mb-4">
             <div class="card-body">

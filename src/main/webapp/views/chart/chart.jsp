@@ -27,8 +27,8 @@
                 chart: {
                     type: 'bar'
                 }, title: {
-                    text: '연령대별 매출액',
-                    align: 'left'
+                    text: '연령대별 남녀 전체 매출액 비교',
+                    align: 'center'
                 },
                 accessibility: {
                     point: {
@@ -99,7 +99,7 @@
                     type: 'column'
                 },
                 title: {
-                    text: '고객성별에 따른 월별 판매금액'
+                    text: '월별 남녀 전체 매출액 추이'
                 },
 
                 xAxis: {
@@ -258,7 +258,7 @@
                     type: 'pie'
                 },
                 title: {
-                    text: '해당기간 판매금액 비중',
+                    text: '전체 매출액 비중',
                     align: 'center'
                 },
                 tooltip: {
@@ -318,7 +318,7 @@
             <div class="col-lg-12">
                 <div class="card mb-4">
                     <div class="card-header" style="font-weight: bold; background-color: #E0ECF8" >
-                        매출액 추이 차트
+                        월별 매출액 추이 차트
                     </div>
                     <div class="card-body">
                         <div id="container1" width="100%" height="30"></div>
