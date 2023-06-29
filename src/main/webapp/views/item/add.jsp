@@ -121,7 +121,7 @@
                                 <label class="form-label" for="flower_type">상품종류:</label>
                                 <select class="form-select" id="flower_type" name="flower_type">
                                     <option value="감사">감사_꽃다발</option>
-                                    <option value="축하">축하_꽃다발</option>
+                                    <option value="응원">응원_꽃다발</option>
                                     <option value="사랑">사랑_꽃다발</option>
                                     <option value="장미">장미</option>
                                     <option value="작약">작약</option>
