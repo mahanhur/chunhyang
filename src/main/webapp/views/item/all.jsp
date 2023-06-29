@@ -3,24 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
-<%--<script>--%>
-<%--    let item_search = {--%>
-<%--        init: function () {--%>
-<%--            $('#search_btn').click(function () {--%>
-<%--                $('#search_form').attr({--%>
-<%--                    method: 'get',--%>
-<%--                    action: '/item/search'--%>
-<%--                });--%>
-<%--                $('#search_form').submit();--%>
-<%--            });--%>
-<%--        }--%>
-<%--    };--%>
-<%--    $(function () {--%>
-<%--        item_search.init();--%>
-<%--    })--%>
-<%--</script>--%>
-
 <style>
     .medium_img {
         width: 80px;
@@ -39,22 +21,6 @@
     #datatablesSimple td {
         text-align: center; /* 내용 가운데 정렬 */
     }
-    /*.page_header{*/
-    /*    border-left: 10px solid #ADD8E6;*/
-    /*    padding: 0.5em;*/
-    /*    margin: 15px 0 5px 0;*/
-    /*    border-bottom: 2px solid #ADD8E6;*/
-    /*    font-size: 1.5em;*/
-    /*    color: #4d5154;*/
-    /*}*/
-    /*.page_header{*/
-    /*    background: #F9F7F6;*/
-    /*    border-left: 0.5em solid #E6E6FA;*/
-    /*    padding: 0.5em;*/
-    /*    margin: 15px 0 5px 0;*/
-    /*    font-size: 1.5em;*/
-    /*    color: #4d5154;*/
-    /*}*/
 </style>
 
 <main>
@@ -75,17 +41,28 @@
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">
+                    <colgroup>
+                        <col width="10%"/>
+                        <col width="3%"/>
+                        <col width="7%"/>
+                        <col width="20%"/>
+                        <col width="10%"/>
+                        <col width="10%"/>
+                        <col width="10%"/>
+                        <col width="15%"/>
+                        <col width="10%"/>
+                    </colgroup>
                     <thead>
                     <tr>
-                        <th style="width: 100px">상품이미지</th>
+                        <th>이미지</th>
                         <th>상품코드</th>
-                        <th>상품카테고리</th>
+                        <th>카테고리</th>
                         <th>상품명</th>
-                        <th>상품가격</th>
-                        <th>상품재고</th>
-                        <th>상품정보</th>
+                        <th>가격</th>
+                        <th>재고</th>
+                        <th>정보</th>
                         <th>상품설명</th>
-                        <th>삭제</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -96,12 +73,13 @@
                             <td><br/>${obj.category_id}</td>
                             <td><br/>${obj.item_name}</td>
                             <td><br/><fmt:formatNumber value="${obj.item_price}" pattern="###,###원"/></td>
-                            <td><br/>${obj.item_cnt}</td>
-                            <td>색상: ${obj.flower_color}<br/>
-                                종류: ${obj.flower_type}<br/>
-                                사이즈: ${obj.flower_size}</td>
+                            <td><br/>${obj.item_cnt}개</td>
+                            <td>색상: ${obj.flower_color}
+                                <br/>종류: ${obj.flower_type}
+                                <br/>사이즈: ${obj.flower_size}
+                            </td>
                             <td><br/>${obj.item_content}</td>
-                            <td><br/><a href="/item/delitem?item_id=${obj.item_id}" class="btn btn-danger" role="button">삭제</a></td>
+                            <td><br/><a href="/item/delitem?item_id=${obj.item_id}" class="btn btn-danger btn-sm" role="button">X</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
