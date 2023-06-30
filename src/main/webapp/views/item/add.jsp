@@ -31,9 +31,9 @@
     <p class="page_header_item"><strong>판매상품 관리 화면</strong></p>
 
     <!-- 판매상품추가 -->
-    <div class="card shadow mb-4" style="width:50%">
+    <div class="card shadow mb-4" style="width:50%; margin-top: 30px" >
         <div class="card-header">
-            <i class="fas fa-table me-1"></i>
+            <i>💐</i>
             판매상품 추가
         </div>
 
@@ -177,10 +177,15 @@
 
                         <div class="col-12">
                             <!-- Button -->
-                            <div class="form-group"style="padding:15px">
+                            <div class="form-group"style="padding:20px 0px 0px 0px" align="right">
                                 <button id="add_btn" type="button" class="btn btn-dark">상품 추가</button>
                             </div>
                         </div>
                     </div>
                 </form>
         </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <img src="/uimg/about_w1.png">
+    </div>
+</div>
