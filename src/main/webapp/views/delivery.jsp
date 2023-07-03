@@ -61,18 +61,28 @@
     });
 
 </script>
+<style>
+    #datatablesSimple th {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
 
+    #datatablesSimple td {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
+</style>
 <main>
     <div class="container-fluid px-4">?<br>
         <p class="page_header_item"><strong>배송정보 화면</strong></p>
         <div class="card mb-4">
             <div class="card-body">
+                <p>ㅇ 일반상품/정기구독 배송 현황을 관리하는 화면입니다.</p>
+                <p>ㅇ 상품 발송 후 배송상태를 직접 변경 할 수 있습니다.</p>
             </div>
         </div>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                DataTable : Item
+                DataTable : Delivery
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">

@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style>
+    #datatablesSimple th {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
 
+    #datatablesSimple td {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
+</style>
 <main>
     <div class="container-fluid px-4"><br/>
         <p class="page_header_board"><strong>직원 리스트</strong></p>

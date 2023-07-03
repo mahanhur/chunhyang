@@ -14,14 +14,22 @@
         allcheck.init();
     })
 </script>
+<style>
+    #datatablesSimple th {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
 
+    #datatablesSimple td {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
+</style>
 <main>
     <div class="container-fluid px-4"><br>
         <p class="page_header_board"><strong>FAQ</strong></p>
         <div class="card mb-4">
             <div class="card-body">
-                <p>ㅇ 서비스화면 담당자들은 작성된 FAQ들을 서비스화면에 이쁘게 출력 바랍니다.</p>
-                <p>ㅇ 선택삭제 기능은 작동 안합니다</p>
+                <p>ㅇ 고객 서비스의 FAQ화면에 작성된 FAQ가 표출됩니다.</p>
+                <p>ㅇ FAQ 글번호를 클릭하시면 자세한 내용을 볼 수 있습니다.</p>
                 <hr/>
                 <button type="button" class="btn btn-outline-primary" onclick="location.href='/board/addfa'">F&A 등록</button>
                 <button type="button" class="btn btn-outline-success" id="allcheck">일괄 선택</button>

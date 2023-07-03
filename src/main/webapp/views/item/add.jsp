@@ -31,7 +31,7 @@
     <p class="page_header_item"><strong>판매상품 관리 화면</strong></p>
 
     <!-- 판매상품추가 -->
-    <div class="card shadow mb-4" style="width:50%; margin-top: 30px" >
+    <div class="card shadow mb-4 cols-6" style="margin-top: 30px; float:left; width:50%;">
         <div class="card-header">
             <i>💐</i>
             판매상품 추가
@@ -185,7 +185,7 @@
                 </form>
         </div>
     </div>
-    <div class="col-12 col-md-6">
-        <img src="/uimg/about_w1.png">
-    </div>
+<%--    <div class="col-6">--%>
+        <img src="/uimg/about_w1.png" style="float: left; width: 35%; margin-left:50px">
+<%--    </div>--%>
 </div>

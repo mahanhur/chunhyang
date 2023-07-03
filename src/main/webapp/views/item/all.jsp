@@ -28,8 +28,7 @@
         <p class="page_header_item"><strong>판매상품 관리 화면</strong></p>
         <div class="card mb-4">
             <div class="card-body">
-                <p>ㅇ 판매 상품을 관리하실 수 있는 화면입니다.</p>
-                <p>ㅇ 하단 버튼을 클릭하시어 상품을 추가/삭제/수정 하실 수 있습니다.</p>
+                <p>ㅇ 판매 상품을 추가/삭제/수정 관리하실 수 있는 화면입니다.</p>
                 <p>ㅇ 상품상세정보 및 정보변경은 <b>상품코드</b>를 누르시면 확인하실 수 있습니다. </p><hr/>
                 <button type="button" class="btn btn-outline-primary" onclick="location.href='/item/add'">판매상품 추가</button>
             </div>

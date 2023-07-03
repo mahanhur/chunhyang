@@ -143,14 +143,14 @@
                 <p>ㅇ 고객만족부 담당자들은 문의사항에 대하여 정확하고 신속한 답변 바랍니다.</p>
             </div>
         </div>
-        <div class="card shadow mb-4 col-lg-5 px-2" style="padding: 10px">
+        <div class="card shadow mb-4 col-lg-5 px-2" style="padding: 10px;">
             <div class="card-header">
                 <i class="fas fa-user"></i>
                 실시간 고객상담
             </div>
-            <div class="card-body">
+            <div class="card-body" >
                 <div id="container"></div>
-                <div class="col-sm-5">
+                <div class="col-sm-6 style="margin:auto;">
                     <h4 id="adm_id">${loginadmin.admin_name}</h4>
                     <h4 id="status">대기중</h4>
                     <button id="connect">채팅 연결</button>
@@ -158,7 +158,7 @@
                     <br>
                     고객ID: <input type="text" id="target">
                     메세지: <input type="text" id="totext">
-                    <button id="sendto">전송</button>
+                    <button id="sendto" style="align-items: center" >전송</button>
                     <div id="to"></div>
 
                 </div>
