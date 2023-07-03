@@ -11,7 +11,7 @@
     let subsdetail = {
         init: () => {
             $('.duedate_btn').click(function () {
-                alert("btn");
+
                 let row = $(this).closest('tr');
                 subsdetailId = row.find('.subsdetail_id').val();
                 subsDueDate = row.find('.subs_duedate').val();
@@ -41,7 +41,6 @@
         $('.datePicker').datepicker( ()=> {
             format: 'yyyy-MM-dd'
         });
-
     });
 
 </script>
@@ -95,7 +94,7 @@
                                     <button type="button" class="btn btn-outline-primary duedate_btn">수정</button>
 <%--                                    </c:if>--%>
                                 </td>
-                                <td class="del_state">${dobj.del_state}</td>
+                                <td>${dobj.del_state}</td>
 <%--                                <td>쨘</td>--%>
 
                             </tr>
@@ -139,7 +138,7 @@
                             </div>
                         </div>
                         <!-- details Modal END-->
-                                </c:choose>
+                                </c:if>
                             </c:forEach>
                     </c:forEach>
                     </tbody>
