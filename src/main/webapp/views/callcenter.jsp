@@ -150,7 +150,7 @@
             </div>
             <div class="card-body" >
                 <div id="container"></div>
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <h4 id="adm_id">${loginadmin.admin_name}</h4>
                     <span id="status">대기중</span>
                     <button id="connect">채팅 연결</button>
@@ -159,7 +159,7 @@
                     고객ID: <input type="text" id="target"><br/>
                     메세지: <input type="text" id="totext" >
                     <button id="sendto" style="align-items: center" >전송</button>
-                    <div id="to" style="width:700px;"></div>
+                    <div id="to" style="width:100%;"></div>
                 </div>
             </div>
         </div>
