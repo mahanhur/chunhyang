@@ -163,7 +163,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="/subs/subsitem" style="padding-bottom: 0;padding-left: 10px; color: grey"><div class="sb-nav-link-icon"></div> 구독상품 관리</a>
                                 <a class="nav-link" href="/subs/subsinfo" style="padding-bottom: 0;padding-left: 10px; color: grey"><div class="sb-nav-link-icon"></div> 구독 신청정보 관리</a>
-                                <a class="nav-link" href="/subs/subsdetail" style="padding-bottom: 0;padding-left: 10px; color: grey"><div class="sb-nav-link-icon"></div> 구독상품 상세관리</a>
+                                <a class="nav-link" href="/subs/subsdetail" style="padding-bottom: 0;padding-left: 10px; color: grey"><div class="sb-nav-link-icon"></div> 구독상품 배송관리</a>
                             </nav>
                         </div>
                         <%--구독 끝--%>

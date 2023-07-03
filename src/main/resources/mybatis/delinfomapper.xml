@@ -39,7 +39,7 @@
                     when del_com = 3 then '우체국택배'
                     when del_com = 4 then '기타'
                     else '' end as del_com
-        from delinfo
+        from delinfo order by del_state
     </select>
     <insert id="insert" parameterType="delinfo">
     </insert>

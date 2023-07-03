@@ -49,9 +49,14 @@
             var month = ('0' + (today.getMonth() + 1)).slice(-2);
             var day = ('0' + today.getDate()).slice(-2);
             var dateString = year + '-' + month  + '-' + day;
+            //1월1일 디폴트 세팅
+            var year = 2023;
+            var month = '01';
+            var day = '01';
+            var dateString1 = year + '-' + month  + '-' + day;
 
-            chart2.dataset(dateString, dateString );
-            $('.datepicker1').val(dateString);
+            chart2.dataset(dateString1, dateString );
+            $('.datepicker1').val(dateString1);
             $('.datepicker2').val(dateString);
 
             //버튼클릭시 정보제공

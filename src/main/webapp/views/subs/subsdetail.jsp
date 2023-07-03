@@ -41,6 +41,7 @@
         $('.datePicker').datepicker( ()=> {
             format: 'yyyy-MM-dd'
         });
+
     });
 
 </script>
@@ -90,9 +91,9 @@
                                 <td>
                                     <input type="hidden" class="subsdetail_id" value="${obj.subsdetail_id}" name="subsdetail_id">
                                     <input type="text" class="datePicker subs_duedate" name="subs_duedate" value="<fmt:formatDate  value="${obj.subs_duedate}" pattern="yyyy-MM-dd" />"/>
-                                    <c:if test="${dobj.del_state == '배송대기'}">
+<%--                                    <c:if test="${dobj.del_state == '배송대기'}">--%>
                                     <button type="button" class="btn btn-outline-primary duedate_btn">수정</button>
-                                    </c:if>
+<%--                                    </c:if>--%>
                                 </td>
                                 <td>${dobj.del_state}</td>
 <%--                                <td>쨘</td>--%>

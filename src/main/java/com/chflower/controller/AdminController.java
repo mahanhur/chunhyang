@@ -78,6 +78,11 @@ public class AdminController {
         model.addAttribute("redirectURL",  redirectURL);
         return "admin/facelogin";
     }
+    @RequestMapping("/admin/loginok")
+    public String lokinok(Model model,String redirectURL){
+        model.addAttribute("center", dir+"loginok");
+        return "index";
+    }
 
 
 
