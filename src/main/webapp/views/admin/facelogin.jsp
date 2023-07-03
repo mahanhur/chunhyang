@@ -155,7 +155,7 @@
                         url:'/faceloginimpl',
                         data: {imgname: imgname},
                         success: function(){
-                            location.href="/";
+                            location.href="/admin/loginok";
                         },
                         error: function() {
                             toastr.error("얼굴로 로그인에 실패하였습니다.");

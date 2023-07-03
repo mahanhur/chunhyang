@@ -166,12 +166,13 @@ public class AjaxImplController {
         Admin admin = adminService.facelogin(admin_loginkey);
         if(admin != null) {
             session.setAttribute("loginadmin", admin);
+            model.addAttribute("center", "admin/loginok");
         } else {
             throw new Exception("facelogin error");
         }
 
         //결과를 보낸다
-        return "redirect:/";
+        return "index";
     }
 
     @RequestMapping("/getservertime")
