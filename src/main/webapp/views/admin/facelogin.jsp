@@ -158,12 +158,12 @@
                             location.href="/";
                         },
                         error: function() {
-                            alert("얼굴로 로그인에 실패하였습니다.");
+                            toastr.error("얼굴로 로그인에 실패하였습니다.");
                         }
                     });
                 },
                 error: function() {
-                    alert("얼굴로 로그인에 실패하였습니다.");
+                    toastr.error("얼굴로 로그인에 실패하였습니다.");
                 }
             });
         }
@@ -182,10 +182,10 @@
                     <div class="card-header"><h3 class="text-center font-weight-light my-4">얼굴로 로그인</h3></div>
                     <div class="card-body">
                         <div id="container">
-                            <form id="login_form" >
+                            <form id="login_form" style="align-content: center">
 
-                                <div class="col-sm-8 text-left">
-                                    <video  id="myVideo" width="300" height="300" style="border: 1px solid #ddd;"></video>
+                                <div class="col-sm-12">
+                                    <video  id="myVideo" width="385" height="300" style="border: 1px solid #ddd;"></video>
                                     <canvas id="myCanvas" width="160" height="140" style="border: 1px solid #ddd;"></canvas><br>
                                     <form id="cfr_form" action="/mycfr" method="get">
                                         <input type="hidden" name="imgname" id="imgname" ><br>

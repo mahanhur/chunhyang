@@ -180,23 +180,23 @@
                             <label class="form-label" for="flower_type">상품종류:</label>
                             <select class="form-select" id="flower_type" name="flower_type" value="${detail.flower_type}">
                                 <option value="감사" <c:if test="${detail.flower_type eq '감사'}">selected</c:if>>감사_꽃다발</option>
-                                <option value="축하" <c:if test="${detail.flower_type eq '축하'}">selected</c:if>>축하_꽃다발</option>
+                                <option value="응원" <c:if test="${detail.flower_type eq '응원'}">selected</c:if>>응원_꽃다발</option>
                                 <option value="사랑" <c:if test="${detail.flower_type eq '사랑'}">selected</c:if>>사랑_꽃다발</option>
                                 <option value="장미" <c:if test="${detail.flower_type eq '장미'}">selected</c:if>>장미</option>
-                                <option value="작약" <c:if test="${detail.flower_type eq '작약'}">selected</c:if>>작약</option>
-                                <option value="카라" <c:if test="${detail.flower_type eq '카라'}">selected</c:if>>카라</option>
-                                <option value="프리지아" <c:if test="${detail.flower_type eq '프리지아'}">selected</c:if>>프리지아</option>
+                                <option value="리시안셔스" <c:if test="${detail.flower_type eq '리시안셔스'}">selected</c:if>>리시안셔스</option>
                                 <option value="거베라" <c:if test="${detail.flower_type eq '거베라'}">selected</c:if>>거베라</option>
                                 <option value="수국" <c:if test="${detail.flower_type eq '수국'}">selected</c:if>>수국</option>
-                                <option value="해바라기" <c:if test="${detail.flower_type eq '해바라기'}">selected</c:if>>해바라기</option>
-                                <option value="백합" <c:if test="${detail.flower_type eq '백합'}">selected</c:if>>백합</option>
-                                <option value="라벤더" <c:if test="${detail.flower_type eq '라벤더'}">selected</c:if>>라벤더</option>
-                                <option value="리시안셔스" <c:if test="${detail.flower_type eq '리시안셔스'}">selected</c:if>>리시안셔스</option>
-                                <option value="유칼립투스" <c:if test="${detail.flower_type eq '유칼립투스'}">selected</c:if>>유칼립투스</option>
-                                <option value="아스틸베베" <c:if test="${detail.flower_type eq '아스틸베베'}">selected</c:if>>아스틸베베</option>
-                                <option value="청공작초" <c:if test="${detail.flower_type eq '청공작초'}">selected</c:if>>청공작초</option>
-                                <option value="투베로사" <c:if test="${detail.flower_type eq '투베로사'}">selected</c:if>>투베로사</option>
-                                <option value="스톡크" <c:if test="${detail.flower_type eq '스톡크'}">selected</c:if>>스톡크</option>
+                                <option value="꽃기타" <c:if test="${detail.flower_type eq '꽃기타'}">selected</c:if>>꽃기타</option>
+<%--                                <option value="프리지아" <c:if test="${detail.flower_type eq '프리지아'}">selected</c:if>>프리지아</option>--%>
+<%--                                <option value="해바라기" <c:if test="${detail.flower_type eq '해바라기'}">selected</c:if>>해바라기</option>--%>
+<%--                                <option value="백합" <c:if test="${detail.flower_type eq '백합'}">selected</c:if>>백합</option>--%>
+<%--                                <option value="라벤더" <c:if test="${detail.flower_type eq '라벤더'}">selected</c:if>>라벤더</option>--%>
+<%--                                <option value="작약" <c:if test="${detail.flower_type eq '작약'}">selected</c:if>>작약</option>--%>
+<%--                                <option value="유칼립투스" <c:if test="${detail.flower_type eq '유칼립투스'}">selected</c:if>>유칼립투스</option>--%>
+<%--                                <option value="아스틸베베" <c:if test="${detail.flower_type eq '아스틸베베'}">selected</c:if>>아스틸베베</option>--%>
+<%--                                <option value="청공작초" <c:if test="${detail.flower_type eq '청공작초'}">selected</c:if>>청공작초</option>--%>
+<%--                                <option value="투베로사" <c:if test="${detail.flower_type eq '투베로사'}">selected</c:if>>투베로사</option>--%>
+<%--                                <option value="스톡크" <c:if test="${detail.flower_type eq '스톡크'}">selected</c:if>>스톡크</option>--%>
                                 <option value="기타" <c:if test="${detail.flower_type eq '기타'}">selected</c:if>>기타</option>
                             </select>
                         </div>

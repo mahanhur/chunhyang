@@ -14,13 +14,21 @@
         allcheck.init();
     })
 </script>
+<style>
+    #datatablesSimple th {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
 
+    #datatablesSimple td {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
+</style>
     <div class="container-fluid px-4"><br>
         <p class="page_header_board"><strong>이벤트</strong></p>
         <div class="card mb-4">
             <div class="card-body">
-                <p>ㅇ 이벤트 상품 및 안내 사항들은 직원분들께서는 숙지해 바랍니다</p>
-                <p>ㅇ 선택삭제 기능은 작동 안합니다</p>
+                <p>ㅇ 이벤트 상품 및 안내 사항들은 직원분들께서는 숙지해 바랍니다.</p>
+                <p>ㅇ 이벤트 글번호를 클릭하시면 자세한 내용을 볼 수 있습니다.</p>
                 <hr/>
                 <button type="button" class="btn btn-outline-primary" onclick="location.href='/board/addevent'">이벤트 등록</button>
                 <button type="button" class="btn btn-outline-success" id="allcheck">일괄 선택</button>

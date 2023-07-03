@@ -25,7 +25,15 @@
         item_add.init();
     })
 </script>
+<style>
+    .table-striped th {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
 
+    .table-striped td {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
+</style>
 <main>
     <div class="container-fluid px-4"><br>
         <p class="page_header_item"><strong>구독상품 관리 화면</strong></p>
@@ -40,22 +48,22 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                DataTable : Item
+                데이터테이블 : Subsitem
             </div>
             <div class="card-body">
                 <table class="table table-striped">
                     <colgroup>
-                        <col width="15%"/>
                         <col width="10%"/>
-                        <col width="15%"/>
+                        <col width="10%"/>
+                        <col width="20%"/>
                         <col width="10%"/>
                         <col width="50%"/>
                     </colgroup>
                     <thead>
                     <tr>
-                        <th>상품 표출 이미지</th>
-                        <th>상품아이디</th>
-                        <th>상품이름</th>
+                        <th>상품 이미지</th>
+                        <th>상품 코드</th>
+                        <th>상품명</th>
                         <th>표출 가격</th>
                         <th>상품 상세 설명</th>
                     </tr>
@@ -64,12 +72,12 @@
                     <c:forEach var="obj" items="${slist}">
                         <tr>
                             <td>
-                                <img style="width: 40%;" id="item_img" src="/uimg/${obj.subsitem_img}" alt=${obj.subsitem_img}>
+                                <img style="width: 100px; height: 130px;" id="item_img" src="/uimg/${obj.subsitem_img}" alt=${obj.subsitem_img}>
                             </td>
-                            <td>${obj.subsitem_id}</td>
-                            <td>${obj.subsitem_name}</td>
-                            <td><fmt:formatNumber value="${obj.subsitem_price}" pattern="###,###원"/></td>
-                            <td>${obj.subsitem_content}</td>
+                            <td><br/><br/><br/>${obj.subsitem_id}</td>
+                            <td><br/><br/><br/>${obj.subsitem_name}</td>
+                            <td><br/><br/><br/><fmt:formatNumber value="${obj.subsitem_price}" pattern="###,###원"/></td>
+                            <td><br/><br/><br/>${obj.subsitem_content}</td>
                         </tr>
                     </c:forEach>
 

@@ -209,7 +209,8 @@
             var day = ('0' + today.getDate()).slice(-2);
             var dateString = year + '-' + month  + '-' + day;
 
-            chart2.dataset(dateString, dateString );
+            chart2.dataset('2021-01-01', dateString);
+            console.log(dateString)
 
         },
         dataset: function(date1, date2) {

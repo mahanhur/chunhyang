@@ -97,7 +97,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #E6E6FA; height: 80px;align-items: center">
     <!-- Navbar Brand-->
-    <a class="navbar-brand" href="/" ><img src="/uimg/logo1_admin.png" style="width:200px;padding:0 20px"></a>
+    <a class="navbar-brand" href="/" ><img src="/uimg/logo_admin.png" style="width:240px;padding:0 20px"></a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -144,7 +144,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <c:if test="${loginadmin.admin_level == 1}">
-                        <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px"><i class="fas fa-user"></i> 직원관리메뉴</div>
+                        <div class="sb-sidenav-menu-heading" style="padding-bottom: 0;padding-left: 20px; color:dimgray"><i class="fas fa-user" style="color:dimgray"></i> 직원관리메뉴</div>
                         <a class="nav-link collapsed" href="/admin" style="padding-bottom: 0;padding-left: 20px"><div class="sb-nav-link-icon"></div> 직원 관리</a>
                     </c:if>
                     <div class="sb-sidenav-menu-heading" style="padding-bottom: 0; padding-left: 20px; color: dimgray"><i class="fas fa-user" style="color:dimgray"></i> 고객관리메뉴</div>

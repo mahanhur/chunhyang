@@ -14,7 +14,15 @@
         allcheck.init();
     })
 </script>
+<style>
+    #datatablesSimple th {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
 
+    #datatablesSimple td {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
+</style>
 <main>
     <div class="container-fluid px-4"><br>
         <p class="page_header_cust"><strong>[Q&A] 고객문의</strong></p>

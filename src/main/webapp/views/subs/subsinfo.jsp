@@ -5,8 +5,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
-<script>
-</script>
+<style>
+    #datatablesSimple th {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
+
+    #datatablesSimple td {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
+</style>
 
 <main>
     <div class="container-fluid px-4"><br>
@@ -25,7 +32,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                DataTable : Subscribe register list
+                데이터테이블 : SUBSDETAIL
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">

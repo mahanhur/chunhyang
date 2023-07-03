@@ -14,14 +14,22 @@
         allcheck.init();
     })
 </script>
+<style>
+    #datatablesSimple th {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
 
+    #datatablesSimple td {
+        text-align: center; /* 내용 가운데 정렬 */
+    }
+</style>
 <main>
     <div class="container-fluid"><br/>
         <p class="page_header_board"><strong>공지사항</strong></p>
         <div class="card mb-4">
             <div class="card-body">
                 <p>ㅇ 필독사항은 반드시 읽어주시기 바랍니다</p>
-                <p>ㅇ 선택삭제 기능은 작동 안합니다</p>
+                <p>ㅇ 공지사항 글번호를 클릭하시면 자세한 내용을 볼 수 있습니다. </p>
                 <hr/>
                 <button type="button" class="btn btn-outline-primary" onclick="location.href='/board/addnotice'">공지 등록</button>
                 <button type="button" class="btn btn-outline-success" id="allcheck">일괄 선택</button>
