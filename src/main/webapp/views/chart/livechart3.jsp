@@ -12,6 +12,7 @@
             this.chart2();
         },
         chart1: function () {
+            // var defaultData = 'https://49.50.160.198:7443/logs/itemclicklog.log';
             var defaultData = 'http://127.0.0.1:8090/logs/itemclicklog.log';
             var urlInput = document.getElementById('fetchURL3');
             var pollingCheckbox = document.getElementById('enablePolling3');
@@ -19,6 +20,7 @@
             var chart;
 
             function createChart() {
+                // var dataUrl = 'https://49.50.160.198:7443/logs/itemclicklog.log';
                 var dataUrl = 'http://127.0.0.1:8090/logs/itemclicklog.log';
 
                 // 데이터 가공
@@ -98,7 +100,8 @@
             }
 
             function setDefaultData() {
-                var logFile = 'http://127.0.0.1:8090/logs/itemclickcount.log';
+                // var logFile = 'https://49.50.160.198:7443/logs/itemclicklog.log';
+                var logFile = 'http://127.0.0.1:8090/logs/itemclicklog.log';
 
                 fetch(logFile)
                     .then(response => response.text())
@@ -147,6 +150,7 @@
             setInterval(createChart, parseInt(pollingInput.value, 10) * 500);
         },
         chart2: function() {
+            // var defaultData = 'https://49.50.160.198:7443/logs/subscountlog.log';
             var defaultData = 'http://127.0.0.1:8090/logs/subscountlog.log';
             var urlInput = document.getElementById('fetchURL1');
             var pollingCheckbox = document.getElementById('enablePolling1');
