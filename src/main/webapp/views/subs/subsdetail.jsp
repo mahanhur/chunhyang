@@ -11,7 +11,7 @@
     let subsdetail = {
         init: () => {
             $('.duedate_btn').click(function () {
-                alert("btn");
+                // alert("btn");
                 let row = $(this).closest('tr');
                 subsdetailId = row.find('.subsdetail_id').val();
                 subsDueDate = row.find('.subs_duedate').val();
